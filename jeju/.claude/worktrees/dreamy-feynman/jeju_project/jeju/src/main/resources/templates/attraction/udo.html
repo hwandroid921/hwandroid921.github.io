@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주문화관광</title>
+    <!-- css link 모음 -->
+    <link rel="stylesheet" href="../css/common/reset.css">
+    <link rel="stylesheet" href="../css/common/font1.css">
+    <link rel="stylesheet" href="../css/common/common.css">
+    <link rel="stylesheet" href="../css/common/header.css">
+    <link rel="stylesheet" href="../css/common/footer.css">
+    <link rel="stylesheet" href="../css/common/sub_common.css">
+    <link rel="stylesheet" href="../css/place/udo.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- header영역 -->
+        <header id="hd">
+            <div class="container">
+                <a href="../index.html" class="log">
+                    <img src="../images/logo/J_logo.png" alt="">
+                    <img src="../images/logo/logo_tt.png" alt="">
+                </a>
+                <nav class="gnb">
+                    <ul class="menu">
+                        <li>
+                            <a href="../culture_page/myth.html" class="dp1">문화/역사/예술</a>
+                            <ul class="sub">
+                                <li><a href="../culture_page/myth.html">개국신화</a></li>
+                                <li><a href="../culture_page/history.html">역사</a></li>
+                                <li><a href="../culture_page/culture.html">민속</a></li>
+                                <li><a href="../culture_page/story.html">탄생설화</a></li>
+                                <li><a href="../culture_page/unesco.html">유네스코</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../tour_page/udo.html" class="dp1">여행</a>
+                            <ul class="sub">
+                                <li><a href="../tour_page/udo.html">우도</a></li>
+                                <li><a href="../tour_page/marado.html">마라도</a></li>
+                                <li><a href="../tour_page/chujado.html">추자도</a></li>
+                                <li><a href="../tour_page/hallasan.html">한라산국립공원</a></li>
+                                <li><a href="../tour_page/seopjikoji.html">섭지코지</a></li>
+                                <li><a href="../tour_page/seongsan_peak.html">성산일출봉</a></li>
+                                <li><a href="../tour_page/jeongbang.html">정방폭포</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../festival_page/sungsan.html" class="dp1">축제/행사</a>
+                            <ul class="sub">
+                                <li><a href="../festival_page/sungsan.html">성산일출봉일출축제</a></li>
+                                <li><a href="../festival_page/olle.html">올레걷기체험</a></li>
+                                <li><a href="../festival_page/forest.html">사려니숲에코힐링체험</a></li>
+                                <li><a href="../festival_page/haenyeo.html">제주해녀축제</a></li>
+                                <li><a href="../festival_page/flower.html">제주꽃축제</a></li>
+                                <li><a href="../festival_page/monthly.html">월별행사</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../tour_guide/hotel.html" class="dp1">여행가이드</a>
+                            <ul class="sub">
+                                <li><a href="../tour_guide/hotel.html">숙박</a></li>
+                                <li><a href="../tour_guide/air.html">교통</a></li>
+                                <li><a href="../tour_guide/food.html">음식</a></li>
+                                <li><a href="../tour_guide/shopping.html">쇼핑</a></li>
+                                <li><a href="../tour_guide/map.html">지도.가이드북</a></li>
+                                <li><a href="../tour_guide/jisik_in.html">제주지식IN</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="../community_page/notice.html" class="dp1">커뮤니티</a>
+                            <ul class="sub">
+                                <li><a href="../community_page/notice.html">공지사항</a></li>
+                                <li><a href="../community_page/travelogue.html">여행후기</a></li>
+                                <li><a href="../community_page/event.html">이벤트</a></li>
+                                <li><a href="../community_page/complaint.html">불편신고</a></li>
+                                <li><a href="../community_page/qna.html">자주묻는질문</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="tnb">
+                    <div class="tnb_con">
+                        <a href="../user_page/login.html" class="tnb_bg1">
+                            <img src="../images/icon/icon16.png" alt="감귤">
+                            <span>로그인</span>
+                        </a>
+                    </div>
+                    <div class="tnb_con">
+                        <a href="../user_page/join.html" class="tnb_bg2">
+                            <img src="../images/icon/icon5.png" alt="땅콩">
+                            <span>회원가입</span>
+                        </a>
+                    </div>
+                    <div class="tnb_con">
+                        <a href="" class="tnb_bg3">
+                            <img src="../images/icon/icon4.png" alt="돌하르방">
+                            <span>Contact US</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- Main 영역 -->
+        <main id="main">
+            <div class="bgi_con">
+                <img src="../images/bgi/bgi_hallasan2.jpg" alt="">
+                <div class="tit_con">
+                    <h2>관광지</h2>
+                </div>
+            </div>
+            <div class="main_con">
+                <!-- tnb 메뉴 -->
+                <div class="sub_tnb_con">
+                    <ul>
+                        <li><a href="../tour_page/udo.html" class="active">우도</a></li>
+                        <li><a href="../tour_page/marado.html">마라도</a></li>
+                        <li><a href="../tour_page/chujado.html">추자도</a></li>
+                        <li><a href="../tour_page/hallasan.html">한라산국립공원</a></li>
+                        <li><a href="../tour_page/seopjikoji.html">섭지코지</a></li>
+                        <li><a href="../tour_page/seongsan_peak.html">성산일출봉</a></li>
+                        <li><a href="../tour_page/jeongbang.html">정방폭포</a></li>
+                    </ul>
+                </div>
+                <!-- 메인 컨텐츠 -->
+                <div class="page_tit">
+                    <h3>우도</h3>
+                    <h4>소가 누워있는 형상을 하고 있는 제주의 가장 큰 부속섬</h4>
+                    <img src="../images/place/island/udo7.jpg" alt="">
+                </div>
+                <div class="page_content">
+                    <div class="content_menu_con">
+                        <span id="on_description"></span>
+                        <ul>
+                            <li><a href="#on_description" id="description">설명</a></li>
+                            <li><a href="#on_map">지도</a></li>
+                            <li><a href="#on_photo">사진</a></li>
+                            <li><a href="#on_review">리뷰</a></li>
+                        </ul>
+                    </div>
+                    <div class="content_con">
+                        <h4>제주의 가장 큰 부속섬</h4>
+                        <p>우도는 소가 누워있는 모양을 닮았다고 해서 일찍부터 소섬 또는 쉐섬으로 불렸다. 완만한 경사와 옥토, 풍부한 어장, 우도8경 등 천혜의 자연조건을 갖춘 관광지로서 한
+                            해 약 200만 명의 관광객이 찾는 제주의 대표 부속섬이다.<br>
+                            성산항과 종달항에서 우도 가는 배를 탈 수 있는데 어디서 출발하든 15분 정도 소요된다. 섬의 길이는 3.8km, 둘레는 17km. 쉬지 않고 걸으면 3~4시간
+                            걸리는 거리지만, 대부분의 관광객은 자전거, 미니 전기차를 타고 유명한 관광지 위주로 돌아본다. <br>
+
+                            검멀레해변이나 우도봉, 홍조단괴해변, 하고수동해변 등 유명한 관광지 1~2개를 둘러보고, 카페나 음식점에서 휴식을 즐겨도 대략 3~4시간 정도 소요된다. 기상에 따라
+                            배 운항 여부가 달라질 수 있으니 우도 여행 일정을 짜는 데는 기상조건을 필히 확인해야 한다.</p>
+                        <div class="img_con1">
+                            <img src="../images/place/island/udo4-1.jpg" alt="">
+                            <img src="../images/place/island/udo4-2.jpg" alt="">
+                        </div>
+                        <p>우도의 홍조단괴해변은 산호해변으로도 불리는데, 백사장을 이룬 하얀 알갱이가 홍조류가 딱딱하게 굳어 부서지면서 만들어졌기 때문이다. 홍조류로 이뤄진 백사장은 세계에서
+                            드물어 보호하고 있다. <br>
+
+                            너른 백사장과 아름다운 바다색으로 유명한 하고수동해수욕장도 있다. 경사가 완만한 천진동 코스와 경치가 멋진 검멀레 해안코스가 있으며, 우도봉에 올라 우도의 전경을
+                            바라볼 수도 있다. 자연 절경 이외에도 바다낚시, 자전거 하이킹, 잠수함과 유람선 등을 통해 여행의 재미를 더할 수 있다.</p>
+                        <div class="img_con2">
+                            <img src="../images/place/island/udo8.jpg" alt="">
+
+                            <div class="img_con3">
+                                <img src="../images/place/island/udo6.jpg" alt="">
+                                <img src="../images/place/island/udo9.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="content_menu_con">
+                        <span id="on_map"></span>
+                        <ul>
+                            <li><a href="#on_description">설명</a></li>
+                            <li><a href="#on_map" id="map">지도</a></li>
+                            <li><a href="#on_photo">사진</a></li>
+                            <li><a href="#on_review">리뷰</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="map_con">
+                        <h4>지도</h4>
+                        <img src="../images/place/island/udo_map.jpg" alt="">
+                        <p>*휴항 : 선박 정기검사일, 날씨로 인한 비운항일 (여객터미널 당일 운항 여부 확인 필요) <br><br>
+                            *주소 : 서귀포시 성산읍 성산동 용로 130-21 <br><br>
+                            *문의전화 : 성산포항 종합여객터미널 064-782-5671, 종달 대합실 064-782-7719, 우도 대합실 064-783-0448
+                        </p>
+
+                    </div>
+
+                    <div class="content_menu_con">
+                        <span id="on_photo"></span>
+                        <ul>
+                            <li><a href="#on_description">설명</a></li>
+                            <li><a href="#on_map">지도</a></li>
+                            <li><a href="#on_photo" id="photo">사진</a></li>
+                            <li><a href="#on_review">리뷰</a></li>
+                        </ul>
+                    </div>
+                    <div class="photo_slide_con">
+                        <h4>우도 여행 사진</h4>
+                        <input type="radio" id="ra1" class="ra" name="ra" checked>
+                        <input type="radio" id="ra2" class="ra" name="ra">
+                        <input type="radio" id="ra3" class="ra" name="ra">
+                        <input type="radio" id="ra4" class="ra" name="ra">
+                        <input type="radio" id="ra5" class="ra" name="ra">
+                        <ul class="photo_con">
+                            <li>
+                                <img src="../images/place/island/udo_photo1.jpg" alt="">
+                                <h4>신비의 섬 우도</h4>
+                            </li>
+                            <li>
+                                <img src="../images/place/island/udo_photo2.jpg" alt="">
+                                <h4>제주도 유채꽃</h4>
+                            </li>
+                            <li>
+                                <img src="../images/place/island/udo_photo3.jpg" alt="">
+                                <h4>우도서빈백사해수욕장</h4>
+                            </li>
+                            <li>
+                                <img src="../images/place/island/udo_photo4.jpg" alt="">
+                                <h4>우도 마을 주민 조형물</h4>
+                            </li>
+                            <li>
+                                <img src="../images/place/island/udo_photo5.jpg" alt="">
+                                <h4>우도 마을 주민 조형물</h4>
+                            </li>
+                        </ul>
+                        <div class="btn_box">
+                            <ul class="btn_wrap">
+                                <li><label for="ra1" id="photo_btn1"></label></li>
+                                <li><label for="ra2" id="photo_btn2"></label></li>
+                                <li><label for="ra3" id="photo_btn3"></label></li>
+                                <li><label for="ra4" id="photo_btn4"></label></li>
+                                <li><label for="ra5" id="photo_btn5"></label></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content_menu_con">
+                        <span id="on_review"></span>
+                        <ul>
+                            <li><a href="#on_description">설명</a></li>
+                            <li><a href="#on_map">지도</a></li>
+                            <li><a href="#on_photo">사진</a></li>
+                            <li><a href="#on_review" id="review">리뷰</a></li>
+                        </ul>
+                    </div>
+                    <div class="review_page_con">
+                        <h4>리뷰</h4>
+                        <ul class="review_con">
+                            <li>
+                                <div class="review_profile_con">
+                                    <img src="../images/icon/profile1.png" alt="">
+
+                                </div>
+                                <ul class="review_detail_con">
+                                    <li>
+                                        <h5>정**</h5>
+                                        <h6>2026.02.04</h6>
+                                    </li>
+                                    <li>
+                                        <p>햇살이 밝은날 우도입니다. 여러사람들이 저마다의 마음과 추억을 위해 여행을 떠나왔습니다. 아름다운 우도의 섬에서 저마다의 아름다움을
+                                            발견하길 바래봅니다.</p>
+                                    </li>
+                                    <li>
+                                        <ul class="review_photo_con">
+                                            <li>
+                                                <a href="" target="photo">
+                                                    <img src="../images/place/review_photo/udo_review1.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review2.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review3.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review4.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review5.jpg" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="review_btn_con">
+                                    <a href=""><img src="../images/icon/like.png" alt="">좋아요</a>
+                                    <a href=""><img src="../images/icon/dislike.png" alt="">싫어요</a>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="review_profile_con">
+                                    <img src="../images/icon/profile1.png" alt="">
+
+                                </div>
+                                <ul class="review_detail_con">
+                                    <li>
+                                        <h5>한**</h5>
+                                        <h6>2025.12.01</h6>
+                                    </li>
+                                    <li>
+                                        <p>2023년 3월 가족과 함께 떠난 제주도 여행. 아름다운 섬 우도에 다녀왔어요. 우도에서는 바이크를 타고 우도를 한바퀴 돌아볼 수 있는
+                                            서비스가 준비돼있어요 물론 유료에다가 면허증이 있어야 하지만! 저희는 면허증 소지하고 있어서 재밌게 탔습니다. 바이크를 타고 시골길도
+                                            돌아보고 가고 싶은 곳은 마음 편히 다닐 수 있었어요. 쉴 곳이 필요해 저희는 카페를 찾아다녔는데 풍경이 환상적인 곳을 발견했어요. 바로
+                                            '밭 318'이라는 카페였어요. 저는 예쁜 이름을 가진 '바다 라떼'를 선택했습니다. 풍경이 예뻐서 그런지 맛도 좋았던 거 같아요!
+                                            그리고 그 앞은 테라스처럼 사진을 찍을 수 있게 잘 돼있어요. 3월은 유채꽃이 활짝 피는 시기잖아요? 사진 찍기 좋게 예쁘게 잘 꾸며져
+                                            있었어요. 거기서 사진만 엄청 찍었네요. 자유를 좋아하는 저는 자유롭게 여행할 수 있는 우도를 강추합니다!</p>
+                                    </li>
+                                    <li>
+                                        <ul class="review_photo_con">
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review6.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review7.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review8.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review9.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review10.jpg" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="review_btn_con">
+                                    <a href=""><img src="../images/icon/like.png" alt="">좋아요</a>
+                                    <a href=""><img src="../images/icon/dislike.png" alt="">싫어요</a>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="review_profile_con">
+                                    <img src="../images/icon/profile2.png" alt="">
+
+                                </div>
+                                <ul class="review_detail_con">
+                                    <li>
+                                        <h5>김**</h5>
+                                        <h6>2025.11.23</h6>
+                                    </li>
+                                    <li>
+                                        <p>매번 가도 힐링이 됩니다. 구석구석 그냥 다녀도 좋은 여행지인듯!</p>
+                                    </li>
+                                    <li>
+                                        <ul class="review_photo_con">
+                                            <li>
+                                                <a href="" target="photo">
+                                                    <img src="../images/place/review_photo/udo_review11.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review12.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review13.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review14.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review15.jpg" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="review_btn_con">
+                                    <a href=""><img src="../images/icon/like.png" alt="">좋아요</a>
+                                    <a href=""><img src="../images/icon/dislike.png" alt="">싫어요</a>
+
+                                </div>
+                            </li>
+                            <li>
+                                <div class="review_profile_con">
+                                    <img src="../images/icon/profile1.png" alt="">
+
+                                </div>
+                                <ul class="review_detail_con">
+                                    <li>
+                                        <h5>sta********</h5>
+                                        <h6>2024.07.20</h6>
+                                    </li>
+                                    <li>
+                                        <p>Open on July 1st. We takes reservation from July. * Introduce beautiful
+                                            Duplex Pension named Stay in Udo You can see the ocean view from all
+                                            windows, from sun rising to sunset, and away from the lighthouse light of
+                                            Udonbong is romantic. If you are staying at stay in Udo, you can bring your
+                                            rental car in Udo (reservation letters are confirmed at Seongsan port)
+                                            ROOM1: Bathroom, TV, ceiling system air-conditioning, luxurious bed, hotel
+                                            bedding, full-length mirror, amenity, wood blinds, indirect lighting, mood
+                                            lighting Features: Panoramic view of green grass, palm trees and a beach
+                                            spread out the window. ROOM2: TV, ceiling system air-conditioning, built-in
+                                            high quality bed (no worries about falling off children), hotel bedding,
+                                            full body mirror, amenity, wood blinds, indirect lighting, moods lighting,
+                                            wood flooring, cozy tea table and chairs Features: A large window in the
+                                            room with a panoramic view of green grass outside the window, palm trees and
+                                            a beatiful beach.
+
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <ul class="review_photo_con">
+                                            <li>
+                                                <a href="" target="photo">
+                                                    <img src="../images/place/review_photo/udo_review16.jpg" alt=""></a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review17.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review18.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review19.jpg" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <img src="../images/place/review_photo/udo_review20.jpg" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <div class="review_btn_con">
+                                    <a href=""><img src="../images/icon/like.png" alt="">좋아요</a>
+                                    <a href=""><img src="../images/icon/dislike.png" alt="">싫어요</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- footer 영역 -->
+        <footer id="ft">
+            <div class="container">
+                <nav id="banner_bar">
+                    <ul>
+                        <li>
+                            <a href="https://www.jeju.go.kr/index.htm">
+                                <img src="../images/banner/ban01.png" alt="제주특별자치도">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://korean.visitkorea.or.kr/main/main.do">
+                                <img src="../images/banner/ban02.png" alt="한국관광공사">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://mall.ejeju.net/main/index.do">
+                                <img src="../images/banner/ban03.png" alt="eJeju">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.jejudfs.com/">
+                                <img src="../images/banner/ban04.png" alt="제주면세">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://ijto.or.kr/korean/">
+                                <img src="../images/banner/ban05.png" alt="제주관광공사">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.kma.go.kr/jeju/html/main/index.jsp">
+                                <img src="../images/banner/ban06.png" alt="제주지방기상청">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.tamnao.com/">
+                                <img src="../images/banner/ban07.png" alt="제주종합쇼핑몰 탐나오">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav id="fnb">
+                    <a href="">개인정보처리방침</a>
+                    <a href="">이용약관</a>
+                    <a href="">제주관광문의</a>
+                    <a href="">불편신고</a>
+                </nav>
+                <div class="copyright">
+                    <p class="cp_1">Copyright©Jeju Tourism Organization, All rights reserved.</p>
+                    <p class="cp_2">홈페이지에 게시된 이메일 주소가 자동수집되는 것을 거부하며, 위반시 정보통신망법에 의해 처벌될 수 있습니다.</p>
+                    <p class="cp_3">(63122) 제주특별자치도 제주시 선덕로 23(연동) 제주웰컴센터<br>
+                        관광문의 : 제주관광공사 Tel : 064-740-6000~1 FAX : 064-740-6090 사업자등록번호 : 616-82-21432<br>
+                        관광불편신고 : 제주관광불편신고센터(1533-0082)</p>
+                </div>
+            </div>
+        </footer>
+
+
+
+    </div>
+</body>
+
+</html>

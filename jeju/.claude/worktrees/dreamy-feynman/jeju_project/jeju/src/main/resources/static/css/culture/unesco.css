@@ -1,0 +1,152 @@
+@charset "utf-8";
+
+.page_tit {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.page_tit h3,h4 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.page_tit img {
+    width: 80%;
+    margin-top: 100px;
+    object-fit: fill;
+}
+
+.page_content {
+    width: 100%;
+    height: auto;
+}
+
+.page_grid{
+    width: 100%;
+    height: auto;
+}
+
+.strong {
+    font-weight: 900;
+    color: #08b2f5;
+}
+.bold {
+    font-weight: 700;
+}
+
+.grid_item {
+    display: block;
+    width: 90%;
+    height: 560px;
+    margin: 60px;
+    padding-top: 30px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+.page_grid_txt p{
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0 60px;
+}
+
+.grid_item_img {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin: 60px;
+    row-gap: 30px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+figcaption {
+    color: #333;
+    padding: 3px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.video_title{
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.video_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 400px;
+    margin-left: -5%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.video_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 400px;
+    gap:10px;
+}
+
+.full_image {
+    width: 500px;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 15px 15px 15px 15px;
+}
+.video_thumb {
+    position: relative;
+}
+
+.video_thumb img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+    /* object-fit: cover; */
+}
+
+.video_item a {
+    position: relative;
+    display: block;
+}
+
+.video_item a::before {
+    content: "";
+    position: absolute;
+    top:0; right:0; bottom: 50px; left:0;
+    background-image: url("../../images/jeju/festival/btn_play.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60px 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.video_text {
+    margin-top: 10px;
+    color: #333;
+    text-align: left;
+}
+
+.video_list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.active{
+    color: #F27405;
+}

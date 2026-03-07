@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@SET
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
