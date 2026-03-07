@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header" id="hd">
+  <div class="container">
+    <a th:href="@{/}" class="log">
+      <img th:src="@{/images/logo/J_logo.png}" alt="">
+      <img th:src="@{/images/logo/logo_tt.png}" alt="">
+    </a>
+    <nav class="gnb">
+      <ul class="menu">
+        <li>
+          <a th:href="@{/culture/myth}" class="dp1">문화/역사/예술</a>
+          <ul class="sub">
+            <li><a th:href="@{/culture/myth}">개국신화</a></li>
+            <li><a th:href="@{/culture/history}">역사</a></li>
+            <li><a th:href="@{/culture/culture}">민속</a></li>
+            <li><a th:href="@{/culture/story}">탄생설화</a></li>
+            <li><a th:href="@{/culture/unesco}">유네스코</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/tour/udo}" class="dp1">여행</a>
+          <ul class="sub">
+            <li><a th:href="@{/tour/udo}">우도</a></li>
+            <li><a th:href="@{/tour/marado}">마라도</a></li>
+            <li><a th:href="@{/tour/chujado}">추자도</a></li>
+            <li><a th:href="@{/tour/hallasan}">한라산국립공원</a></li>
+            <li><a th:href="@{/tour/seopjikoji}">섭지코지</a></li>
+            <li><a th:href="@{/tour/seongsan}">성산일출봉</a></li>
+            <li><a th:href="@{/tour/jeongbang}">정방폭포</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/festival/sungsan}" class="dp1">축제/행사</a>
+          <ul class="sub">
+            <li><a th:href="@{/festival/sungsan}">성산일출봉일출축제</a></li>
+            <li><a th:href="@{/festival/olle}">올레걷기체험</a></li>
+            <li><a th:href="@{/festival/forest}">사려니숲에코힐링체험</a></li>
+            <li><a th:href="@{/festival/haenyeo}">제주해녀축제</a></li>
+            <li><a th:href="@{/festival/flower}">제주꽃축제</a></li>
+            <li><a th:href="@{/festival/monthly}">월별행사</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/guide/hotel}" class="dp1">여행가이드</a>
+          <ul class="sub">
+            <li><a th:href="@{/guide/hotel}">숙박</a></li>
+            <li><a th:href="@{/guide/air}">교통</a></li>
+            <li><a th:href="@{/guide/food}">음식</a></li>
+            <li><a th:href="@{/guide/shopping}">쇼핑</a></li>
+            <li><a th:href="@{/guide/map}">지도.가이드북</a></li>
+            <li><a th:href="@{/guide/jisikin}">제주지식IN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/community/notice}" class="dp1">커뮤니티</a>
+          <ul class="sub">
+            <li><a th:href="@{/community/notice}">공지사항</a></li>
+            <li><a th:href="@{/community/travelogue}">여행후기</a></li>
+            <li><a th:href="@{/community/event}">이벤트</a></li>
+            <li><a th:href="@{/community/complaint}">불편신고</a></li>
+            <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <nav class="tnb">
+      <div class="tnb_con">
+        <a th:href="@{/member/login}" class="tnb_bg1">
+          <img th:src="@{/images/icon/icon16.png}" alt="감귤">
+          <span>로그인</span>
+        </a>
+      </div>
+      <div class="tnb_con">
+        <a th:href="@{/member/join}" class="tnb_bg2">
+          <img th:src="@{/images/icon/icon5.png}" alt="땅콩">
+          <span>회원가입</span>
+        </a>
+      </div>
+      <div class="tnb_con">
+        <a th:href="@{/member/mypage}" class="tnb_bg3">
+          <img th:src="@{/images/icon/icon4.png}" alt="돌하르방">
+          <span>Contact US</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+</body>
+</html>

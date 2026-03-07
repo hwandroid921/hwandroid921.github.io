@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #F2F2F2;
+}
+
+h1 {
+    font-weight: 900;
+    font-size: 72px;
+    font-family: 'JejuH';
+}
+
+h2 {
+    font-weight: 800;
+    font-size: 60px;
+    font-family: 'JejuH';
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 48px;
+    font-family: 'GyeonggiM';
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 36px;
+    font-family: 'GyeonggiM';
+}
+
+h5 {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+h6 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+p {
+    font-family: 'Noto', sans-serif;
+    font-weight: 400;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+.wrap {
+    width: 100%;
+    min-width: 320px;
+}
+
+.container {
+    width: 1600px;
+    margin: 0 auto;
+}
+
+#main {
+    clear: both;
+}

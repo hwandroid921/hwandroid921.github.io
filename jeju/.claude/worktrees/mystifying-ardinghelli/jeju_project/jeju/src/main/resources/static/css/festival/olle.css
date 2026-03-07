@@ -1,0 +1,180 @@
+@charset "utf-8";
+
+.page_tit {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.page_tit h3,h4 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.page_tit img {
+    width: 100%;
+    margin-top: 100px;
+    object-fit: fill;
+}
+
+.page_content {
+    width: 100%;
+    min-height: 3600px;
+    display: block;
+}
+
+.page_grid{
+    width: 100%;
+    height: auto;
+}
+
+.grid_item {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 670px;
+    margin: 60px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+}
+
+#g_item1 {
+    flex-direction: column;
+    justify-content: center;
+    height: 740px;
+}
+
+#g_item2 {
+    flex-direction: column;
+    justify-content: center;
+    height: 670px;
+}
+
+.go_to a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 200px;
+    margin-top: 20px;
+    background: #08b2f5;
+    color: #fff;
+    border-radius: 6px;
+}
+
+.page_grid_img3,.page_grid_img4 {
+    margin-left: 30px;
+    margin-top:30px;
+    margin-bottom: 30px;
+}
+.strong {
+    font-weight: 900;
+    color: #08b2f5;
+}
+.bold {
+    font-weight: 700;
+}
+
+.grid_item_txt2{
+    width: 90%;
+    height: 120px;
+    margin: 0 60px;
+    padding: 0 30px;
+    line-height: 20px;
+    font-size: 20px;
+}
+
+.page_grid_txt3{
+    margin: 0 30px;
+}
+
+.page_grid_txt4{
+    margin: 0 30px;
+}
+.grid_item_txt2{
+    margin: 0 80px;
+}
+.video_title{
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.video_wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 400px;
+    margin-left: -5%;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.video_list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 400px;
+    gap:10px;
+}
+
+.full_image {
+    width: 500px;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 15px 15px 15px 15px;
+}
+.video_thumb {
+    position: relative;
+}
+
+.video_thumb img {
+    display: block;
+    width: 100%;
+    height: 280px;
+    border-radius: 15px;
+    /* object-fit: cover; */
+}
+
+.video_item a {
+    position: relative;
+    display: block;
+}
+
+.video_item a::before {
+    content: "";
+    position: absolute;
+    top:0; right:0; bottom: 50px; left:0;
+    background-image: url("../../images/jeju/festival/btn_play.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60px 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.video_text {
+    margin-top: 10px;
+    color: #333;
+    text-align: left;
+}
+
+.video_list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.content_bottom img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.active{
+    color: #F27405;
+}

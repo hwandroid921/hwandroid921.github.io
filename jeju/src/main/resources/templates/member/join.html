@@ -1,317 +1,198 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>join</title>
-    <!-- css link 모음 -->
-    <link rel="stylesheet" href="../css/common/reset.css">
-    <link rel="stylesheet" href="../css/common/font1.css">
-    <link rel="stylesheet" href="../css/common/common.css">
-    <link rel="stylesheet" href="../css/common/header.css">
-    <link rel="stylesheet" href="../css/common/footer.css">
-    <link rel="stylesheet" href="../css/user/join.css">
+    <title>회원가입</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/user/join.css}">
+    </th:block>
 </head>
 
 <body>
-    <div class="wrap">
-        <!-- header영역 -->
-        <header id="hd">
-            <div class="container">
-                <a href="../index.html" class="log">
-                    <img src="../images/logo/J_logo.png" alt="">
-                    <img src="../images/logo/logo_tt.png" alt="">
-                </a>
-                <nav class="gnb">
-                    <ul class="menu">
-                        <li>
-                            <a href="../culture_page/myth.html" class="dp1">문화/역사/예술</a>
-                            <ul class="sub">
-                                <li><a href="../culture_page/myth.html">개국신화</a></li>
-                                <li><a href="../culture_page/history.html">역사</a></li>
-                                <li><a href="../culture_page/culture.html">민속</a></li>
-                                <li><a href="../culture_page/story.html">탄생설화</a></li>
-                                <li><a href="../culture_page/unesco.html">유네스코</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="../tour_page/udo.html" class="dp1">여행</a>
-                            <ul class="sub">
-                                <li><a href="../tour_page/udo.html">우도</a></li>
-                                <li><a href="../tour_page/marado.html">마라도</a></li>
-                                <li><a href="../tour_page/chujado.html">추자도</a></li>
-                                <li><a href="../tour_page/hallasan.html">한라산국립공원</a></li>
-                                <li><a href="../tour_page/seopjikoji.html">섭지코지</a></li>
-                                <li><a href="../tour_page/seongsan_peak.html">성산일출봉</a></li>
-                                <li><a href="../tour_page/jeongbang.html">정방폭포</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="../festival_page/sungsan.html" class="dp1">축제/행사</a>
-                            <ul class="sub">
-                                <li><a href="../festival_page/sungsan.html">성산일출봉일출축제</a></li>
-                                <li><a href="../festival_page/olle.html">올레걷기체험</a></li>
-                                <li><a href="../festival_page/forest.html">사려니숲에코힐링체험</a></li>
-                                <li><a href="../festival_page/haenyeo.html">제주해녀축제</a></li>
-                                <li><a href="../festival_page/flower.html">제주꽃축제</a></li>
-                                <li><a href="../festival_page/monthly.html">월별행사</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="../tour_guide/hotel.html" class="dp1">여행가이드</a>
-                            <ul class="sub">
-                                <li><a href="../tour_guide/hotel.html">숙박</a></li>
-                                <li><a href="../tour_guide/air.html">교통</a></li>
-                                <li><a href="../tour_guide/food.html">음식</a></li>
-                                <li><a href="../tour_guide/shopping.html">쇼핑</a></li>
-                                <li><a href="../tour_guide/map.html">지도.가이드북</a></li>
-                                <li><a href="../tour_guide/jisik_in.html">제주지식IN</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="../community_page/notice.html" class="dp1">커뮤니티</a>
-                            <ul class="sub">
-                                <li><a href="../community_page/notice.html">공지사항</a></li>
-                                <li><a href="../community_page/travelogue.html">여행후기</a></li>
-                                <li><a href="../community_page/event.html">이벤트</a></li>
-                                <li><a href="../community_page/complaint.html">불편신고</a></li>
-                                <li><a href="../community_page/qna.html">자주묻는질문</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-                <nav class="tnb">
-                    <div class="tnb_con">
-                        <a href="../user_page/login.html" class="tnb_bg1">
-                            <img src="../images/icon/icon16.png" alt="감귤">
-                            <span>로그인</span>
-                        </a>
-                    </div>
-                    <div class="tnb_con">
-                        <a href="../user_page/join.html" class="tnb_bg2">
-                            <img src="../images/icon/icon5.png" alt="땅콩">
-                            <span>회원가입</span>
-                        </a>
-                    </div>
-                    <div class="tnb_con">
-                        <a href="" class="tnb_bg3">
-                            <img src="../images/icon/icon4.png" alt="돌하르방">
-                            <span>Contact US</span>
-                        </a>
-                    </div>
-                </nav>
-            </div>
-        </header>
+<div layout:fragment="content">
+    <div class="page" id="join_page">
+        <div class="page_wrap">
+            <div class="page_grid">
 
-        <!-- Main 영역 -->
-        <main id="main">
-            <div class="page" id="join_page">
-                <div class="page_wrap">
-                    <div class="page_grid">
-                        <div class="join_page_box">
-                            <div class="join_page">
-                                <h3>회원가입</h3>
-                                <form action="" id="join_form">
-                                    <div class="join_agreement">
-                                        <div class="label_box_agree">이용약관동의<span>*</span></div>
-                                        <div class="input_inner">
-                                            <div class="check">
-                                                <ul class="check_all">
-                                                    <li>
-                                                        <input type="checkbox" id="all_agree" onclick="chk()">
-                                                        <label for="all_agree">전체 동의합니다.</label>
-                                                    </li>
-                                                </ul>
-                                                <ul class="check_choice">
-                                                    <li>
-                                                        <input type="checkbox" id="check_agree1" class="sub_agree" onclick="sub_chk(1)">
-                                                        <label for="check_agree1"><span>본인은 만 14세 이상입니다.</span>(필수)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="check_agree2" class="sub_agree" onclick="sub_chk(2)">
-                                                        <label for="check_agree2"><span>이용약관 동의</span>(필수)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="check_agree3" class="sub_agree" onclick="sub_chk(3)">
-                                                        <label for="check_agree3"><span>개인정보 수집 · 이용 동의</span>(필수)</label>
-                                                    </li>
-                                                    <li>
-                                                        <input type="checkbox" id="check_agree4" class="sub_agree" onclick="sub_chk(4)">
-                                                        <label for="check_agree4"><span>개인정보 수집 · 이용 동의</span>(선택)</label>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr> 
-                                    <div class="form_row">
-                                        <div class="label_box"><label for="">이메일</label></div>
-                                        <div class="input_inner">
-                                            <input type="text" name="" id="user_email" placeholder="E-mail을 입력하세요.">
-                                            <button type="button" class="btn_inline">중복확인</button>
-                                        </div>
-                                    </div>
-                                    <div class="form_row">
-                                        <div class="label_box">
-                                            <label for="">비밀번호</label>
-                                        </div>
-                                        <div class="input_inner">
-                                            <input type="text" name="" id="user_pw" placeholder="Password를 입력하세요.">
-                                        </div>
-                                    </div>
-                                    <div class="form_row">
-                                        <div class="label_box">
-                                            <label for="">비밀번호 확인</label>
-                                        </div>
-                                        <div class="input_inner">
-                                            <input type="text" name="" id="user_pwck" placeholder="Password를 한번 더 입력하세요.">
-                                        </div>
-                                    </div>
-                                    <div class="form_row">
-                                        <div class="label_box"><label for="">이름</label></div>
-                                        <div class="input_inner">
-                                            <input type="text" id="user_name" placeholder="Name을 입력하세요.">
-                                        </div>
-                                    </div>
-                                    <div class="form_row">
-                                        <div class="label_box"><label for="">연락처</label></div>
-                                        <div class="input_inner">
-                                            <input type="text" name="" id="user_phone" placeholder="숫자만 입력하세요.">
-                                        </div>
-                                    </div>
-                                    <div class="btn_con">
-                                        <button type="submit" class="btn_join" onclick="fnc()">가입하기</button>
-                                    </div>
+                <div class="join_page_box">
+                    <div class="join_page">
+                        <h3>회원가입</h3>
+                        <form th:action="@{/member/join}" th:object="${memberJoinRequest}" method="post">
 
-                                    <script>
-                                        function chk() {
-                                            let checkAll = document.getElementById("all_agree");
-                                            let checkboxes = document.querySelectorAll('.sub_agree');
-                                            let isChecked = checkAll.checked;
-
-                                            if(isChecked) {
-                                                for(let checkbox of checkboxes) {
-                                                    checkbox.checked = true;
-                                                }
-                                            } else {
-                                                for(let checkbox of checkboxes) {
-                                                    checkbox.checked = false;
-                                                }
-                                            }
-                                        }
-
-                                        function sub_chk(a) {
-                                            let agree1 = document.getElementById("check_agree1");
-                                            let agree2 = document.getElementById("check_agree2");
-                                            let agree3 = document.getElementById("check_agree3");
-                                            let agree4 = document.getElementById("check_agree4"); 
-                                            let checkAll = document.getElementById("all_agree");
-                                            if(agree1.checked && agree2.checked && agree3.checked && agree4.checked) {
-                                                checkAll.checked = true;
-                                            } else {
-                                                checkAll.checked = false;
-                                            }
-                                        }
-
-                                        function fnc() {
-                                            let agree1 = document.getElementById("check_agree1");
-                                            let agree2 = document.getElementById("check_agree2");
-                                            let agree3 = document.getElementById("check_agree3");
-
-                                            if (!agree1.checked) {
-                                                alert("만 14세 이상인지 확인해 주세요.");
-                                                agree1.focus();
-                                                return;
-                                            }
-
-                                            if (!agree2.checked) {
-                                                alert("이용약관에 동의해 주세요.");
-                                                agree2.focus();
-                                                return;
-                                            }
-
-                                            if (!agree3.checked) {
-                                                alert("개인정보처리 방침(필수)에 동의해 주세요");
-                                                agree3.focus();
-                                                return;
-                                            }
-
-                                            alert("회원가입을 진행합니다.");
-                                            location.href = "login.html";
-                                        }    
-                                    </script>
-                                </form>
+                            <!-- 전체 에러 메시지 -->
+                            <div th:if="${#fields.hasGlobalErrors()}"
+                                 class="alert alert-danger" role="alert">
+                                <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">에러</p>
                             </div>
-                        </div>
-                        <div class="join_img_box">
-                            <div class="join_img">
-                                <img src="../images/user/join.jpg" alt="">
-                            </div> 
-                        </div>
+
+                            <!-- 이용약관 동의 -->
+                            <div class="join_agreement">
+                                <div class="label_box_agree">이용약관동의<span>*</span></div>
+                                <div class="input_inner">
+                                    <div class="check">
+                                        <ul class="check_all">
+                                            <li>
+                                                <input type="checkbox" id="all_agree">
+                                                <label for="all_agree">전체 동의합니다.</label>
+                                            </li>
+                                        </ul>
+                                        <ul class="check_choice">
+                                            <li>
+                                                <input type="checkbox" id="check_agree1" class="sub_agree">
+                                                <label for="check_agree1"><span>본인은 만 14세 이상입니다.</span>(필수)</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="check_agree2" class="sub_agree">
+                                                <label for="check_agree2"><span>이용약관 동의</span>(필수)</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="check_agree3" class="sub_agree">
+                                                <label for="check_agree3"><span>개인정보 수집 · 이용 동의</span>(필수)</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" id="check_agree4" class="sub_agree">
+                                                <label for="check_agree4"><span>개인정보 수집 · 이용 동의</span>(선택)</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <!-- 이메일 -->
+                            <div class="form_row">
+                                <div class="label_box">
+                                    <label for="user_email">이메일</label>
+                                </div>
+                                <div class="input_inner">
+                                    <input type="text" th:field="*{username}"
+                                           th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"
+                                           id="user_email"
+                                           placeholder="E-mail을 입력하세요.">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}"
+                                         th:errors="*{username}"></div>
+                                    <button type="button" class="btn_inline">중복확인</button>
+                                </div>
+                            </div>
+
+                            <!-- 비밀번호 -->
+                            <div class="form_row">
+                                <div class="label_box">
+                                    <label for="user_pw">비밀번호</label>
+                                </div>
+                                <div class="input_inner">
+                                    <input type="password" th:field="*{password}"
+                                           th:classappend="${#fields.hasErrors('password')}? 'is-invalid'"
+                                           id="user_pw"
+                                           placeholder="Password를 입력하세요.">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}"
+                                         th:errors="*{password}"></div>
+                                </div>
+                            </div>
+
+                            <!-- 비밀번호 확인 (서버 전송 불필요, JS 검증용) -->
+                            <div class="form_row">
+                                <div class="label_box">
+                                    <label for="passwordConfirm">비밀번호 확인</label>
+                                </div>
+                                <div class="input_inner">
+                                    <input type="password"
+                                           th:classappend="${#fields.hasErrors('passwordConfirm')} ? 'is-invalid'"
+                                           id="passwordConfirm"
+                                           th:field="*{passwordConfirm}"
+                                           placeholder="비밀번호를 다시 입력하세요">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('passwordConfirm')}"
+                                         th:errors="*{passwordConfirm}"></div>
+                                </div>
+                            </div>
+
+                            <!-- 이름 -->
+                            <div class="form_row">
+                                <div class="label_box">
+                                    <label for="user_name">이름</label>
+                                </div>
+                                <div class="input_inner">
+                                    <input type="text" th:field="*{name}"
+                                           th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"
+                                           id="user_name"
+                                           placeholder="Name을 입력하세요.">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                                         th:errors="*{name}"></div>
+                                </div>
+                            </div>
+
+                            <!-- 연락처 -->
+                            <div class="form_row">
+                                <div class="label_box">
+                                    <label for="user_phone">연락처</label>
+                                </div>
+                                <div class="input_inner">
+                                    <input type="text" th:field="*{phone}" id="user_phone"
+                                           th:classappend="${#fields.hasErrors('phone')} ? 'is-invalid'"
+                                           placeholder="숫자만 입력하세요.">
+                                    <div class="invalid-feedback" th:if="${#fields.hasErrors('phone')}"
+                                         th:errors="*{name}"></div>
+                                </div>
+                            </div>
+
+                            <div class="btn_con">
+                                <button type="submit" class="btn_join">가입하기</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-            </div>
-        </main>
 
-        <!-- Footer 영역 -->
-        <footer id="ft">
-            <div class="container">
-                <nav id="banner_bar">
-                    <ul>
-                        <li>
-                            <a href="https://www.jeju.go.kr/index.htm">
-                                <img src="../images/banner/ban01.png" alt="제주특별자치도">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://korean.visitkorea.or.kr/main/main.do">
-                                <img src="../images/banner/ban02.png" alt="한국관광공사">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://mall.ejeju.net/main/index.do">
-                                <img src="../images/banner/ban03.png" alt="eJeju">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.jejudfs.com/">
-                                <img src="../images/banner/ban04.png" alt="제주면세">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://ijto.or.kr/korean/">
-                                <img src="../images/banner/ban05.png" alt="제주관광공사">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.kma.go.kr/jeju/html/main/index.jsp">
-                                <img src="../images/banner/ban06.png" alt="제주지방기상청">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.tamnao.com/">
-                                <img src="../images/banner/ban07.png" alt="제주종합쇼핑몰 탐나오">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <nav id="fnb">
-                    <a href="">개인정보처리방침</a>
-                    <a href="">이용약관</a>
-                    <a href="">제주관광문의</a>
-                    <a href="">불편신고</a>
-                </nav>
-                <div class="copyright">
-                    <p class="cp_1">Copyright©Jeju Tourism Organization, All rights reserved.</p>
-                    <p class="cp_2">홈페이지에 게시된 이메일 주소가 자동수집되는 것을 거부하며, 위반시 정보통신망법에 의해 처벌될 수 있습니다.</p>
-                    <p class="cp_3">(63122) 제주특별자치도 제주시 선덕로 23(연동) 제주웰컴센터<br>
-                        관광문의 : 제주관광공사 Tel : 064-740-6000~1 FAX : 064-740-6090 사업자등록번호 : 616-82-21432<br>
-                        관광불편신고 : 제주관광불편신고센터(1533-0082)</p>
+                <div class="join_img_box">
+                    <div class="join_img">
+                        <img th:src="@{/images/user/join.jpg}" alt="">
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </div>
-</body>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 페이지 전용 스크립트 -->
+<th:block layout:fragment="script">
+    <script>
+        const allAgree = document.getElementById("all_agree");
+        const subAgrees = document.querySelectorAll(".sub_agree");
+
+        // 전체 동의 클릭 시
+        allAgree.addEventListener("change", () => {
+            subAgrees.forEach(cb => cb.checked = allAgree.checked);
+        });
+
+        // 개별 체크 클릭 시 → 전체 동의 상태 갱신
+        subAgrees.forEach(cb => {
+            cb.addEventListener("change", () => {
+                allAgree.checked = [...subAgrees].every(c => c.checked);
+            });
+        });
+
+        // 가입하기 유효성 검사
+        document.querySelector(".btn_join").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const agree1 = document.getElementById("check_agree1");
+            const agree2 = document.getElementById("check_agree2");
+            const agree3 = document.getElementById("check_agree3");
+            const pw     = document.getElementById("user_pw");
+            const pwck   = document.getElementById("user_pwck");
+
+            if (!agree1.checked) { alert("만 14세 이상인지 확인해 주세요."); agree1.focus(); return; }
+            if (!agree2.checked) { alert("이용약관에 동의해 주세요."); agree2.focus(); return; }
+            if (!agree3.checked) { alert("개인정보처리 방침(필수)에 동의해 주세요."); agree3.focus(); return; }
+            if (pw.value !== pwck.value) { alert("비밀번호가 일치하지 않습니다."); pwck.focus(); return; }
+
+            e.target.closest("form").submit();
+        });
+    </script>
+</th:block>
+
+</body>
 </html>
