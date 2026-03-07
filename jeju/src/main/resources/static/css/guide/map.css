@@ -1,0 +1,86 @@
+@charset "utf-8";
+
+h3,
+h4 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+h3 {
+    padding: 50px;
+}
+
+h4 {
+    padding: 40px;
+}
+
+.page_tit {
+    width: 100%;
+    text-align: center;
+}
+
+.page_tit {
+    clear: both;
+    width: 100%;
+    text-align: center;
+}
+
+.page_content {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.map_con {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.map_con img {
+    width: 450px;
+}
+
+.map_con h5 {
+    text-align: center;
+    line-height: 1.6em;
+    margin-top: 30px;
+}
+
+.page_content table {
+    width: 100%;
+}
+
+.page_content thead {
+    border-top: 3px solid #333;
+    width: 100%;
+    height: 45px;
+
+}
+
+.page_content thead {
+    border-bottom: 1px solid #333;
+
+}
+
+.page_content tr {
+    border-bottom: 1px solid #333;
+}
+
+.page_content th {
+    font-family: 'GyeonggiM';
+    font-size: 23px;
+    font-weight: 600;
+    line-height: 45px;
+
+}
+
+.page_content td {
+    font-family: 'JejuG';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+
+}

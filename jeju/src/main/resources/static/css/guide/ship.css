@@ -1,0 +1,92 @@
+@charset "utf-8";
+
+h3,
+h5 {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.page_tit {
+    width: 100%;
+    text-align: center;
+}
+
+.page_tit {
+    clear: both;
+    width: 100%;
+    text-align: center;
+}
+
+.page_tit h5 {
+    line-height: 1.5em;
+}
+
+.page_content {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.table_tit {
+    display: flex;
+    height: 50px;
+}
+
+.table_tit h4 {
+    line-height: 50px;
+}
+
+.time_table {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.time_table ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    list-style: none;
+    justify-content: left;
+    gap: 20px;
+    width: 100%;
+}
+
+.time_table li {
+    border: 3px solid #ddd;
+    width: 450px;
+    height: 200px;
+    padding: 20px;
+}
+
+.ship_btn_con {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.port_btn_con,
+.mtis_btn_con {
+    border: 3px solid #333;
+    display: flex;
+    justify-content: center;
+    width: 420px;
+    height: 100px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+.ship_btn_con a {
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
