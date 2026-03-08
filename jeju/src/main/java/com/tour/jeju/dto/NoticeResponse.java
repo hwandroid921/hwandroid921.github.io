@@ -15,6 +15,7 @@ public class NoticeResponse {
     private String authorName;
     private Integer views;
     private LocalDateTime createdAt;
+    private boolean pinned;
 
     // Entity를 DTO로 변환
     public static NoticeResponse fromEntity(Notice notice) {
@@ -26,6 +27,7 @@ public class NoticeResponse {
                 .authorName(notice.getMember().getName())
                 .views(notice.getViews())
                 .createdAt(notice.getCreatedAt())
+                .pinned(notice.isPinned())
                 .build();
     }
 
