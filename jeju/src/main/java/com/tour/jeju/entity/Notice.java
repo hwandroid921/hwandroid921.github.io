@@ -33,18 +33,23 @@ public class Notice {
     @Builder.Default
     private Integer views = 0;
 
+    @Column(nullable = false, columnDefinition = "boolean default false")
+    @Builder.Default
+    private boolean pinned = false;
+
     @CreationTimestamp
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     // 게시글 수정
-    public void editNotice(String title, String content) {
+    public void editNotice(String title, String content, boolean pinned) {
         if (title != null && !title.isEmpty()) {
             this.title = title;
         }
         if (content != null && !content.isEmpty()) {
             this.content = content;
         }
+        this.pinned = pinned;
     }
 
     // 현재 게시글의 작성자 확인

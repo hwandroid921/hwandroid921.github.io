@@ -24,38 +24,41 @@ public class NoticeController {
 
     // 공지사항 목록
     @GetMapping("/list")
-    public String list(@RequestParam(defaultValue = "0") int page,
+    public String list(@RequestParam(defaultValue = "1") int page,
                        @RequestParam(defaultValue = "10") int size,
                        @RequestParam(required = false) String searchType,
                        @RequestParam(required = false) String keyword,
                        Model model) {
 
-        Page<NoticeResponse> noticePage = noticeService.getNoticeList(page, size, searchType, keyword);
-        model.addAttribute("noticeList", noticePage);
+        // page 파라미터는 1-indexed, 서비스(JPA)는 0-indexed
+        Page<NoticeResponse> noticePage = noticeService.getNoticeList(page - 1, size, searchType, keyword);
+        model.addAttribute("noticeList", noticePage.getContent());
 
         // 전체 페이지 수
-        int totalPages = noticePage.getTotalPages();
+        int totalPages = noticePage.getTotalPages() == 0 ? 1 : noticePage.getTotalPages();
         model.addAttribute("totalPages", totalPages);
 
         // 전체 글 수
         long totalElements = noticePage.getTotalElements();
         model.addAttribute("totalElements", totalElements);
 
-        // 현재 페이지 번호
-        int currentPage = noticePage.getNumber();
+        // 현재 페이지 번호 (1-indexed)
+        int currentPage = noticePage.getNumber() + 1;
         model.addAttribute("currentPage", currentPage);
 
         int pageBlockSize = 10;
 
-        // 시작 페이지
-        int startPage = ((currentPage - 1) / pageBlockSize) * pageBlockSize + 1;        // 끝 페이지
+        // 시작 페이지 (1-indexed 기준)
+        int startPage = ((currentPage - 1) / pageBlockSize) * pageBlockSize + 1;
 
-        int endPage = Math.min((startPage + pageBlockSize - 1), totalPages);
+        // 끝 페이지
+        int endPage = Math.min(startPage + pageBlockSize - 1, totalPages);
 
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("searchType", searchType);
         model.addAttribute("keyword", keyword);
+        model.addAttribute("pinnedList", noticeService.getPinnedList());
 
         return "community/notice/list";
     }
@@ -118,6 +121,7 @@ public class NoticeController {
             NoticeRequest request = NoticeRequest.builder()
                     .title(notice.getTitle())
                     .content(notice.getContent())
+                    .pinned(notice.isPinned())
                     .build();
             model.addAttribute("noticeRequest", request);
             model.addAttribute("noticeId", id);

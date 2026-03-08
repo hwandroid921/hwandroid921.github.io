@@ -21,4 +21,7 @@ public interface NoticeRepository extends JpaRepository<Notice, Long> {
 
     // 최근 게시글 3건
     List<Notice> findTop3ByOrderByCreatedAtDesc();
+
+    // 상단 고정 공지 목록
+    List<Notice> findByPinnedTrueOrderByCreatedAtDesc();
 }

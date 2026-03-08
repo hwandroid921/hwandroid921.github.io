@@ -12,6 +12,8 @@
             .admin_btn_wrap { display: flex; justify-content: flex-end; margin-bottom: 10px; }
             .btn_write { padding: 8px 20px; background: #FFA500; color: #fff; border-radius: 5px; text-decoration: none; font-size: 14px; }
             .btn_write:hover { background: #e69400; }
+            .badge_important { display: inline-block; background: #e04040; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+            .pagination .disabled { color: #ccc; cursor: default; pointer-events: none; }
         </style>
     </th:block>
 </head>
@@ -68,9 +70,10 @@
                             </thead>
                             <tbody>
                                 <!-- 공지 고정글 -->
-                                <tr th:each="notice : ${pinnedList}" class="notice_pin">
+                                <tr th:each="notice : ${pinnedList}" th:if="${pinnedList != null}" class="notice_pin">
                                     <td th:text="${notice.id}"></td>
                                     <td>
+                                        <span class="badge_important">중요</span>
                                         <a th:href="@{/community/notice/detail/{id}(id=${notice.id})}" th:text="${notice.title}"></a>
                                     </td>
                                     <td th:text="${notice.authorName}"></td>
@@ -78,7 +81,7 @@
                                     <td th:text="${notice.views}"></td>
                                 </tr>
                                 <!-- 일반 목록 -->
-                                <tr th:each="notice : ${noticeList}">
+                                <tr th:each="notice : ${noticeList}" th:if="${noticeList != null and !#lists.isEmpty(noticeList)}">
                                     <td th:text="${notice.id}"></td>
                                     <td>
                                         <a th:href="@{/community/notice/detail/{id}(id=${notice.id})}" th:text="${notice.title}"></a>
@@ -87,15 +90,29 @@
                                     <td th:text="${#temporals.format(notice.createdAt, 'yyyy-MM-dd')}"></td>
                                     <td th:text="${notice.views}"></td>
                                 </tr>
+                                <tr th:if="${noticeList == null or #lists.isEmpty(noticeList)}">
+                                    <td colspan="5" style="text-align:center;">등록된 공지사항이 없습니다.</td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="pagination">
-                            <a th:href="@{/community/notice/list(page=${currentPage - 1})}" class="prev">◀</a>
-                            <a th:each="i : ${#numbers.sequence(1, totalPages)}"
-                               th:href="@{/community/notice/list(page=${i})}"
+                            <!-- prev: 첫 페이지면 비활성 -->
+                            <a th:if="${currentPage > 1}"
+                               th:href="@{/community/notice/list(page=${currentPage - 1}, searchType=${searchType}, keyword=${keyword})}"
+                               class="prev">◀</a>
+                            <span th:unless="${currentPage > 1}" class="prev disabled">◀</span>
+
+                            <!-- 페이지 번호: startPage ~ endPage (1-indexed, 컨트롤러와 일치) -->
+                            <a th:each="i : ${#numbers.sequence(startPage, endPage)}"
+                               th:href="@{/community/notice/list(page=${i}, searchType=${searchType}, keyword=${keyword})}"
                                th:text="${i}"
-                               th:classappend="${i == currentPage} ? 'active'"></a>
-                            <a th:href="@{/community/notice/list(page=${currentPage + 1})}" class="next">▶</a>
+                               th:classappend="${i == currentPage} ? ' active'"></a>
+
+                            <!-- next: 마지막 페이지면 비활성 -->
+                            <a th:if="${currentPage < totalPages}"
+                               th:href="@{/community/notice/list(page=${currentPage + 1}, searchType=${searchType}, keyword=${keyword})}"
+                               class="next">▶</a>
+                            <span th:unless="${currentPage < totalPages}" class="next disabled">▶</span>
                         </div>
                     </div>
                 </div>

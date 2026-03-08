@@ -94,9 +94,18 @@ public class NoticeService {
         if (!notice.isWriter(adminId)) {
             throw new IllegalArgumentException("수정 권한이 없습니다.");
         }
-        notice.editNotice(request.getTitle(), request.getContent());
+        notice.editNotice(request.getTitle(), request.getContent(), request.isPinned());
 
         log.info("공지사항 수정 완료: {}", id);
+    }
+
+    // 상단 고정 공지 목록
+    @Transactional(readOnly = true)
+    public List<NoticeResponse> getPinnedList() {
+        return noticeRepository.findByPinnedTrueOrderByCreatedAtDesc()
+                .stream()
+                .map(NoticeResponse::fromEntity)
+                .toList();
     }
 
     // 공지사항 삭제
