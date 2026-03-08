@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>숙박 - 펜션</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/accommodation/hotel.css}">
+    </th:block>
+</head>
+
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+        <div class="tit_con">
+            <h2>숙박</h2>
+        </div>
+    </div>
+    <div class="main_con">
+
+        <!-- 서브 탭 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/accommodation/hotel}"              >호텔</a></li>
+                <li><a th:href="@{/accommodation/pension}"      class="active">펜션</a></li>
+                <li><a th:href="@{/accommodation/guesthouse}"          >게스트하우스</a></li>
+                <li><a th:href="@{/accommodation/bnb}"                 >민박</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page_tit">
+            <h3>펜션</h3>
+            <h4>제주 펜션 가이드</h4>
+        </div>
+        <div class="page_content">
+            <div class="img_con">
+                <ul th:if="${not #lists.isEmpty(accommodationList)}">
+                    <li th:each="acc : ${accommodationList}">
+                        <a th:href="${acc.homepageUrl != null ? acc.homepageUrl : '#'}" target="_blank">
+                            <img th:if="${acc.imgUrl1 != null}" th:src="${acc.imgUrl1}" alt="">
+                            <h5 th:text="${acc.name}"></h5>
+                            <h6 th:text="${acc.address}"></h6>
+                        </a>
+                    </li>
+                </ul>
+                <div th:if="${#lists.isEmpty(accommodationList)}" class="empty_con">
+                    <p>등록된 펜션이 없습니다.</p>
+                </div>
+            </div>
+            <div class="pagination">
+                <a href="#" class="prev">◀</a>
+                <a href="#" class="active">1</a>
+                <a href="#" class="next">▶</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
