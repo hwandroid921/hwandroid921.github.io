@@ -16,32 +16,16 @@ public class MemberJoinRequest {
     @NotBlank(message = "비밀번호는 필수 입력 항목입니다.")
     private String password;
 
-    @NotBlank(message = "비밀번호 확인은 필수 입력 항목입니다.")
-    private String passwordConfirm;
-
     @NotBlank(message = "이름은 필수 입력 항목입니다.")
     @Size(max = 50)
     private String name;
 
-    private String phone;
-
-    // 비밀번호랑 비밀번호 확인이 일치하는지
-    public boolean isPasswordMatch() {
-        return password != null && password.equals(passwordConfirm);
-    }
-
-    public Member toEntity() {
-        Role role = Role.USER;
-
-        if (username != null && username.startsWith("admin")) {
-            role = Role.ADMIN;
-        }
+    public Member toEntity(String encodedPassword) {
         return Member.builder()
                 .username(username)
-                .password(password)
+                .password(encodedPassword)
                 .name(name)
-                .phone(phone)
-                .role(role)
+                .role(Role.USER)
                 .build();
     }
 }

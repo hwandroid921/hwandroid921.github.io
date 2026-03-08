@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>행사 상세</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h2 th:text="{event.name}"></h2>
+
+        <p><b>행사명:</b> <span th:text="${event.name}"></span></p>
+        <p><b>기간:</b> <span th:text="${event.period}"></span></p>
+        <p><b>행사 홈페이지:</b> <span th:text="${event.linkPage}"></span></p>
+
+        <hr>
+        <h4>행사 정보</h4>
+        <div th:if="${event.urlPath !=null}">
+            <h5>행사 이미지</h5>
+            <iframe th:src="${event.urlPath}" width="100%" height="300"></iframe>
+        </div>
+    </div>
+</body>
+</html>

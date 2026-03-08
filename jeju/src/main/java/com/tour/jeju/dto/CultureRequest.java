@@ -3,6 +3,7 @@ package com.tour.jeju.dto;
 import com.tour.jeju.entity.Culture;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class CultureRequest {
@@ -11,20 +12,12 @@ public class CultureRequest {
     private String name;
 
     private String description;
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
-
-    public Culture toEntity() {
-        return Culture.builder()
-                .name(name).description(description)
-                .imgUrl1(imgUrl1).imgUrl2(imgUrl2).imgUrl3(imgUrl3).imgUrl4(imgUrl4)
-                .imgUrl5(imgUrl5).imgUrl6(imgUrl6).imgUrl7(imgUrl7).imgUrl8(imgUrl8)
-                .build();
-    }
+    private MultipartFile urlPath1;
+    private String urlPath2;
+    private String urlPath3;
+    private String urlPath4;
+    private String urlPath5;
+    private String urlPath6;
+    private String urlPath7;
+    private String urlPath8;
 }

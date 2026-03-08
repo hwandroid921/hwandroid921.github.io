@@ -5,7 +5,7 @@
       layout:decorate="~{layout/default}">
 
 <head>
-    <title>제주문화관광 - 회원가입</title>
+    <title>회원가입</title>
     <th:block layout:fragment="css">
         <link rel="stylesheet" th:href="@{/css/user/join.css}">
     </th:block>
@@ -68,7 +68,7 @@
                                     <label for="user_email">이메일</label>
                                 </div>
                                 <div class="input_inner">
-                                    <input type="email" th:field="*{username}"
+                                    <input type="text" th:field="*{username}"
                                            th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"
                                            id="user_email"
                                            placeholder="E-mail을 입력하세요.">
@@ -182,28 +182,12 @@
             const agree2 = document.getElementById("check_agree2");
             const agree3 = document.getElementById("check_agree3");
             const pw     = document.getElementById("user_pw");
-            const pwck   = document.getElementById("passwordConfirm");
+            const pwck   = document.getElementById("user_pwck");
 
-            if (!agree1.checked) {
-                alert("만 14세 이상인지 확인해 주세요.");
-                agree1.focus();
-                return;
-            }
-            if (!agree2.checked) {
-                alert("이용약관에 동의해 주세요.");
-                agree2.focus();
-                return;
-            }
-            if (!agree3.checked) {
-                alert("개인정보처리 방침(필수)에 동의해 주세요.");
-                agree3.focus();
-                return;
-            }
-            if (pw.value !== pwck.value) {
-                alert("비밀번호가 일치하지 않습니다.");
-                pwck.focus();
-                return;
-            }
+            if (!agree1.checked) { alert("만 14세 이상인지 확인해 주세요."); agree1.focus(); return; }
+            if (!agree2.checked) { alert("이용약관에 동의해 주세요."); agree2.focus(); return; }
+            if (!agree3.checked) { alert("개인정보처리 방침(필수)에 동의해 주세요."); agree3.focus(); return; }
+            if (pw.value !== pwck.value) { alert("비밀번호가 일치하지 않습니다."); pwck.focus(); return; }
 
             e.target.closest("form").submit();
         });
