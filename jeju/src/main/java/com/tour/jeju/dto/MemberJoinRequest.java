@@ -25,13 +25,14 @@ public class MemberJoinRequest {
 
     private String phone;
 
+    private Role role = Role.USER;
+
     // 비밀번호랑 비밀번호 확인이 일치하는지
     public boolean isPasswordMatch() {
         return password != null && password.equals(passwordConfirm);
     }
 
     public Member toEntity() {
-        Role role = Role.USER;
 
         if (username != null && username.startsWith("admin")) {
             role = Role.ADMIN;

@@ -54,20 +54,20 @@
           </ul>
         </li>
         <li>
-          <a th:href="@{/community/notice}" class="dp1">커뮤니티</a>
+          <a th:href="@{/community/notice/list}" class="dp1">커뮤니티</a>
           <ul class="sub">
-            <li><a th:href="@{/community/notice}">공지사항</a></li>
-            <li><a th:href="@{/community/travelogue}">여행후기</a></li>
-            <li><a th:href="@{/community/event}">이벤트</a></li>
-            <li><a th:href="@{/community/complaint}">불편신고</a></li>
-            <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+            <li><a th:href="@{/community/travelogue/list}">여행후기</a></li>
+            <li><a th:href="@{/community/event/list}">이벤트</a></li>
+            <li><a th:href="@{/community/complaint/list}">불편신고</a></li>
+            <li><a th:href="@{/community/qna/list}">자주묻는질문</a></li>
           </ul>
         </li>
       </ul>
     </nav>
     <nav class="tnb">
       <!--   관리자 로그인 시   -->
-      <th:block th:if="${session.loginMember != null and session.loginMember.username.startsWith('admin')}">
+      <th:block th:if="${session.loginMember != null and session.loginMember.role == T(com.tour.jeju.entity.Role).ADMIN}">
         <div class="tnb_con">
           <a th:href="@{/member/list}" class="tnb_bg2">
             <img th:src="@{/images/icon/icon5.png}" alt="관리">

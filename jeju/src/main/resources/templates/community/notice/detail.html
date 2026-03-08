@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>공지사항 상세 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/community/notice.css}">
+        <style>
+            .notice_detail_wrap { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+            .notice_detail_header { border-top: 2px solid #FFA500; border-bottom: 1px solid #D1D1D1; padding: 20px 0; }
+            .notice_detail_header h3 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+            .notice_detail_meta { display: flex; gap: 20px; font-size: 14px; color: #888; }
+            .notice_detail_body { padding: 40px 0; min-height: 200px; line-height: 1.8; border-bottom: 1px solid #D1D1D1; white-space: pre-wrap; }
+            .notice_detail_actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+            .notice_detail_actions .btn_group { display: flex; gap: 8px; }
+            .btn_back { padding: 8px 20px; border: 1px solid #D1D1D1; background: #fff; border-radius: 5px; text-decoration: none; color: #555; font-size: 14px; }
+            .btn_back:hover { background: #f5f5f5; }
+            .btn_edit { padding: 8px 20px; background: #555; color: #fff; border-radius: 5px; text-decoration: none; font-size: 14px; }
+            .btn_edit:hover { background: #333; }
+            .btn_delete { padding: 8px 20px; background: #e04040; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; }
+            .btn_delete:hover { background: #c03030; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/community/community_noti_bg.jpg}" alt="">
+        <div class="tit_con">
+            <h2>공지사항</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+                <li><a th:href="@{/community/travelogue}">여행후기</a></li>
+                <li><a th:href="@{/community/event}">이벤트</a></li>
+                <li><a th:href="@{/community/complaint}">불편신고</a></li>
+                <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page" id="notice_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3>공지사항</h3>
+                </div>
+
+                <div class="notice_detail_wrap">
+                    <!-- 제목 및 메타 정보 -->
+                    <div class="notice_detail_header">
+                        <h3 th:text="${noticeDetail.title}"></h3>
+                        <div class="notice_detail_meta">
+                            <span>작성자: <strong th:text="${noticeDetail.authorName}"></strong></span>
+                            <span>작성일: <strong th:text="${#temporals.format(noticeDetail.createdAt, 'yyyy-MM-dd')}"></strong></span>
+                            <span>조회수: <strong th:text="${noticeDetail.views}"></strong></span>
+                        </div>
+                    </div>
+
+                    <!-- 본문 -->
+                    <div class="notice_detail_body" th:text="${noticeDetail.content}"></div>
+
+                    <!-- 버튼 영역 -->
+                    <div class="notice_detail_actions">
+                        <a th:href="@{/community/notice/list}" class="btn_back">목록으로</a>
+
+                        <!-- 작성자 또는 관리자에게만 수정/삭제 표시 -->
+                        <div class="btn_group"
+                             th:if="${isWriter or (session.loginMember != null and session.loginMember.role.name() == 'ADMIN')}">
+                            <a th:href="@{/community/notice/edit/{id}(id=${noticeDetail.id})}" class="btn_edit">수정</a>
+                            <form th:action="@{/community/notice/delete/{id}(id=${noticeDetail.id})}"
+                                  method="post"
+                                  onsubmit="return confirm('정말 삭제하시겠습니까?')">
+                                <button type="submit" class="btn_delete">삭제</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:if="${message}">
+        alert("[[${message}]]");
+    </script>
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>
