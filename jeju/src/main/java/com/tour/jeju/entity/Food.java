@@ -14,7 +14,10 @@ public class Food {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 200, nullable = false)
     private String name;
+    @Column(length = 200, columnDefinition = "TEXT")
     private String description;
+    @Column(length = 200, nullable = false)
     private String imgUrl;
 }
