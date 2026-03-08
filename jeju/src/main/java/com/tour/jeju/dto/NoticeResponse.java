@@ -28,4 +28,5 @@ public class NoticeResponse {
                 .createdAt(notice.getCreatedAt())
                 .build();
     }
+
 }

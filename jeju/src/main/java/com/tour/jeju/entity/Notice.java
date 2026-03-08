@@ -38,13 +38,18 @@ public class Notice {
     private LocalDateTime createdAt;
 
     // 게시글 수정
-    public void updateBoard(String title, String content) {
+    public void editNotice(String title, String content) {
         if (title != null && !title.isEmpty()) {
             this.title = title;
         }
         if (content != null && !content.isEmpty()) {
             this.content = content;
         }
+    }
+
+    // 현재 게시글의 작성자 확인
+    public boolean isWriter(Long adminId) {
+        return this.member.getId().equals(adminId);
     }
 
     // 읽은 횟수 증가
