@@ -1,7 +1,6 @@
 package com.tour.jeju.dto;
 
 import com.tour.jeju.entity.Attraction;
-import com.tour.jeju.entity.Member;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -18,6 +17,8 @@ public class AttractionRequest {
     private String address;
     private String tel;
     private String description;
+    private String thumb;
+
     private String mapUrl;
     private String imgUrl1;
     private String imgUrl2;
@@ -34,13 +35,26 @@ public class AttractionRequest {
     private String slideUrl4;
     private String slideUrl5;
 
-    // Entity => dto
-    public Attraction toEntity(Member member) {
+    // Entity => DTO
+    public static AttractionRequest toDto(AttractionResponse response) {
+        AttractionRequest request = new AttractionRequest();
+        request.setName(response.getName());
+        request.setCategory(response.getCategory());
+        request.setAddress(response.getAddress());
+        request.setTel(response.getTel());
+        request.setDescription(response.getDescription());
+        request.setMapUrl(response.getMapUrl());
+        return request;
+    }
+    // Entity <= dto
+    public Attraction toEntity() {
         return Attraction.builder()
-                .name(name)
-                .address(address)
-                .tel(tel)
-                .description(description)
+                .name(this.name)
+                .category(this.category)
+                .address(this.address)
+                .tel(this.tel)
+                .description(this.description)
+                .mapUrl(this.mapUrl)
                 .build();
     }
 }
