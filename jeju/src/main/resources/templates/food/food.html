@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout/default}">
+
+
+<head>
+    <title th:text="${attraction.name}">관광지</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/place/udo.css}">
+    </th:block>
+</head>
+
+<body>
+    <div class="wrap">
+        <!-- Main 영역 -->
+        <main id="main">
+            <div class="bgi_con">
+                <img src="../images/bgi/bgi_hallasan2.jpg" alt="">
+                <div class="tit_con">
+                    <h2>타이틀</h2>
+                </div>
+            </div>
+            <div class="main_con">
+                <!-- tnb 메뉴 -->
+                <div class="sub_tnb_con">
+                    <ul>
+                        <li><a href="../tour_page/udo.html" class="active">ACTIVE</a></li>
+                        <li><a href="../tour_page/marado.html"></a></li>
+                        <li><a href="../tour_page/chujado.html"></a></li>
+                        <li><a href="../tour_page/hallasan.html"></a></li>
+                        <li><a href="../tour_page/seopjikoji.html"></a></li>
+                        <li><a href="../tour_page/seongsan_peak.html"></a></li>
+                        <li><a href="../tour_page/jeongbang.html"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+
+
+    </div>
+</body>
+
+</html>

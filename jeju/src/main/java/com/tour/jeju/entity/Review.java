@@ -1,5 +1,6 @@
 package com.tour.jeju.entity;
 
+import com.tour.jeju.dto.ReviewRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -32,6 +33,22 @@ public class Review {
     private Member member;
 
     @CreationTimestamp
-    private LocalDateTime createAt;
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    private String imgUrl1;
+    private String imgUrl2;
+    private String imgUrl3;
+    private String imgUrl4;
+    private String imgUrl5;
+    private String imgUrl6;
+    private String imgUrl7;
+    private String imgUrl8;
+
+    public void update(ReviewRequest request) {
+        this.title   = request.getTitle();
+        this.content = request.getContent();
+
+    }
 
 }
