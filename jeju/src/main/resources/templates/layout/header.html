@@ -66,24 +66,49 @@
       </ul>
     </nav>
     <nav class="tnb">
-      <div class="tnb_con">
-        <a th:href="@{/member/login}" class="tnb_bg1">
-          <img th:src="@{/images/icon/icon16.png}" alt="감귤">
-          <span>로그인</span>
-        </a>
-      </div>
-      <div class="tnb_con">
-        <a th:href="@{/member/join}" class="tnb_bg2">
-          <img th:src="@{/images/icon/icon5.png}" alt="땅콩">
-          <span>회원가입</span>
-        </a>
-      </div>
-      <div class="tnb_con">
-        <a th:href="@{/member/mypage}" class="tnb_bg3">
-          <img th:src="@{/images/icon/icon4.png}" alt="돌하르방">
-          <span>Contact US</span>
-        </a>
-      </div>
+      <!--   관리자 로그인 시   -->
+      <th:block th:if="${session.loginMember != null and session.loginMember.username.startsWith('admin')}">
+        <div class="tnb_con">
+          <a th:href="@{/member/list}" class="tnb_bg2">
+            <img th:src="@{/images/icon/icon5.png}" alt="관리">
+            <span>회원목록</span>
+          </a>
+        </div>
+      </th:block>
+
+      <!-- 로그인 안 했을 때 -->
+      <th:block th:if="${session.loginMember == null}">
+        <div class="tnb_con">
+          <a th:href="@{/member/login}" class="tnb_bg1">
+            <img th:src="@{/images/icon/icon16.png}" alt="감귤">
+            <span>로그인</span>
+          </a>
+        </div>
+
+        <div class="tnb_con">
+          <a th:href="@{/member/join}" class="tnb_bg2">
+            <img th:src="@{/images/icon/icon5.png}" alt="땅콩">
+            <span>회원가입</span>
+          </a>
+        </div>
+      </th:block>
+
+      <!-- 로그인 상태 -->
+      <th:block th:if="${session.loginMember != null}">
+        <div class="tnb_con">
+          <a th:href="@{/member/mypage}" class="tnb_bg3">
+            <img th:src="@{/images/icon/icon4.png}" alt="돌하르방">
+            <span th:text="'환영합니다. '+ ${session.loginMember.name} + '님'"></span>
+          </a>
+        </div>
+
+        <div class="tnb_con">
+          <a th:href="@{/member/logout}" class="tnb_bg1">
+            <img th:src="@{/images/icon/icon16.png}" alt="감귤">
+            <span>로그아웃</span>
+          </a>
+        </div>
+      </th:block>
     </nav>
   </div>
 </header>

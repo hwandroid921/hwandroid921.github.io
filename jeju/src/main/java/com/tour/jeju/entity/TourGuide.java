@@ -25,8 +25,16 @@ public class TourGuide {
     @Column(columnDefinition = "TEXT")
     private String content;
 
+    @CreationTimestamp  // 현재 시간을 값으로 채워서 쿼리를 생성
+    @Column(name = "created_at", nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)  // 지연 로딩
+    @JoinColumn(name = "member_id", nullable = false)
+    private Member member;  //member.id => member_id => memberId
+
     private String imgUrl;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    private int views;
+
 }
