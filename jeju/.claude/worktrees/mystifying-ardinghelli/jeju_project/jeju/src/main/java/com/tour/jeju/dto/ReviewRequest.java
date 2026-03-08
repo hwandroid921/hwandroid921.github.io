@@ -4,34 +4,38 @@ import com.tour.jeju.entity.Attraction;
 import com.tour.jeju.entity.Member;
 import com.tour.jeju.entity.Review;
 import jakarta.validation.constraints.NotBlank;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+<<<<<<<< HEAD:jeju/.claude/worktrees/mystifying-ardinghelli/jeju_project/jeju/src/main/java/com/tour/jeju/dto/ReviewRequest.java
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
+========
+@Getter
+@Setter
+@NoArgsConstructor
+>>>>>>>> 31bd79988529b81c7888e4640ae298bbf0f89c36:jeju/src/main/java/com/tour/jeju/dto/ReviewRequest.java
 public class ReviewRequest {
 
-    @NotBlank(message = "제목은 필수 입력 항목입니다.")
+    @NotBlank(message = "제목은 필수입니다.")
     private String title;
 
-    @NotBlank(message = "내용은 필수 입력 항목입니다.")
+    @NotBlank(message = "내용은 필수입니다.")
     private String content;
-
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
 
     public Review toEntity(Member member, Attraction attraction) {
         return Review.builder()
-                .title(title)
-                .content(content)
-                .imgUrl1(imgUrl1).imgUrl2(imgUrl2).imgUrl3(imgUrl3).imgUrl4(imgUrl4)
-                .imgUrl5(imgUrl5).imgUrl6(imgUrl6).imgUrl7(imgUrl7).imgUrl8(imgUrl8)
-                .memberId(member)
-                .attractionID(attraction)
+                .title(this.title)
+                .content(this.content)
+                .member(member)
+                .attraction(attraction)
                 .build();
+    }
+
+    public static ReviewRequest fromResponse(ReviewResponse response) {
+        ReviewRequest request = new ReviewRequest();
+        request.setTitle(response.getTitle());
+        request.setContent(response.getContent());
+        return request;
     }
 }

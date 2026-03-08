@@ -1,5 +1,6 @@
 package com.tour.jeju.entity;
 
+import com.tour.jeju.dto.ReviewRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -17,7 +18,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 200)
+    @Column(length = 200, nullable = false)
     private String title;
 
     @Column( columnDefinition = "TEXT", nullable = false)
@@ -25,11 +26,15 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attraction_id", nullable = false)
-    private Attraction attractionID;
+    private Attraction attraction;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id", nullable = false)
-    private Member memberId;
+    private Member member;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
 
     private String imgUrl1;
     private String imgUrl2;
@@ -40,6 +45,10 @@ public class Review {
     private String imgUrl7;
     private String imgUrl8;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
+    public void update(ReviewRequest request) {
+        this.title   = request.getTitle();
+        this.content = request.getContent();
+
+    }
+
 }

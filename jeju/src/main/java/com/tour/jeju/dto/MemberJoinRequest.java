@@ -31,12 +31,17 @@ public class MemberJoinRequest {
     }
 
     public Member toEntity() {
+        Role role = Role.USER;
+
+        if (username != null && username.startsWith("admin")) {
+            role = Role.ADMIN;
+        }
         return Member.builder()
                 .username(username)
                 .password(password)
                 .name(name)
                 .phone(phone)
-                .role(Role.USER)
+                .role(role)
                 .build();
     }
 }

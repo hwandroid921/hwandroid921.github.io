@@ -17,6 +17,7 @@ public class MemberResponse {
     private String name;
     private String phone;
     private LocalDateTime createdAt;
+    private long tourGuideCount;
     private Role role;
 
     // Entity -> DTO
@@ -28,6 +29,7 @@ public class MemberResponse {
                 .name(member.getName())
                 .phone(member.getPhone())
                 .createdAt(member.getCreatedAt())
+                .tourGuideCount(0)
                 .build();
     }
     // 게시글이 있는 회원
@@ -38,6 +40,7 @@ public class MemberResponse {
                 .name(member.getName())
                 .phone(member.getPhone())
                 .createdAt(member.getCreatedAt())
+                .tourGuideCount(0)
                 .build();
     }
 }
