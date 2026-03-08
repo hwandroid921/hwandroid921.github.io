@@ -11,24 +11,24 @@ public class CultureResponse {
     private Long id;
     private String name;
     private String description;
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
+    private String urlPath1;
+    private String urlPath2;
+    private String urlPath3;
+    private String urlPath4;
+    private String urlPath5;
+    private String urlPath6;
+    private String urlPath7;
+    private String urlPath8;
     private LocalDateTime createdAt;
 
     public static CultureResponse fromEntity(Culture culture) {
         return CultureResponse.builder()
                 .id(culture.getId()).name(culture.getName())
                 .description(culture.getDescription())
-                .imgUrl1(culture.getImgUrl1()).imgUrl2(culture.getImgUrl2())
-                .imgUrl3(culture.getImgUrl3()).imgUrl4(culture.getImgUrl4())
-                .imgUrl5(culture.getImgUrl5()).imgUrl6(culture.getImgUrl6())
-                .imgUrl7(culture.getImgUrl7()).imgUrl8(culture.getImgUrl8())
+                .urlPath1(culture.getUrlPath1()).urlPath2(culture.getUrlPath2())
+                .urlPath3(culture.getUrlPath3()).urlPath4(culture.getUrlPath4())
+                .urlPath5(culture.getUrlPath5()).urlPath6(culture.getUrlPath6())
+                .urlPath7(culture.getUrlPath7()).urlPath8(culture.getUrlPath8())
                 .createdAt(culture.getCreatedAt())
                 .build();
     }

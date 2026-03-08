@@ -11,24 +11,24 @@ public class UnescoResponse {
     private Long id;
     private String name;
     private String description;
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
+    private String urlPath1;
+    private String urlPath2;
+    private String urlPath3;
+    private String urlPath4;
+    private String urlPath5;
+    private String urlPath6;
+    private String urlPath7;
+    private String urlPath8;
     private LocalDateTime createdAt;
 
     public static UnescoResponse fromEntity(Unesco unesco) {
         return UnescoResponse.builder()
                 .id(unesco.getId()).name(unesco.getName())
                 .description(unesco.getDescription())
-                .imgUrl1(unesco.getImgUrl1()).imgUrl2(unesco.getImgUrl2())
-                .imgUrl3(unesco.getImgUrl3()).imgUrl4(unesco.getImgUrl4())
-                .imgUrl5(unesco.getImgUrl5()).imgUrl6(unesco.getImgUrl6())
-                .imgUrl7(unesco.getImgUrl7()).imgUrl8(unesco.getImgUrl8())
+                .urlPath1(unesco.getUrlPath1()).urlPath2(unesco.getUrlPath2())
+                .urlPath3(unesco.getUrlPath3()).urlPath4(unesco.getUrlPath4())
+                .urlPath5(unesco.getUrlPath5()).urlPath6(unesco.getUrlPath6())
+                .urlPath7(unesco.getUrlPath7()).urlPath8(unesco.getUrlPath8())
                 .createdAt(unesco.getCreatedAt())
                 .build();
     }

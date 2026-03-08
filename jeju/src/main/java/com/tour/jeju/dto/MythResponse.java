@@ -11,24 +11,24 @@ public class MythResponse {
     private Long id;
     private String name;
     private String description;
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
+    private String urlPath1;
+    private String urlPath2;
+    private String urlPath3;
+    private String urlPath4;
+    private String urlPath5;
+    private String urlPath6;
+    private String urlPath7;
+    private String urlPath8;
     private LocalDateTime createdAt;
 
     public static MythResponse fromEntity(Myth myth) {
         return MythResponse.builder()
                 .id(myth.getId()).name(myth.getName())
                 .description(myth.getDescription())
-                .imgUrl1(myth.getImgUrl1()).imgUrl2(myth.getImgUrl2())
-                .imgUrl3(myth.getImgUrl3()).imgUrl4(myth.getImgUrl4())
-                .imgUrl5(myth.getImgUrl5()).imgUrl6(myth.getImgUrl6())
-                .imgUrl7(myth.getImgUrl7()).imgUrl8(myth.getImgUrl8())
+                .urlPath1(myth.getUrlPath1()).urlPath2(myth.getUrlPath2())
+                .urlPath3(myth.getUrlPath3()).urlPath4(myth.getUrlPath4())
+                .urlPath5(myth.getUrlPath5()).urlPath6(myth.getUrlPath6())
+                .urlPath7(myth.getUrlPath7()).urlPath8(myth.getUrlPath8())
                 .createdAt(myth.getCreatedAt())
                 .build();
     }

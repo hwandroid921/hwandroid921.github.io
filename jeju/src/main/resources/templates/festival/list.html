@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>축제/행사</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/festival/festivallist.css}">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <main id="main">
+        <div class="bgi_con">
+            <img src="../images/bgi/bgi_hallasan2.jpg" alt="">
+            <div class="tit_con">
+                <h2>축제/행사</h2>
+            </div>
+        </div>
+        <div class="main_con">
+            <!-- tnb 메뉴 -->
+            <div class="sub_tnb_con">
+                <ul>
+                    <li><a th:href="@{/event/list}">월별행사</a></li>
+                    <li><a th:href="@{1}">성산일출봉일출축제</a></li>
+                    <li><a th:href="@{2}">올레걷기체험</a></li>
+                    <li><a href="../festival_page/forest.html">사려니숲에코힐링체험</a></li>
+                    <li><a href="../festival_page/haenyeo.html">제주해녀축제</a></li>
+                    <li><a href="../festival_page/flower.html">제주꽃축제</a></li>
+                </ul>
+            </div>
+
+            <!-- 메인 컨텐츠 -->
+            <div class="page_tit">
+                <h3>제주의 주요 축제 정보</h3>
+                <h4>다양한 축제 취향에 맞게 선택해 보자</h4>
+            </div>
+            <div class="page_content">
+                <p class="info">2026년 제주를 대표하는 주요 축제 입니다.</p>
+
+                <div class="festival-list">
+                    <div class="festival-wrapper">
+                        <div class="festival feb">
+                            <div class="festival-info m2" th:each="festival : ${list}" th:id="${festival.id}">
+                                <a th:href="@{/festival/detail/{id}(id=${festival.id})}">
+                                    <img th:src="@{${festival.urlPath1}}" alt="">
+                                    <strong th:text="${festival.name}"></strong>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content_bottom">
+                    <img src="../images/jeju/festival/festival-banner.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

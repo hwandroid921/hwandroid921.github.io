@@ -11,29 +11,30 @@ public class FestivalResponse {
 
     private Long id;
     private String name;
+
+    private String address;
+    private String phoneNumber;
     private String description;
-    private String location;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
+
+    private String urlPath1;
+    private String urlPath2;
+    private String urlPath3;
+    private String urlPath4;
+    private String urlPath5;
+    private String urlPath6;
+    private String urlPath7;
+    private String urlPath8;
     private LocalDateTime createdAt;
 
     public static FestivalResponse fromEntity(Festival festival) {
         return FestivalResponse.builder()
                 .id(festival.getId()).name(festival.getName())
-                .description(festival.getDescription()).location(festival.getLocation())
-                .startDate(festival.getStartDate()).endDate(festival.getEndDate())
-                .imgUrl1(festival.getImgUrl1()).imgUrl2(festival.getImgUrl2())
-                .imgUrl3(festival.getImgUrl3()).imgUrl4(festival.getImgUrl4())
-                .imgUrl5(festival.getImgUrl5()).imgUrl6(festival.getImgUrl6())
-                .imgUrl7(festival.getImgUrl7()).imgUrl8(festival.getImgUrl8())
+                .address(festival.getAddress()).phoneNumber(festival.getPhoneNumber())
+                .description(festival.getDescription())
+                .urlPath1(festival.getUrlPath1()).urlPath2(festival.getUrlPath2())
+                .urlPath3(festival.getUrlPath3()).urlPath4(festival.getUrlPath4())
+                .urlPath5(festival.getUrlPath5()).urlPath6(festival.getUrlPath6())
+                .urlPath7(festival.getUrlPath7()).urlPath8(festival.getUrlPath8())
                 .createdAt(festival.getCreatedAt())
                 .build();
     }

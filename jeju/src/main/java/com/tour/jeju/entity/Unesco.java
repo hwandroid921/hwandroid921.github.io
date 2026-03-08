@@ -25,15 +25,24 @@ public class Unesco {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    private String imgUrl1;
-    private String imgUrl2;
-    private String imgUrl3;
-    private String imgUrl4;
-    private String imgUrl5;
-    private String imgUrl6;
-    private String imgUrl7;
-    private String imgUrl8;
+    @Column(name = "url_path1")
+    private String urlPath1;
+    @Column(name = "url_path2")
+    private String urlPath2;
+    @Column(name = "url_path3")
+    private String urlPath3;
+    @Column(name = "url_path4")
+    private String urlPath4;
+    @Column(name = "url_path5")
+    private String urlPath5;
+    @Column(name = "url_path6")
+    private String urlPath6;
+    @Column(name = "url_path7")
+    private String urlPath7;
+    @Column(name = "url_path8")
+    private String urlPath8;
 
     @CreationTimestamp
+    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 }
