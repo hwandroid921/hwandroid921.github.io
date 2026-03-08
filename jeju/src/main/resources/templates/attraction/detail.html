@@ -2,12 +2,118 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/default}">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관광지 상세 페이지</title>
+    <title th:text="${attraction.name}">관광지</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/place/udo.css}">
+    </th:block>
 </head>
-<body>
-    
-</body>
+
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+        <div class="tit_con">
+            <h2>관광지</h2>
+        </div>
+    </div>
+    <div class="main_con">
+
+        <!-- 서브 탭 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li th:each="a : ${attractionList}">
+                    <a th:href="@{/attraction/detail/{id}(id=${a.id})}"
+                       th:text="${a.name}"
+                       th:classappend="${a.id == attraction.id} ? 'active'"></a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page_tit">
+            <h3 th:text="${attraction.name}"></h3>
+            <h4 th:text="${attraction.category}"></h4>
+            <img th:if="${attraction.thumb != null}"
+                 th:src="@{/uploads/{thumb}(thumb=${attraction.thumb})}" alt="">
+        </div>
+
+        <div class="page_content">
+
+            <!-- 설명 탭 -->
+            <div class="content_menu_con">
+                <span id="on_description"></span>
+                <ul>
+                    <li><a href="#on_description" id="description">설명</a></li>
+                    <li><a href="#on_review">리뷰</a></li>
+                </ul>
+            </div>
+            <div class="content_con">
+                <h4 th:text="${attraction.name}"></h4>
+                <p th:text="${attraction.description}"></p>
+                <div class="info_con">
+                    <p th:if="${attraction.address != null}">
+                        <strong>주소</strong>
+                        <span th:text="${attraction.address}"></span>
+                    </p>
+                    <p th:if="${attraction.tel != null}">
+                        <strong>문의</strong>
+                        <span th:text="${attraction.tel}"></span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- 리뷰 탭 -->
+            <div class="content_menu_con">
+                <span id="on_review"></span>
+                <ul>
+                    <li><a href="#on_description">설명</a></li>
+                    <li><a href="#on_review" id="review">리뷰</a></li>
+                </ul>
+            </div>
+            <div class="review_page_con">
+                <div class="review_header">
+                    <h4>리뷰</h4>
+                    <a th:if="${session.loginMember != null}"
+                       th:href="@{/review/insert/{id}(id=${attraction.id})}"
+                       class="btn_write">리뷰 작성</a>
+                </div>
+                <ul class="review_con">
+                    <li th:each="review : ${attraction.responses}">
+                        <div class="review_profile_con">
+                            <img th:src="@{/images/icon/profile1.png}" alt="">
+                        </div>
+                        <ul class="review_detail_con">
+                            <li>
+                                <h5 th:text="${review.memberName}"></h5>
+                                <h6 th:text="${#temporals.format(review.createdAt, 'yyyy.MM.dd')}"></h6>
+                            </li>
+                            <li>
+                                <p th:text="${review.content}"></p>
+                            </li>
+                            <li th:if="${review.imgUrl != null}">
+                                <ul class="review_photo_con">
+                                    <li>
+                                        <a th:href="@{/uploads/{img}(img=${review.imgUrl})}" target="photo">
+                                            <img th:src="@{/uploads/{img}(img=${review.imgUrl})}" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="review_btn_con">
+                            <img th:src="@{/images/icon/like.png}" alt="">좋아요
+                            <img th:src="@{/images/icon/dislike.png}" alt="">싫어요
+                        </div>
+                    </li>
+                </ul>
+                <p th:if="${#lists.isEmpty(attraction.responses)}" class="no_review">
+                    첫 번째 리뷰를 작성해보세요.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 </html>
