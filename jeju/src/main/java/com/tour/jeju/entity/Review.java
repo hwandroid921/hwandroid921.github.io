@@ -17,7 +17,7 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(length = 200, nullable = false)
     private String title;
 
     @Column( columnDefinition = "TEXT", nullable = false)

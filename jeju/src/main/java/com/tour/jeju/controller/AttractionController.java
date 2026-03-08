@@ -11,7 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -29,29 +32,30 @@ public class AttractionController {
     }
 
     // 관광지 등록 폼 로딩
-    @GetMapping("/create")
-    public String createForm(Model model) {
+    @GetMapping("/insert")
+    public String insertForm(Model model) {
         model.addAttribute("attractionRequest", new AttractionRequest());
-        return "attraction/create";
+        return "attraction/insert";
     }
 
     // 관광지 등록 처리
-    @PostMapping("/create")
-    public String create(@Valid @ModelAttribute AttractionRequest request,
+    @PostMapping("/insert")
+    public String insert(@Valid @ModelAttribute AttractionRequest request,
+                         @RequestParam(value = "images", required = false) List<MultipartFile> images,
                          BindingResult bindingResult,
                          HttpSession session,
                          RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return "attraction/create";
+            return "attraction/insert";
         }
         MemberResponse loginMember = (MemberResponse) session.getAttribute("loginMember");
         try {
-            Long attractionId = attractionService.createAttraction(request, loginMember.getId());
+            Long attractionId = attractionService.insertAttraction(request, loginMember.getId(), images);
             redirectAttributes.addFlashAttribute("message", "게시글이 등록되었습니다.");
             return "redirect:/attraction/detail/" + attractionId;
         } catch (IllegalArgumentException e) {
-            bindingResult.reject("createFailed", "등록에 실패했습니다.");
-            return "attraction/create";
+            bindingResult.reject("insertFailed", "등록에 실패했습니다.");
+            return "attraction/insert";
         }
 
     }
