@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="layout/layout">
+      layout:decorate="~{layout/default}">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>문화/역사/예술</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/culture/culture.css}">
+    </th:block>
 </head>
 <body>
 <div layout:fragment="content">
     <main id="main">
         <div class="bgi_con">
-            <img src="../images/bgi/bgi_hallasan2.jpg" alt="">
+            <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
             <div class="tit_con">
                 <h2>문화/역사/예술</h2>
             </div>
