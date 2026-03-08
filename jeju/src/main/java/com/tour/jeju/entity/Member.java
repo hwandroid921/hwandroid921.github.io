@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,6 +34,10 @@ public class Member {
     @CreationTimestamp  // 현재 시간을 값으로 채워서 쿼리를 생성
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)    // 회원 탈퇴 시 게시글 보존
+    @Builder.Default
+    private List<TourGuide> tourGuides = new ArrayList<>(); // 글 작성시 자동으로 리스트에 추가됨
 
     @Enumerated(EnumType.STRING)
     private Role role;
