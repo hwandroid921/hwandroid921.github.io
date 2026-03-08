@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header" id="hd">
+  <div class="container">
+    <a th:href="@{/}" class="log">
+      <img th:src="@{/images/logo/J_logo.png}" alt="">
+      <img th:src="@{/images/logo/logo_tt.png}" alt="">
+    </a>
+    <nav class="gnb">
+      <ul class="menu">
+        <li>
+          <a th:href="@{/culture/myth}" class="dp1">문화/역사/예술</a>
+          <ul class="sub">
+            <li><a th:href="@{/culture/myth}">개국신화</a></li>
+            <li><a th:href="@{/culture/history}">역사</a></li>
+            <li><a th:href="@{/culture/culture}">민속</a></li>
+            <li><a th:href="@{/culture/story}">탄생설화</a></li>
+            <li><a th:href="@{/culture/unesco}">유네스코</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/attraction/detail/1}" class="dp1">여행</a>
+          <ul class="sub">
+            <li><a th:href="@{/attraction/detail/1}">우도</a></li>
+            <li><a th:href="@{/attraction/detail/2}">마라도</a></li>
+            <li><a th:href="@{/attraction/detail/3}">추자도</a></li>
+            <li><a th:href="@{/attraction/detail/4}">한라산국립공원</a></li>
+            <li><a th:href="@{/attraction/detail/5}">섭지코지</a></li>
+            <li><a th:href="@{/attraction/detail/6}">성산일출봉</a></li>
+            <li><a th:href="@{/attraction/detail/7}">정방폭포</a></li>
+          </ul>
+        </li>
+        <li>
+            <a th:href="@{/festival/list}" class="dp1">축제/행사</a>
+            <ul class="sub">
+                <li><a th:href="@{/event/list}">월별행사</a></li>
+                <li><a th:href="@{/festival/detail/1}">성산일출봉일출축제</a></li>
+                <li><a th:href="@{/festival/detail/2}">올레걷기체험</a></li>
+                <li><a th:href="@{/festival/forest}">사려니숲에코힐링체험</a></li>
+                <li><a th:href="@{/festival/haenyeo}">제주해녀축제</a></li>
+                <li><a th:href="@{/festival/flower}">제주꽃축제</a></li>
+            </ul>
+        </li>
+        <li>
+          <a th:href="@{/accommodation/hotel}" class="dp1">여행가이드</a>
+          <ul class="sub">
+            <li><a th:href="@{/accommodation/hotel}">숙박</a></li>
+            <li><a th:href="@{/accommodation/air}">교통</a></li>
+            <li><a th:href="@{/food}">음식</a></li>
+            <li><a th:href="@{/accommodation/shopping}">쇼핑</a></li>
+            <li><a th:href="@{/accommodation/map}">지도.가이드북</a></li>
+            <li><a th:href="@{/accommodation/jisikin}">제주지식IN</a></li>
+          </ul>
+        </li>
+        <li>
+          <a th:href="@{/community/notice/list}" class="dp1">커뮤니티</a>
+          <ul class="sub">
+            <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+            <li><a th:href="@{/community/travelogue/list}">여행후기</a></li>
+            <li><a th:href="@{/community/event/list}">이벤트</a></li>
+            <li><a th:href="@{/community/complaint/list}">불편신고</a></li>
+            <li><a th:href="@{/community/qna/list}">자주묻는질문</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <nav class="tnb">
+      <!--   관리자 로그인 시   -->
+      <th:block th:if="${session.loginMember != null and session.loginMember.role == T(com.tour.jeju.entity.Role).ADMIN}">
+        <div class="tnb_con">
+          <a th:href="@{/member/list}" class="tnb_bg2">
+            <img th:src="@{/images/icon/icon5.png}" alt="관리">
+            <span>회원목록</span>
+          </a>
+        </div>
+      </th:block>
+
+      <!-- 로그인 안 했을 때 -->
+      <th:block th:if="${session.loginMember == null}">
+        <div class="tnb_con">
+          <a th:href="@{/member/login}" class="tnb_bg1">
+            <img th:src="@{/images/icon/icon16.png}" alt="감귤">
+            <span>로그인</span>
+          </a>
+        </div>
+
+        <div class="tnb_con">
+          <a th:href="@{/member/join}" class="tnb_bg2">
+            <img th:src="@{/images/icon/icon5.png}" alt="땅콩">
+            <span>회원가입</span>
+          </a>
+        </div>
+      </th:block>
+
+      <!-- 로그인 상태 -->
+      <th:block th:if="${session.loginMember != null}">
+        <div class="tnb_con">
+          <a th:href="@{/member/mypage}" class="tnb_bg3">
+            <img th:src="@{/images/icon/icon4.png}" alt="돌하르방">
+            <span th:text="'환영합니다. '+ ${session.loginMember.name} + '님'"></span>
+          </a>
+        </div>
+
+        <div class="tnb_con">
+          <a th:href="@{/member/logout}" class="tnb_bg1">
+            <img th:src="@{/images/icon/icon16.png}" alt="감귤">
+            <span>로그아웃</span>
+          </a>
+        </div>
+      </th:block>
+    </nav>
+  </div>
+</header>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>공지 수정 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/community/notice.css}">
+        <style>
+            .notice_form_wrap { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+            .notice_form_wrap form { display: flex; flex-direction: column; gap: 16px; }
+            .form_group { display: flex; flex-direction: column; gap: 6px; }
+            .form_group label { font-size: 14px; font-weight: 600; color: #333; }
+            .form_group input[type="text"],
+            .form_group textarea { width: 100%; padding: 10px 14px; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 14px; box-sizing: border-box; }
+            .form_group.pinned_group { flex-direction: row; align-items: center; gap: 8px; }
+            .form_group.pinned_group label { font-size: 14px; font-weight: 600; color: #333; margin: 0; cursor: pointer; }
+            .form_group input[type="text"]:focus,
+            .form_group textarea:focus { border-color: #FFA500; outline: none; }
+            .form_group textarea { min-height: 300px; resize: vertical; }
+            .form_error { color: #e04040; font-size: 13px; }
+            .form_global_error { padding: 10px; background: #fff0f0; border: 1px solid #e04040; border-radius: 5px; color: #e04040; font-size: 14px; }
+            .form_actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+            .btn_submit { padding: 10px 28px; background: #FFA500; color: #fff; border: none; border-radius: 5px; font-size: 15px; cursor: pointer; }
+            .btn_submit:hover { background: #e69400; }
+            .btn_cancel { padding: 10px 28px; background: #fff; color: #555; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 15px; text-decoration: none; }
+            .btn_cancel:hover { background: #f5f5f5; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/community/community_noti_bg.jpg}" alt="">
+        <div class="tit_con">
+            <h2>공지사항</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+                <li><a th:href="@{/community/travelogue}">여행후기</a></li>
+                <li><a th:href="@{/community/event}">이벤트</a></li>
+                <li><a th:href="@{/community/complaint}">불편신고</a></li>
+                <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page" id="notice_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3>공지 수정</h3>
+                </div>
+
+                <div class="notice_form_wrap">
+                    <form th:action="@{/community/notice/edit/{id}(id=${noticeId})}"
+                          method="post"
+                          th:object="${noticeRequest}">
+                        <!-- 전역 에러 메시지 (form 안에서만 #fields 사용 가능) -->
+                        <div th:if="${#fields.hasGlobalErrors()}" class="form_global_error">
+                            <span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="title">제목</label>
+                            <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="content">내용</label>
+                            <textarea id="content" th:field="*{content}" placeholder="내용을 입력하세요"></textarea>
+                            <span class="form_error" th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></span>
+                        </div>
+                        <div class="form_group pinned_group">
+                            <input type="checkbox" id="pinned" th:field="*{pinned}">
+                            <label for="pinned">상단 고정 공지</label>
+                        </div>
+                        <div class="form_actions">
+                            <a th:href="@{/community/notice/detail/{id}(id=${noticeId})}" class="btn_cancel">취소</a>
+                            <button type="submit" class="btn_submit">수정완료</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

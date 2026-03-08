@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제주문화관광</title>
+    <!-- css link 모음 -->
+    <link rel="stylesheet" th:href="@{/css/main/vs.css}">
+    <link rel="stylesheet" th:href="@{/css/main/main1.css}">
+    <link rel="stylesheet" th:href="@{/css/main/main2.css}">
+    <link rel="stylesheet" th:href="@{/css/main/main3.css}">
+    <link rel="stylesheet" th:href="@{/css/main/main4.css}">
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <!-- 슬라이드 영역 -->
+                <figure id="vs">
+                    <input type="radio" id="s01" name="ra" class="ra" checked>
+                    <input type="radio" id="s02" name="ra" class="ra">
+                    <input type="radio" id="s03" name="ra" class="ra">
+                    <input type="radio" id="s04" name="ra" class="ra">
+                    <div class="slide_box">
+                        <div class="slide">
+                            <a href="#">
+                                <img th:src="@{/images/main/vs01.png}" alt="성산일출봉">
+                            </a>
+                            <div class="tit_box">
+                                <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
+                                <h3>성산일출축제</h3>
+                                <h4>2025.12.31 ~ 2026.01.01</h4>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img th:src="@{/images/main/vs02.png}" alt="제주동백수목원">
+                            <div class="tit_box">
+                                <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
+                                <h3>제주동백수목원</h3>
+                                <h4></h4>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img th:src="@{/images/main/vs03.png}" alt="우도">
+                            <div class="tit_box">
+                                <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
+                                <h3>우도</h3>
+                                <h4></h4>
+                            </div>
+                        </div>
+                        <div class="slide">
+                            <img th:src="@{/images/main/vs04.png}" alt="정방폭포">
+                            <div class="tit_box">
+                                <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
+                                <h3>정방폭포</h3>
+                                <h4></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_box">
+                        <ul class="btn_wrap">
+                            <li><label for="s01" class="vs_btn" id="vs_btn1"></label></li>
+                            <li><label for="s02" class="vs_btn" id="vs_btn2"></label></li>
+                            <li><label for="s03" class="vs_btn" id="vs_btn3"></label></li>
+                            <li><label for="s04" class="vs_btn" id="vs_btn4"></label></li>
+                        </ul>
+                    </div>
+                </figure>
+                <!-- 제주 여행지 영역 -->
+                <section class="page" id="page1">
+                    <div class="page_wrap">
+                        <h2>제주 여행지</h2>
+                        <div class="page_grid">
+                            <div class="row1">
+                                <figure id="thumb1" class="thumb">
+                                    <a href="">
+                                        <img th:src="@{/images/main/page1_1.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit">제주 해안도로</h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb2" class="thumb">
+                                    <a href="">
+                                        <img th:src="@{/images/main/page1_2.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit">제주 올레길</h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb3" class="thumb">
+                                    <a href="">
+                                        <img th:src="@{/images/main/page1_3.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit">용두암</h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb4" class="thumb">
+                                    <a href="">
+                                        <img th:src="@{/images/main/page1_4.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit">제주 섬</h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb5" class="thumb">
+                                    <a href="">
+                                        <img th:src="@{/images/main/page1_5.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit">천지연폭포</h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 제주의 영상속으로 -->
+                <section class="page" id="page2">
+                    <div class="page_wrap">
+                        <h2>제주의 영상속으로</h2>
+                        <div class="page_grid">
+                            <div class="row2">
+                                <figure id="thumb6" class="thumb">
+                                    <a href="https://www.youtube.com/watch?v=Tu1s78_gG5s">
+                                        <img th:src="@{/images/main/page2_1.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit"></h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb7" class="thumb">
+                                    <a href="https://youtu.be/fv2tYRlNwak?si=H-xXrGWOhqaNr9WR">
+                                        <img th:src="@{/images/main/page2_2.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit"></h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                                <figure id="thumb8" class="thumb">
+                                    <a href="https://youtu.be/xYALZ9KejoY?si=Drcmb0jHbB90LZmd">
+                                        <img th:src="@{/images/main/page2_3.jpg}" alt="">
+                                        <div class="thumb_content">
+                                            <h5 class="tit"></h5>
+                                        </div>
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 축제와 행사 -->
+                <section class="page" id="page3">
+                    <div class="page_wrap">
+                        <h2>축제와 행사</h2>
+                        <div class="page_grid">
+                            <input type="radio" id="f01" name="f_ra" class="f_ra" checked>
+                            <input type="radio" id="f02" name="f_ra" class="f_ra">
+                            <input type="radio" id="f03" name="f_ra" class="f_ra">
+                            <input type="radio" id="f04" name="f_ra" class="f_ra">
+
+                            <div class="row3">
+                                <div class="row3_wrap">
+                                    <div class="festival_img_area">
+                                        <div class="festival_box">
+                                            <div class="festival_slide">
+                                                <img th:src="@{/images/main/festival1.jpg}" alt="축제1">
+                                            </div>
+                                            <div class="festival_slide">
+                                                <img th:src="@{/images/main/festival2.jpg}" alt="축제2">
+                                            </div>
+                                            <div class="festival_slide">
+                                                <img th:src="@{/images/main/festival3.jpg}" alt="축제3">
+                                            </div>
+                                            <div class="festival_slide">
+                                                <img th:src="@{/images/main/festival4.jpg}" alt="축제4">
+                                            </div>
+                                        </div>
+                                        <div class="fest_btn_box">
+                                            <label for="f01" class="fest_btn"></label>
+                                            <label for="f02" class="fest_btn"></label>
+                                            <label for="f03" class="fest_btn"></label>
+                                            <label for="f04" class="fest_btn"></label>
+                                        </div>
+                                    </div>
+                                    <div class="festival_text_area">
+                                        <div class="text_moving_box">
+                                            <div class="festival_text">
+                                                <h3>성산 일출제</h3>
+                                                <p>새해 첫 해돋이를 성산일출봉에서 함께하세요.</p>
+                                            </div>
+                                            <div class="festival_text">
+                                                <h3>제주 해녀 축제</h3>
+                                                <p>새별오름을 태우며 한 해의 무사안녕을 기원합니다.</p>
+                                            </div>
+                                            <div class="festival_text">
+                                                <h3>카멜리아 힐 동백꽃 축제</h3>
+                                                <p>동백꽃 물결 속에서 겨울의 정취를 느껴보세요.</p>
+                                            </div>
+                                            <div class="festival_text">
+                                                <h3>2025 제주올레 걷기축제</h3>
+                                                <p>축제 상세 내용이 들어갑니다. 제주 올레길의 아름다움을 만끽하세요.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 공지 -->
+                <section class="page" id="page4">
+                    <div class="page_wrap">
+                        <div class="page_grid">
+                            <div class="row4">
+                                <div class="promotion_con1">
+                                    <div class="promiton_slide_con">
+                                        <input type="radio" id="p_ra1" class="p_ra" name="p_ra" checked>
+                                        <input type="radio" id="p_ra2" class="p_ra" name="p_ra">
+                                        <input type="radio" id="p_ra3" class="p_ra" name="p_ra">
+                                        <input type="radio" id="p_ra4" class="p_ra" name="p_ra">
+                                        <input type="radio" id="p_ra5" class="p_ra" name="p_ra">
+
+                                        <div class="p_btn_box">
+                                            <ul class="p_btn_wrap">
+                                                <li><label for="p_ra1" id="p_btn1"></label></li>
+                                                <li><label for="p_ra2" id="p_btn2"></label></li>
+                                                <li><label for="p_ra3" id="p_btn3"></label></li>
+                                                <li><label for="p_ra4" id="p_btn4"></label></li>
+                                                <li><label for="p_ra5" id="p_btn5"></label></li>
+                                            </ul>
+                                        </div>
+                                        <div class="promotion_img_con">
+                                            <img th:src="@{/images/main/promotio1.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio2.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio3.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio4.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio5.jpg}" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="promotion_con2">
+                                    <ul class="notice_con">
+                                        <h4>공지사항</h4>
+                                        <li>
+                                            <a href="">[운영시간] 천지연폭포 반려동물 동반 가능 시간</a>
+                                            <a href="">[모집] 2026 제주 마을여행 전담여행사, 크리에이터 모집(~1.31)</a>
+                                            <a href="">[홍보] 제주시 「에코촌 유스호스텔」 숙박요금 인하 및 감면기준 확대</a>
+                                        </li>
+                                        <h4>제주관광 지식IN</h4>
+                                        <li>
+                                            <h3>제주 여행에 관해서라면 어떤 것이라도 물어보세요!</h3>
+                                            <div class="notice_btn_con">
+                                                <a
+                                                    href="https://www.visitjeju.net/kr/knowledge/list?menuId=DOM_200000000011003">바로가기</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- SNS -->
+                <section class="page" id="page5">
+                    <div class="page_wrap">
+                        <div class="page_grid">
+                            <div class="row5">
+                                <div class="sns_con">
+                                    <ul class="sns_img_con">
+                                        <li>
+                                            <a href="https://youtube.com/@VISITJEJU">
+                                                <img th:src="@{/images/icon/youtube_logo.svg}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.instagram.com/visitjeju.kr/">
+                                                <img th:src="@{/images/icon/instagram_icon.png}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.facebook.com/visitjeju.kr/">
+                                                <img th:src="@{/images/icon/facebook_logo.png}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://blog.naver.com/jtowelcome">
+                                                <img th:src="@{/images/icon/blog_logo.svg}" alt="">
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://api.happytalk.io/api/kakao/chat_open?yid=%40ijto&site_id=4000000359&category_id=114717&division_id=114717">
+                                                <img th:src="@{/images/icon/kakao_logo.png}" alt="">
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    </div>
+
+</body>
+
+</html>

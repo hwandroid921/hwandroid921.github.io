@@ -1,0 +1,27 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: jeju
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jeju
+    username: postgres
+    password: 1004
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        database-platform: org.hibernate.dialect.PostgreSQLDialect
+        type:
+          preferred_enum_type: VARCHAR
+    show-sql: true
+  thymeleaf:
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 20MB
+file:
+  upload-dir: C:/uploads/jeju

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>축제/행사</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/festival/sungsan.css}">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <main id="main">
+        <div class="bgi_con">
+            <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+            <div class="tit_con">
+                <h2>축제/행사</h2>
+            </div>
+        </div>
+        <div class="main_con">
+            <!-- tnb 메뉴 -->
+            <div class="sub_tnb_con">
+                <ul>
+                    <li><a th:href="@{/event/list}">월별행사</a></li>
+                    <li><a th:href="@{1}" class="active">성산일출봉일출축제</a></li>
+                    <li><a th:href="@{2}">올레걷기체험</a></li>
+                    <li><a href="../festival_page/forest.html">사려니숲에코힐링체험</a></li>
+                    <li><a href="../festival_page/haenyeo.html">제주해녀축제</a></li>
+                    <li><a href="../festival_page/flower.html">제주꽃축제</a></li>
+                </ul>
+            </div>
+
+            <!-- 메인 컨텐츠 -->
+            <div class="page_tit">
+                <h3>성산일출축제</h3>
+                <h4>새해의 붉은 일출, 성산에 담다</h4>
+            </div>
+            <div class="page_content">
+                <div class="page_grid">
+                    <div class="grid_item_top">
+                        <div class="grid1">
+                            <figure class="page_grid_img1">
+                                <img th:src="@{/images/jeju/festival/sungsan1.jpg}" alt="">
+                            </figure>
+                            <div class="page_grid_txt1">
+                                <p> 성산일출축제는 한 해를 마무리하고 새해를 맞이하며 유네스코 세계자연유산인 성산일출봉을 방문한 축제방문객 및 제주도민의 소원성취와
+                                    만사형통을 기원하며
+                                    지역특산물 홍보육성 및 지역경제 활성화를 위한 소득창출로 도민이 하나되는 화합축제로 매년 12월 31일과 다음해 1월 1일 2일간
+                                    진행된다.<br>
+                                    <br> 2026년 1월 1일 새해를 맞는 행사는 '새해의 붉은 일출, 성산에 담다'를 주제로 33회째 개최되었으며 사전 등반예약을 통해
+                                    복잡하고
+                                    불편함 없이 축제를 즐길 수 있도록 하였으며 불꽃 놀이와 함께 제주도민의 행사를 넘어 전국민이 참여하는 축제로 변하였다.<br>
+                                    <br>
+                                    <br>
+                                    <span style="font-weight:bold;">행 사 명 </span>: 제33회 성산일출축제<br>
+                                    <span style="font-weight:bold;">테 마 </span>: 새해의 붉은 일출, 성산에 담다.<br>
+                                    (새해의 붉은 일출은 병오년(붉은 말의 해)과 붉은 태양의 강렬한 에너지를 상징하며, 새해의 희망과 소망을 성산일출봉에서 맞이하자는
+                                    의미)<br>
+                                    <br>
+                                    <span style="font-weight:bold;">행 사 목 적 </span>:
+                                    <br>한 해를 마무리하고, 새해를 맞이하며 유네스코 세계자연유산인 성산일출봉을 방문한 축제방문객 및 제주도민의 소원성취와 만사형통을
+                                    기원.<br>
+                                    <br>지역특산물 홍보육성 및 지역경제 활성화를 위한 소득창출로 도민이 하나되는 화합축제<br>
+                                    <br>
+                                    <span style="font-weight:bold;">기 간 </span>: 2025. 12. 31(수) ~ 2026. 1.
+                                    1(목),
+                                    2일간<br>
+                                    <br>
+                                    <span style="font-weight:bold;">장 소 </span>: 제주특별자치도 서귀포시 성산일출봉 일원<br>
+                                    <br>
+                                    <span style="font-weight:bold;">주최 / 주관 </span>: 제주특별자치도 / 성산일출축제위원회<br>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="go_link_btn">
+                            <li class="go_to">
+                                <a href="https://www.sunrisefestival.kr/" class="go_link_btn" target="_blank">축제사이트
+                                    바로가기</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="grid_item">
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/festival/sungsan2.jpg}" alt="">
+                        </figure>
+                        <div class="page_grid_txt">
+                            <p>새해 맞이 카운트다운 파티 소원 점등,<br> 불꽃놀이&레이저쇼</p>
+                        </div>
+                    </div>
+                    <div class="grid_item">
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/festival/sungsan3.jpg}" alt="">
+                        </figure>
+                        <div class="page_grid_txt">
+                            <p> 2026 새해 첫 일출 감상</p>
+                        </div>
+                    </div>
+                    <div class="grid_item">
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/festival/sungsan4.jpg}" alt="">
+                        </figure>
+                        <div class="page_grid_txt">
+                            <p>추위도 잊고 감상하는 새해 첫 일출</p>
+                        </div>
+                    </div>
+                    <div class="video-wrapper">
+                        <h4>행사 소개 영상</h4>
+                        <div class="videoCon">
+                            <video controls width="1197" height="673" autoplay muted poster="video1.jpg" loop="3">
+                                <source
+                                        src="https://video.wixstatic.com/video/a1f07c_649e40c7e7f64f3984ecaeb5d68e3433/1080p/mp4/file.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="page_con_bottom">
+                        <h4>주변 관광지</h4>
+                        <div class="row1">
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item1.jpg}" alt="">
+                                <a href="https://map.naver.com/p/entry/place/13490878?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602061722&locale=ko&svcName=map_pcv5"
+                                   style="position: relative;">섭지코지</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item2.jpg}" alt="">
+                                <a
+                                        href="https://map.naver.com/p/entry/place/13491363?c=15.00,0,0,0,dh&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602061725&locale=ko&svcName=map_pcv5">표선해비치해변</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item3.jpg}" alt="">
+                                <a
+                                        href="https://terms.naver.com/entry.naver?docId=1998246&cid=42856&categoryId=42856">용눈이오름</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item4.jpg}" alt="">
+                                <a href="https://jejufolk.com/index.php?">제주민속촌</a>
+                            </li>
+                        </div>
+                        <div class="row2">
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item5.jpg}" alt="">
+                                <a href="https://www.jeju.go.kr/seongeup/index.htm">성읍민속마을</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item6.jpg}" alt="">
+                                <a href="https://map.naver.com/p/entry/place/12370507?lng=126.8066615&lat=33.4843445&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602061739&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh">비자림</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item7.jpg}" alt="">
+                                <a href="https://map.naver.com/p/entry/place/38466341?lng=126.9243828&lat=33.4511713&placePath=/home?from=map&fromPanelNum=1&additionalHeight=76&timestamp=202602061738&locale=ko&svcName=map_pcv5&entry=plt&searchType=place&c=15.00,0,0,0,dh">광치기해변</a>
+                            </li>
+                            <li><img th:src="@{/images/jeju/festival/ss_con_item8.jpg}" alt="">
+                                <a href="https://www.aquaplanet.co.kr/jeju/index.do">아쿠아플라넷</a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

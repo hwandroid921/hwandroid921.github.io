@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title th:text="${food.name} + ' - 제주관광'">음식 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <style>
+            .food_wrap { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+            .food_img_con { width: 100%; max-height: 500px; overflow: hidden; border-radius: 8px; margin-bottom: 40px; }
+            .food_img_con img { width: 100%; height: 100%; object-fit: cover; }
+            .food_info { border-top: 2px solid #FFA500; padding-top: 24px; }
+            .food_name { font-size: 28px; font-weight: 700; color: #222; margin-bottom: 20px; }
+            .food_description { font-size: 16px; color: #444; line-height: 1.9; white-space: pre-wrap; }
+            .food_actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 40px; border-top: 1px solid #D1D1D1; padding-top: 20px; }
+            .btn_edit { padding: 8px 20px; background: #555; color: #fff; border-radius: 5px; text-decoration: none; font-size: 14px; }
+            .btn_edit:hover { background: #333; }
+            .btn_delete { padding: 8px 20px; background: #e04040; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; }
+            .btn_delete:hover { background: #c03030; }
+            .food_nav { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 1px solid #D1D1D1; padding-top: 20px; }
+            .food_nav_btn { display: flex; align-items: center; gap: 10px; text-decoration: none; padding: 10px 20px; border: 1px solid #D1D1D1; border-radius: 5px; color: #333; font-size: 14px; transition: background 0.2s; max-width: 45%; }
+            .food_nav_btn:hover { background: #f5f5f5; }
+            .food_nav_btn .nav_label { font-size: 11px; color: #888; display: block; }
+            .food_nav_btn .nav_name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+            .food_nav_btn.prev .nav_arrow { font-size: 18px; flex-shrink: 0; }
+            .food_nav_btn.next { flex-direction: row-reverse; }
+            .food_nav_btn.next .nav_arrow { font-size: 18px; flex-shrink: 0; }
+            .food_nav_placeholder { width: 45%; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+        <div class="tit_con">
+            <h2>음식</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/accommodation/hotel}">숙박</a></li>
+                <li><a th:href="@{/accommodation/air}">교통</a></li>
+                <li><a th:href="@{/food}" class="active">음식</a></li>
+                <li><a th:href="@{/accommodation/shopping}">쇼핑</a></li>
+                <li><a th:href="@{/accommodation/map}">지도</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page" id="food_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3 th:text="${food.name}">음식명</h3>
+                </div>
+
+                <div class="food_wrap">
+                    <!-- 음식 이미지 -->
+                    <div class="food_img_con">
+                        <img th:src="${food.imgUrl}" th:alt="${food.name}">
+                    </div>
+
+                    <!-- 음식 정보 -->
+                    <div class="food_info">
+                        <p class="food_name" th:text="${food.name}"></p>
+                        <p class="food_description" th:text="${food.description}"></p>
+                    </div>
+
+                    <!-- 관리자 버튼 -->
+                    <div class="food_actions"
+                         th:if="${session.loginMember != null and session.loginMember.role == T(com.tour.jeju.entity.Role).ADMIN}">
+                        <a th:href="@{/food/edit/{id}(id=${food.id})}" class="btn_edit">수정</a>
+                        <form th:action="@{/food/delete/{id}(id=${food.id})}"
+                              method="post"
+                              onsubmit="return confirm('정말 삭제하시겠습니까?')">
+                            <button type="submit" class="btn_delete">삭제</button>
+                        </form>
+                    </div>
+
+                    <!-- 이전/다음 네비게이션 -->
+                    <div class="food_nav">
+                        <!-- 이전 음식 -->
+                        <a th:if="${prevFood != null}"
+                           th:href="@{/food/{id}(id=${prevFood.id})}"
+                           class="food_nav_btn prev">
+                            <span class="nav_arrow">&#8592;</span>
+                            <span>
+                                <span class="nav_label">이전 음식</span>
+                                <span class="nav_name" th:text="${prevFood.name}"></span>
+                            </span>
+                        </a>
+                        <div th:if="${prevFood == null}" class="food_nav_placeholder"></div>
+
+                        <!-- 다음 음식 -->
+                        <a th:if="${nextFood != null}"
+                           th:href="@{/food/{id}(id=${nextFood.id})}"
+                           class="food_nav_btn next">
+                            <span class="nav_arrow">&#8594;</span>
+                            <span>
+                                <span class="nav_label">다음 음식</span>
+                                <span class="nav_name" th:text="${nextFood.name}"></span>
+                            </span>
+                        </a>
+                        <div th:if="${nextFood == null}" class="food_nav_placeholder"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:if="${message}">
+        alert("[[${message}]]");
+    </script>
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>제주문화관광 - 로그인</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/user/login.css}">
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <main id="main">
+            <div class="page" id="page">
+                <div class="page_wrap">
+                    <div class="page_grid">
+                        <div class="login_img_box">
+                            <div class="login_img">
+                                <img th:src="@{/images/user/login.jpg}" alt="">
+                            </div>
+                        </div>
+                        <div class="login_page_box">
+                            <div class="login_page">
+                                <h3>로그인</h3>
+                                <form th:action="@{/member/login}" th:object="${memberLoginRequest}" method="post" id="login_form" class="form1">
+                                    <!-- redirectURL 유지 -->
+                                    <input type="hidden" name="redirectURL" th:value="${redirectURL}">
+
+                                    <!-- 전체 에러 메시지 -->
+                                    <div th:if="${#fields.hasGlobalErrors()}"
+                                         class="alert alert-danger" role="alert">
+                                        <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">에러</p>
+                                    </div>
+
+                                    <div>
+                                        <input type="text" name="id" id="id" class="txt_ctrl"
+                                               th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'"
+                                               th:field="*{username}" autofocus placeholder="아이디">
+                                        <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}"
+                                             th:errors="*{username}"></div>
+                                    </div>
+                                    <div>
+                                        <input type="password" name="pw" id="pw" class="txt_ctrl"
+                                               th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"
+                                               th:field="*{password}"
+                                               placeholder="비밀번호">
+                                        <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}"
+                                             th:errors="*{password}"></div>
+                                    </div>
+                                    <div class="btn_con">
+                                        <button type="submit" class="btn_ctrl login">로그인</button>
+                                        <div class="btn_con_ctrl">
+                                            <p>계정이 없으신가요?</p><a href="/member/join" class="btn_ctrl join">회원가입</a>
+                                            <p>계정을 잊으셨나요?</p><a href="#" class="btn_ctrl find">아이디/비밀번호 찾기</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
