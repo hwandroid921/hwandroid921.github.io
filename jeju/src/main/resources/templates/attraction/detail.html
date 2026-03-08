@@ -99,13 +99,19 @@
                 <p th:text="${attraction.description}"></p>
 
                 <!-- 이미지 있을 때 -->
+                <!--/*
                 <div class="img_con1" th:if="${not #lists.isEmpty(attraction.imageUrls)}">
                     <img th:each="url, iter : ${attraction.imageUrls}"
                          th:if="${iter.index < 2 and url != null}"
                          th:src="${url}" alt="">
                 </div>
-                <!-- 이미지 없을 때 자리 확보 -->
+                이미지 없을 때 자리 확보
                 <div class="img_placeholder" th:if="${#lists.isEmpty(attraction.imageUrls)}"></div>
+                */-->
+                <div class="img_con1">
+                    <img th:src="@{/images/attraction/island/udo4-1.jpg}" alt="">
+                    <img th:src="@{/images/attraction/island/udo4-2.jpg}" alt="">
+                </div>
 
                 <div class="info_con">
                     <p th:if="${attraction.address != null}">
@@ -131,10 +137,13 @@
             </div>
             <div class="map_con">
                 <h4>지도</h4>
+                <!--/*
                 <img th:if="${attraction.mapUrl != null}"
                      th:src="${attraction.mapUrl}" alt="">
-                <!-- 지도 이미지 없을 때 자리 확보 -->
+                지도 이미지 없을 때 자리 확보
                 <div class="map_placeholder" th:if="${attraction.mapUrl == null}"></div>
+                */-->
+                <img th:src="@{/images/attraction/island/udo_map.jpg}" alt="">
                 <p>
                     <span th:if="${attraction.address != null}">
                         <strong>주소</strong> : <span th:text="${attraction.address}"></span><br><br>
@@ -164,12 +173,19 @@
                 <input type="radio" id="ra5" class="ra" name="ra">
                 <ul class="photo_con">
                     <!-- 슬라이드 5개 자리 고정 생성, 이미지 있을 때만 img 출력 -->
+                    <!--/*
                     <li th:each="i : ${#numbers.sequence(0, 4)}">
                         <img th:if="${attraction.slideUrls != null
                                      and i < #lists.size(attraction.slideUrls)
                                      and attraction.slideUrls[i] != null}"
                              th:src="${attraction.slideUrls[i]}" alt="">
                     </li>
+                    */-->
+                    <li><img th:src="@{/images/attraction/island/udo_photo1.jpg}" alt=""></li>
+                    <li><img th:src="@{/images/attraction/island/udo_photo2.jpg}" alt=""></li>
+                    <li><img th:src="@{/images/attraction/island/udo_photo3.jpg}" alt=""></li>
+                    <li><img th:src="@{/images/attraction/island/udo_photo4.jpg}" alt=""></li>
+                    <li><img th:src="@{/images/attraction/island/udo_photo5.jpg}" alt=""></li>
                 </ul>
                 <div class="btn_box">
                     <ul class="btn_wrap">
