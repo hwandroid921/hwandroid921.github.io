@@ -17,10 +17,7 @@
 
 <body>
     <div layout:fragment="content">
-        <div class="wrap">
-            <!-- Main 영역 -->
-            <main id="main">
-                <!-- 슬라이드 영역 -->
+        <!-- 슬라이드 영역 -->
                 <figure id="vs">
                     <input type="radio" id="s01" name="ra" class="ra" checked>
                     <input type="radio" id="s02" name="ra" class="ra">
@@ -49,7 +46,7 @@
                             <img th:src="@{/images/main/vs03.png}" alt="우도">
                             <div class="tit_box">
                                 <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
-                                <h3>제주동백수목원</h3>
+                                <h3>우도</h3>
                                 <h4></h4>
                             </div>
                         </div>
@@ -57,7 +54,7 @@
                             <img th:src="@{/images/main/vs04.png}" alt="정방폭포">
                             <div class="tit_box">
                                 <h1><span class="slide_tit_1">33</span><span class="slide_tit_2">th</span></h1>
-                                <h3>제주동백수목원</h3>
+                                <h3>정방폭포</h3>
                                 <h4></h4>
                             </div>
                         </div>
@@ -79,7 +76,7 @@
                             <div class="row1">
                                 <figure id="thumb1" class="thumb">
                                     <a href="">
-                                        <img src="@{/images/main/page1_1.jpg}" alt="">
+                                        <img th:src="@{/images/main/page1_1.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit">제주 해안도로</h5>
                                         </div>
@@ -87,7 +84,7 @@
                                 </figure>
                                 <figure id="thumb2" class="thumb">
                                     <a href="">
-                                        <img src="@{/images/main/page1_2.jpg}" alt="">
+                                        <img th:src="@{/images/main/page1_2.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit">제주 올레길</h5>
                                         </div>
@@ -95,7 +92,7 @@
                                 </figure>
                                 <figure id="thumb3" class="thumb">
                                     <a href="">
-                                        <img src="@{/images/main/page1_3.jpg}" alt="">
+                                        <img th:src="@{/images/main/page1_3.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit">용두암</h5>
                                         </div>
@@ -103,7 +100,7 @@
                                 </figure>
                                 <figure id="thumb4" class="thumb">
                                     <a href="">
-                                        <img src="@{/images/main/page1_4.jpg}" alt="">
+                                        <img th:src="@{/images/main/page1_4.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit">제주 섬</h5>
                                         </div>
@@ -111,7 +108,7 @@
                                 </figure>
                                 <figure id="thumb5" class="thumb">
                                     <a href="">
-                                        <img src="@{/images/main/page1_5.jpg}" alt="">
+                                        <img th:src="@{/images/main/page1_5.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit">천지연폭포</h5>
                                         </div>
@@ -127,25 +124,25 @@
                         <h2>제주의 영상속으로</h2>
                         <div class="page_grid">
                             <div class="row2">
-                                <figure id="thumb" class="thumb">
+                                <figure id="thumb6" class="thumb">
                                     <a href="https://www.youtube.com/watch?v=Tu1s78_gG5s">
-                                        <img src="@{/images/main/page2_1.jpg}" alt="">
+                                        <img th:src="@{/images/main/page2_1.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit"></h5>
                                         </div>
                                     </a>
                                 </figure>
-                                <figure id="thumb" class="thumb">
+                                <figure id="thumb7" class="thumb">
                                     <a href="https://youtu.be/fv2tYRlNwak?si=H-xXrGWOhqaNr9WR">
-                                        <img src="@{/images/main/page2_2.jpg}" alt="">
+                                        <img th:src="@{/images/main/page2_2.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit"></h5>
                                         </div>
                                     </a>
                                 </figure>
-                                <figure id="thumb" class="thumb">
+                                <figure id="thumb8" class="thumb">
                                     <a href="https://youtu.be/xYALZ9KejoY?si=Drcmb0jHbB90LZmd">
-                                        <img src="@{/images/main/page2_3.jpg}" alt="">
+                                        <img th:src="@{/images/main/page2_3.jpg}" alt="">
                                         <div class="thumb_content">
                                             <h5 class="tit"></h5>
                                         </div>
@@ -170,16 +167,16 @@
                                     <div class="festival_img_area">
                                         <div class="festival_box">
                                             <div class="festival_slide">
-                                                <img src="@{/images/main/festival1.jpg}" alt="축제1">
+                                                <img th:src="@{/images/main/festival1.jpg}" alt="축제1">
                                             </div>
                                             <div class="festival_slide">
-                                                <img src="@{/images/main/festival2.jpg}" alt="축제2">
+                                                <img th:src="@{/images/main/festival2.jpg}" alt="축제2">
                                             </div>
                                             <div class="festival_slide">
-                                                <img src="@{/images/main/festival3.jpg}" alt="축제3">
+                                                <img th:src="@{/images/main/festival3.jpg}" alt="축제3">
                                             </div>
                                             <div class="festival_slide">
-                                                <img src="@{/images/main/festival4.jpg}" alt="축제4">
+                                                <img th:src="@{/images/main/festival4.jpg}" alt="축제4">
                                             </div>
                                         </div>
                                         <div class="fest_btn_box">
@@ -237,11 +234,11 @@
                                             </ul>
                                         </div>
                                         <div class="promotion_img_con">
-                                            <img src="@{/images/main/promotio1.jpg}" alt="">
-                                            <img src="@{/images/main/promotio2.jpg}" alt="">
-                                            <img src="@{/images/main/promotio3.jpg}" alt="">
-                                            <img src="@{/images/main/promotio4.jpg}" alt="">
-                                            <img src="@{/images/main/promotio5.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio1.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio2.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio3.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio4.jpg}" alt="">
+                                            <img th:src="@{/images/main/promotio5.jpg}" alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -276,29 +273,28 @@
                                 <div class="sns_con">
                                     <ul class="sns_img_con">
                                         <li>
-                                            <a href="youtube.com/@VISITJEJU">
-                                                <img src="@{/images/icon/youtube_logo.svg}" alt="">
+                                            <a href="https://youtube.com/@VISITJEJU">
+                                                <img th:src="@{/images/icon/youtube_logo.svg}" alt="">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.instagram.com/visitjeju.kr/">
-                                                <img src="@{/images/icon/instagram_icon.png}" alt="">
+                                                <img th:src="@{/images/icon/instagram_icon.png}" alt="">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://www.facebook.com/visitjeju.kr/">
-                                                <img src="@{/images/icon/facebook_logo.png}" alt="">
+                                                <img th:src="@{/images/icon/facebook_logo.png}" alt="">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="https://blog.naver.com/jtowelcome">
-                                                <img src="@{/images/icon/blog_logo.svg}" alt="">
+                                                <img th:src="@{/images/icon/blog_logo.svg}" alt="">
                                             </a>
                                         </li>
                                         <li>
-                                            <a
-                                                href="https://api.happytalk.io/api/kakao/chat_open?yid=%40ijto&site_id=4000000359&category_id=114717&division_id=114717">
-                                                <img src="@{/images/icon/kakao_logo.png}" alt="">
+                                            <a href="https://api.happytalk.io/api/kakao/chat_open?yid=%40ijto&site_id=4000000359&category_id=114717&division_id=114717">
+                                                <img th:src="@{/images/icon/kakao_logo.png}" alt="">
                                             </a>
                                         </li>
                                     </ul>
@@ -309,8 +305,6 @@
                         </div>
                     </div>
                 </section>
-            </main>
-        </div>
     </div>
 
 </body>

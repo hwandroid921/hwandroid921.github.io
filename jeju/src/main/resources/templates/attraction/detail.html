@@ -7,6 +7,50 @@
     <title th:text="${attraction.name}">관광지</title>
     <th:block layout:fragment="css">
         <link rel="stylesheet" th:href="@{/css/place/udo.css}">
+        <style>
+            .no_review {
+                text-align: center;
+                padding: 50px 0;
+                font-size: 18px;
+                color: #999;
+            }
+            .review_placeholder {
+                min-height: 140px;
+                border-bottom: 1px solid #eee;
+            }
+            .img_placeholder {
+                width: 100%;
+                min-height: 200px;
+                background-color: #f5f5f5;
+                margin-top: 30px;
+                margin-bottom: 30px;
+            }
+            .map_placeholder {
+                width: 100%;
+                min-height: 300px;
+                background-color: #f0f0f0;
+                margin-bottom: 30px;
+            }
+            .btn_write_con {
+                text-align: right;
+                padding: 20px 0 10px;
+            }
+            .btn_write {
+                display: inline-block;
+                padding: 10px 28px;
+                background-color: #f96700;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 4px;
+                font-size: 14px;
+                font-weight: bold;
+                transition: background-color 0.2s;
+            }
+            .btn_write:hover {
+                background-color: #d95500;
+                color: #fff;
+            }
+        </style>
     </th:block>
 </head>
 
@@ -33,24 +77,36 @@
         <!-- 메인 컨텐츠 -->
         <div class="page_tit">
             <h3 th:text="${attraction.name}"></h3>
-            <h4 th:text="${attraction.category}"></h4>
+            <h4 th:if="${attraction.description != null}" th:text="${attraction.description}"></h4>
             <img th:if="${attraction.thumb != null}"
-                 th:src="@{/uploads/{thumb}(thumb=${attraction.thumb})}" alt="">
+                 th:src="@{/images/attraction/{thumb}(thumb=${attraction.thumb})}" alt="">
         </div>
 
         <div class="page_content">
 
-            <!-- 설명 탭 -->
+            <!-- ===== 설명 탭 ===== -->
             <div class="content_menu_con">
                 <span id="on_description"></span>
                 <ul>
                     <li><a href="#on_description" id="description">설명</a></li>
+                    <li><a href="#on_map">지도</a></li>
+                    <li><a href="#on_photo">사진</a></li>
                     <li><a href="#on_review">리뷰</a></li>
                 </ul>
             </div>
             <div class="content_con">
                 <h4 th:text="${attraction.name}"></h4>
                 <p th:text="${attraction.description}"></p>
+
+                <!-- 이미지 있을 때 -->
+                <div class="img_con1" th:if="${not #lists.isEmpty(attraction.imageUrls)}">
+                    <img th:each="url, iter : ${attraction.imageUrls}"
+                         th:if="${iter.index < 2 and url != null}"
+                         th:src="${url}" alt="">
+                </div>
+                <!-- 이미지 없을 때 자리 확보 -->
+                <div class="img_placeholder" th:if="${#lists.isEmpty(attraction.imageUrls)}"></div>
+
                 <div class="info_con">
                     <p th:if="${attraction.address != null}">
                         <strong>주소</strong>
@@ -63,22 +119,85 @@
                 </div>
             </div>
 
-            <!-- 리뷰 탭 -->
+            <!-- ===== 지도 탭 ===== -->
+            <div class="content_menu_con">
+                <span id="on_map"></span>
+                <ul>
+                    <li><a href="#on_description">설명</a></li>
+                    <li><a href="#on_map" id="map">지도</a></li>
+                    <li><a href="#on_photo">사진</a></li>
+                    <li><a href="#on_review">리뷰</a></li>
+                </ul>
+            </div>
+            <div class="map_con">
+                <h4>지도</h4>
+                <img th:if="${attraction.mapUrl != null}"
+                     th:src="${attraction.mapUrl}" alt="">
+                <!-- 지도 이미지 없을 때 자리 확보 -->
+                <div class="map_placeholder" th:if="${attraction.mapUrl == null}"></div>
+                <p>
+                    <span th:if="${attraction.address != null}">
+                        <strong>주소</strong> : <span th:text="${attraction.address}"></span><br><br>
+                    </span>
+                    <span th:if="${attraction.tel != null}">
+                        <strong>문의</strong> : <span th:text="${attraction.tel}"></span>
+                    </span>
+                </p>
+            </div>
+
+            <!-- ===== 사진 탭 ===== -->
+            <div class="content_menu_con">
+                <span id="on_photo"></span>
+                <ul>
+                    <li><a href="#on_description">설명</a></li>
+                    <li><a href="#on_map">지도</a></li>
+                    <li><a href="#on_photo" id="photo">사진</a></li>
+                    <li><a href="#on_review">리뷰</a></li>
+                </ul>
+            </div>
+            <div class="photo_slide_con">
+                <h4 th:text="${attraction.name} + ' 여행 사진'">여행 사진</h4>
+                <input type="radio" id="ra1" class="ra" name="ra" checked>
+                <input type="radio" id="ra2" class="ra" name="ra">
+                <input type="radio" id="ra3" class="ra" name="ra">
+                <input type="radio" id="ra4" class="ra" name="ra">
+                <input type="radio" id="ra5" class="ra" name="ra">
+                <ul class="photo_con">
+                    <!-- 슬라이드 5개 자리 고정 생성, 이미지 있을 때만 img 출력 -->
+                    <li th:each="i : ${#numbers.sequence(0, 4)}">
+                        <img th:if="${attraction.slideUrls != null
+                                     and i < #lists.size(attraction.slideUrls)
+                                     and attraction.slideUrls[i] != null}"
+                             th:src="${attraction.slideUrls[i]}" alt="">
+                    </li>
+                </ul>
+                <div class="btn_box">
+                    <ul class="btn_wrap">
+                        <li><label for="ra1" id="photo_btn1"></label></li>
+                        <li><label for="ra2" id="photo_btn2"></label></li>
+                        <li><label for="ra3" id="photo_btn3"></label></li>
+                        <li><label for="ra4" id="photo_btn4"></label></li>
+                        <li><label for="ra5" id="photo_btn5"></label></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ===== 리뷰 탭 ===== -->
             <div class="content_menu_con">
                 <span id="on_review"></span>
                 <ul>
                     <li><a href="#on_description">설명</a></li>
+                    <li><a href="#on_map">지도</a></li>
+                    <li><a href="#on_photo">사진</a></li>
                     <li><a href="#on_review" id="review">리뷰</a></li>
                 </ul>
             </div>
             <div class="review_page_con">
                 <div class="review_header">
                     <h4>리뷰</h4>
-                    <a th:if="${session.loginMember != null}"
-                       th:href="@{/review/insert/{id}(id=${attraction.id})}"
-                       class="btn_write">리뷰 작성</a>
                 </div>
                 <ul class="review_con">
+                    <!-- 실제 리뷰 목록 -->
                     <li th:each="review : ${attraction.responses}">
                         <div class="review_profile_con">
                             <img th:src="@{/images/icon/profile1.png}" alt="">
@@ -94,22 +213,35 @@
                             <li th:if="${review.imgUrl != null}">
                                 <ul class="review_photo_con">
                                     <li>
-                                        <a th:href="@{/uploads/{img}(img=${review.imgUrl})}" target="photo">
-                                            <img th:src="@{/uploads/{img}(img=${review.imgUrl})}" alt="">
+                                        <a th:href="${review.imgUrl}" target="photo">
+                                            <img th:src="${review.imgUrl}" alt="">
                                         </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         <div class="review_btn_con">
-                            <img th:src="@{/images/icon/like.png}" alt="">좋아요
-                            <img th:src="@{/images/icon/dislike.png}" alt="">싫어요
+                            <a href="#"></a>
+                            <a href="#"></a>
                         </div>
                     </li>
+
+                    <!-- 리뷰 수 5개 미만일 경우 빈 자리 확보 -->
+                    <th:block th:if="${#lists.size(attraction.responses) < 5}">
+                        <li th:each="i : ${#numbers.sequence(1, 5 - #lists.size(attraction.responses))}"
+                            class="review_placeholder"></li>
+                    </th:block>
                 </ul>
+
                 <p th:if="${#lists.isEmpty(attraction.responses)}" class="no_review">
                     첫 번째 리뷰를 작성해보세요.
                 </p>
+
+                <!-- 로그인 시 리뷰 작성 버튼 (하단) -->
+                <div th:if="${session.loginMember != null}" class="btn_write_con">
+                    <a th:href="@{/review/insert/{id}(id=${attraction.id})}"
+                       class="btn_write">리뷰 작성</a>
+                </div>
             </div>
 
         </div>
