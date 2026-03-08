@@ -29,6 +29,7 @@ public class MemberResponse {
                 .name(member.getName())
                 .phone(member.getPhone())
                 .createdAt(member.getCreatedAt())
+                .role(member.getRole())
                 .tourGuideCount(0)
                 .build();
     }
@@ -40,6 +41,7 @@ public class MemberResponse {
                 .name(member.getName())
                 .phone(member.getPhone())
                 .createdAt(member.getCreatedAt())
+                .role(member.getRole())
                 .tourGuideCount(0)
                 .build();
     }

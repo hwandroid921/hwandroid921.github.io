@@ -67,7 +67,7 @@
     </nav>
     <nav class="tnb">
       <!--   관리자 로그인 시   -->
-      <th:block th:if="${session.loginMember != null and session.loginMember.username.startsWith('admin')}">
+      <th:block th:if="${session.loginMember != null and session.loginMember.role == T(com.tour.jeju.entity.Role).ADMIN}">
         <div class="tnb_con">
           <a th:href="@{/member/list}" class="tnb_bg2">
             <img th:src="@{/images/icon/icon5.png}" alt="관리">

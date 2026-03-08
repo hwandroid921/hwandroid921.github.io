@@ -26,9 +26,30 @@ public class Notice {
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id", nullable = false)
+    @JoinColumn(name = "admin_id", nullable = false)
     private Member member;
 
+    @Column(nullable = false, columnDefinition = "integer default 0")
+    @Builder.Default
+    private Integer views = 0;
+
     @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
+
+    // 게시글 수정
+    public void updateBoard(String title, String content) {
+        if (title != null && !title.isEmpty()) {
+            this.title = title;
+        }
+        if (content != null && !content.isEmpty()) {
+            this.content = content;
+        }
+    }
+
+    // 읽은 횟수 증가
+    public void incrementViews() {
+
+        this.views++;
+    }
 }

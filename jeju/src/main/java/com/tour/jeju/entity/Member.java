@@ -44,7 +44,7 @@ public class Member {
 
     public void changePassword(String encodePassword) {
 
-        this.password = password;
+        this.password = encodePassword;
     }
 
     // 회원 정보를 수정하기 위해 비밀번호와 이름을 받음
