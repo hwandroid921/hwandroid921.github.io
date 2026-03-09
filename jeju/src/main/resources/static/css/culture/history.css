@@ -21,35 +21,6 @@
 .page_content {
     width: 100%;
     height: 100vh;
-}
-
-.content_menu_con {
-
-}
-
-.content_menu_con ul {
     display: flex;
-    justify-content: space-between;
-
-}
-
-.content_menu_con li{
-    border: 1px solid #333;
-    width: 100%;
-    height: 65px;
-    background-color: #fff;
-}
-
-.content_menu_con a {
-    display: flex;
-    font-family: 'JejuG';
-    font-size: 18px;
-    width: 100%;
-    height: 100%;
     justify-content: center;
-    align-items: center;
-}
-
-.active{
-    color: #F27405;
 }

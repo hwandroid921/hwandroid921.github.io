@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>문화/역사/예술</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/culture/myth.css}">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <main id="main">
+        <div class="bgi_con">
+            <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+            <div class="tit_con">
+                <h2>문화/역사/예술</h2>
+            </div>
+        </div>
+        <div class="main_con">
+            <!-- tnb 메뉴 -->
+            <div class="sub_tnb_con">
+                <ul>
+                    <li><a th:href="@{/culture/detail/1}">민속</a></li>
+                    <li><a th:href="@{1}" class="active">개국신화</a></li>
+                    <li><a th:href="@{/unesco/detail/1}">유네스코</a></li>
+                    <li><a th:href="@{/culture/detail/2}">역사</a></li>
+                    <li><a th:href="@{/culture/detail/3}">탄생설화</a></li>
+                </ul>
+            </div>
+
+
+            <!-- 메인 컨텐츠 -->
+            <div class="page_tit">
+                <h3>개국신화</h3>
+                <h4>탐라국 개국신화를 찾아 떠나는 제주여행</h4>
+            </div>
+            <div class="page_content">
+                <ul class="page_grid">
+                    <div class="grid_item">
+                        <figure class="page_grid_img1">
+                            <img th:src="@{/images/jeju/culture/myth1.jpg}" alt="">
+                        </figure>
+                        <div class="page_grid_txt1">
+                            <p>  ‘탐라’는 고대 제주에서 독자적인 역사와 문화를 발전시켰던 소왕국의 이름이자 제주의 옛 이름이다.
+                                <br>12세기 고려의 지방 행정구역으로 편입되기 전까지 소왕국 형태의 독립 체제를 유지하며 고 씨와 양 씨, 부 씨 이렇게 세 성(三姓)에 의해 통치되었다고 한다.
+                                <br>중국, 일본, 한반도와 해상 무역을 영위하며 동북아시아 여러 국가와 교류하며 성장했다. 지금도 제주도 곳곳에서 탐라국 유적을 만날 수 있고, 길거리 간판에서 ‘탐라’란 표현을 쉽게 발견할 수 있다.
+                                <br>제주시 원도심 한가운데 위치한 제주시청 벽면에서도 탐라를 만날 수 있다.
+                                <br>제주시청의 도로 쪽 벽면에 탐라국 개국신화의 주인공인 고, 양, 부, 세 성의 주인공과 그 배필인 삼공주가 그려져 있다.
+                                <br>제주시청 벽화를 감상하고 아름답고 신비로운 탐라의 개국신화를 찾아 여행을 떠나보자. 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid_item">
+                        <div class="page_grid_txt2">
+                            <p> 탐라국 삼성(三姓)이 솟아난 삼성혈을 찾아서! 제주시청에서 남쪽으로 난 오르막 도로를 따라가다 보면 삼성혈(三姓穴)을 만날 수 있다.
+                                <br>이 곳이 바로 탐라국 개국 신화가 깃든 삼성혈이다.
+                                <br>입구 안내판에 따르면 탐라국은 ‘고을나(高乙那)’, ‘양을나(良乙那, 良은 뒤에 梁으로 바뀜)’, ‘부을나(夫乙那)’라는 세 신인(神人)에 의해 한반도의 고조선, 부여, 신라 등 고대국가의 시조가 하늘에서 내려오거나 알에서 태어난 것과는 다른 독특한 구조의 신화인 것이다.
+                                <br>삼성혈, 혼인지에 깃든 신화와 전설은 탐라국 시조의 탄생 이후 바다를 통하여 발달된 외래문화가 유입되었고, 그제야 비로소 제주도에서 농사를 짓게 되었음을 알려준다.
+                                <br>성산읍 온평리 넓은 들판의 큰 호수인 혼인지는 지역 주민 사이에서 ‘흰죽’ ‘흰죽물’로 불린다. 웬만한 가뭄에도 바닥이 드러나지 않아 상수도가 보급되기 이전인 1970년만 해도 식수와 농업용수로 사용됐다.
+                            </p>
+                        </div>
+                        <figure class="page_grid_img2">
+                            <img th:src="@{/images/jeju/culture/myth2.jpg}" alt="">
+                        </figure>
+                    </div>
+                    <div class="grid_item">
+                        <figure class="page_grid_img3">
+                            <img th:src="@{/images/jeju/culture/myth3.jpg}" alt="">
+                        </figure>
+                        <div class="page_grid_txt3">
+                            <p> 탐라국 삼성 신인이 벽랑국 삼공주와 결혼하여 낳은 자손들이 제주 고 씨, 제주 양 씨, 제주 부 씨가 되었다는 탐라국의 신화를 간직한 삼성혈, 혼인지 유적은 볼거리가 풍성한 명승지는 아니다.
+                                <br>하지만 제주의 독특한 아이덴티티을 담은 역사와 신화적 의미가 깃든 장소이기에, 제주를 방문한다면 꼭 한번은 둘러볼 곳이 아닌가 싶다.
+                                <br>삼성혈의 깊은 숲에서는 다른 도시에서 맛볼 수 없는, 맑고 신선한 공기를 들이키며 신비로운 신화의 분위기를 만끽할 수도 있다.
+                                <br>또한 혼인지에서는 삼성 신인과 삼공주가 첫날밤을 보냈다는 조그만 동굴에 직접 들어가 볼 수도 있다.
+                            </p>
+                        </div>
+                    </div>
+                </ul>
+                <ul class="page_grid_info">
+                    <h5>위치 정보</h5>
+                    <div class="page_con_bottom">
+                        <ul class="info_tit">
+                            <li calss="cate_tit">- 삼성혈</li>
+                            <li calss="cate_tit_addr">주소 : 제주도 제주시 삼성로 22</li>
+                            <li calss="cate_tit_hour">운영시간 : 매일 09:00 -18:00</li>
+                            <li calss="cate_tit_home">홈페이지 : <a href="http://www.samsunghyeol.or.kr" style="text-decoration: underline;">http://www.samsunghyeol.or.kr</a></li>
+                        </ul>
+                        <br>
+                        <ul class="info_tit">
+                            <li calss="cate_tit_tit">- 혼인지</li>
+                            <li calss="cate_tit_addr">주소 : 제주도 서귀포시 성산읍 혼인지로 39-22</li>
+                            <li calss="cate_tit_hour">운영시간 : 매일 08:00 -17:00</li>
+                            <li calss="cate_tit_home">홈페이지 : <a href="https://m.blog.naver.com/wnhjeju/221863588008" style="text-decoration: underline;">https://m.blog.naver.com/wnhjeju/221863588008</a></li>
+                        </ul>
+                    </div>
+                    <div class="mapCon2">
+                        <div
+                                style="font:normal normal 400 12px/normal dotum, sans-serif; width:1120px; height:532px; color:#333; position:relative">
+                            <div style="height: 500px;"><a
+                                    href="https://map.kakao.com/?urlX=390534.00000000204&amp;urlY=3238.000000003958&amp;itemId=7923901&amp;q=%EC%82%BC%EC%84%B1%ED%98%88&amp;srcid=7923901&amp;map_type=TYPE_MAP&amp;from=roughmap"
+                                    target="_blank"><img class="map"
+                                                         src="http://t1.daumcdn.net/roughmap/imgmap/26931716638716adda23b8b420f1aacc910ef84847a123002e7a30fbddce24cd"
+                                                         width="1118px" height="498px" style="border:1px solid #ccc;"></a>
+                            </div>
+                            <div
+                                    style="overflow: hidden; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 0px 0px 2px 2px; background-color: rgb(249, 249, 249);">
+                                <a href="https://map.kakao.com" target="_blank" style="float: left;"><img
+                                        src="//t1.daumcdn.net/localimg/localimages/07/2018/pc/common/logo_kakaomap.png"
+                                        width="72" height="16" alt="카카오맵"
+                                        style="display:block;width:72px;height:16px"></a>
+                                <div style="float: right; position: relative; top: 1px; font-size: 11px;"><a
+                                        target="_blank"
+                                        href="https://map.kakao.com/?from=roughmap&amp;srcid=7923901&amp;confirmid=7923901&amp;q=%EC%82%BC%EC%84%B1%ED%98%88&amp;rv=on"
+                                        style="float:left;height:15px;padding-top:1px;line-height:15px;color:#000;text-decoration: none;">로드뷰</a><span
+                                        style="width: 1px;padding: 0;margin: 0 8px 0 9px;height: 11px;vertical-align: top;position: relative;top: 2px;border-left: 1px solid #d0d0d0;float: left;"></span><a
+                                        target="_blank"
+                                        href="https://map.kakao.com/?from=roughmap&amp;eName=%EC%82%BC%EC%84%B1%ED%98%88&amp;eX=390534.00000000204&amp;eY=3238.000000003958"
+                                        style="float:left;height:15px;padding-top:1px;line-height:15px;color:#000;text-decoration: none;">길찾기</a><span
+                                        style="width: 1px;padding: 0;margin: 0 8px 0 9px;height: 11px;vertical-align: top;position: relative;top: 2px;border-left: 1px solid #d0d0d0;float: left;"></span><a
+                                        target="_blank"
+                                        href="https://map.kakao.com?map_type=TYPE_MAP&amp;from=roughmap&amp;srcid=7923901&amp;itemId=7923901&amp;q=%EC%82%BC%EC%84%B1%ED%98%88&amp;urlX=390534.00000000204&amp;urlY=3238.000000003958"
+                                        style="float:left;height:15px;padding-top:1px;line-height:15px;color:#000;text-decoration: none;">지도
+                                    크게 보기</a></div>
+                            </div>
+                            <div><span
+                                    style="border-bottom:0px none #333333;position:absolute;left:-25px;top:-136px;width:0px;height:40px"></span>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
