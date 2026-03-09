@@ -32,14 +32,14 @@ public class MemberJoinRequest {
         return password != null && password.equals(passwordConfirm);
     }
 
-    public Member toEntity() {
+    public Member toEntity(String encodedPassword) {
 
         if (username != null && username.startsWith("admin")) {
             role = Role.ADMIN;
         }
         return Member.builder()
                 .username(username)
-                .password(password)
+                .password(encodedPassword)
                 .name(name)
                 .phone(phone)
                 .role(role)
