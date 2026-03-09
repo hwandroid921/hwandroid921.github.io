@@ -44,13 +44,9 @@ public class MemberService {
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
 
-        // 비밀번호 암호화
+        // 비밀번호 암호화 후 Entity 생성
         String encodedPassword = passwordEncoder.encode(request.getPassword());
-        // DTO를 Entity로 변환
-        Member member = request.toEntity();
-        // 비밀번호를 암호화 한 비밀번호로 저장
-        member.setPassword(encodedPassword);
-        //
+        Member member = request.toEntity(encodedPassword);
         Member saveMember = memberRepository.save(member);
         log.info("회원 가입 완료: ID {}, Username: {}",
                 saveMember.getId(),
