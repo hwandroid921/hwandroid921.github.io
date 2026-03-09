@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title th:text="${foodId != null} ? '음식 수정 - 제주관광' : '음식 등록 - 제주관광'">음식 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <style>
+            .food_form_wrap { max-width: 800px; margin: 60px auto; padding: 0 20px; }
+            .food_form_wrap form { display: flex; flex-direction: column; gap: 20px; }
+            .form_group { display: flex; flex-direction: column; gap: 6px; }
+            .form_group label { font-size: 14px; font-weight: 600; color: #333; }
+            .form_group input[type="text"],
+            .form_group textarea { width: 100%; padding: 10px 14px; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 14px; box-sizing: border-box; }
+            .form_group input[type="text"]:focus,
+            .form_group textarea:focus { border-color: #FFA500; outline: none; }
+            .form_group textarea { min-height: 200px; resize: vertical; }
+            .form_error { color: #e04040; font-size: 13px; }
+            .form_global_error { padding: 10px; background: #fff0f0; border: 1px solid #e04040; border-radius: 5px; color: #e04040; font-size: 14px; }
+            .form_actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+            .btn_submit { padding: 10px 28px; background: #FFA500; color: #fff; border: none; border-radius: 5px; font-size: 15px; cursor: pointer; }
+            .btn_submit:hover { background: #e69400; }
+            .btn_cancel { padding: 10px 28px; background: #fff; color: #555; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 15px; text-decoration: none; }
+            .btn_cancel:hover { background: #f5f5f5; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+        <div class="tit_con">
+            <h2 th:text="${foodId != null} ? '음식 수정' : '음식 등록'">음식</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/accommodation/hotel}">숙박</a></li>
+                <li><a th:href="@{/accommodation/air}">교통</a></li>
+                <li><a th:href="@{/food}" class="active">음식</a></li>
+                <li><a th:href="@{/accommodation/shopping}">쇼핑</a></li>
+                <li><a th:href="@{/accommodation/map}">지도</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page" id="food_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3 th:text="${foodId != null} ? '음식 수정' : '음식 등록'">음식</h3>
+                </div>
+
+                <div class="food_form_wrap">
+                    <!-- 등록 폼 -->
+                    <form th:if="${foodId == null}"
+                          th:action="@{/food/insert}"
+                          method="post"
+                          th:object="${foodRequest}">
+                        <div th:if="${#fields.hasGlobalErrors()}" class="form_global_error">
+                            <span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="name">음식명 <span style="color:#e04040">*</span></label>
+                            <input type="text" id="name" th:field="*{name}" placeholder="음식 이름을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="imgUrl">이미지 URL <span style="color:#e04040">*</span></label>
+                            <input type="text" id="imgUrl" th:field="*{imgUrl}" placeholder="이미지 URL을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="description">설명</label>
+                            <textarea id="description" th:field="*{description}" placeholder="음식 설명을 입력하세요"></textarea>
+                        </div>
+                        <div class="form_actions">
+                            <a th:href="@{/food}" class="btn_cancel">취소</a>
+                            <button type="submit" class="btn_submit">등록</button>
+                        </div>
+                    </form>
+
+                    <!-- 수정 폼 -->
+                    <form th:if="${foodId != null}"
+                          th:action="@{/food/edit/{id}(id=${foodId})}"
+                          method="post"
+                          th:object="${foodRequest}">
+                        <div th:if="${#fields.hasGlobalErrors()}" class="form_global_error">
+                            <span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="edit_name">음식명 <span style="color:#e04040">*</span></label>
+                            <input type="text" id="edit_name" th:field="*{name}" placeholder="음식 이름을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="edit_imgUrl">이미지 URL <span style="color:#e04040">*</span></label>
+                            <input type="text" id="edit_imgUrl" th:field="*{imgUrl}" placeholder="이미지 URL을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}"></span>
+                        </div>
+                        <div class="form_group">
+                            <label for="edit_description">설명</label>
+                            <textarea id="edit_description" th:field="*{description}" placeholder="음식 설명을 입력하세요"></textarea>
+                        </div>
+                        <div class="form_actions">
+                            <a th:href="@{/food/{id}(id=${foodId})}" class="btn_cancel">취소</a>
+                            <button type="submit" class="btn_submit">수정완료</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<th:block layout:fragment="script">
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>

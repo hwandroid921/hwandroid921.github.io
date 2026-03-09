@@ -11,6 +11,8 @@ public class FoodRequest {
     private String name;
 
     private String description;
+
+    @NotBlank(message = "이미지 URL은 필수 입력 항목입니다.")
     private String imgUrl;
 
     public Food toEntity() {

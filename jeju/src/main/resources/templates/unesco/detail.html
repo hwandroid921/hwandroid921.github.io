@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>문화/역사/예술</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/culture/unesco.css}">
+    </th:block>
+</head>
+<body>
+<div layout:fragment="content">
+    <main id="main">
+        <div class="bgi_con">
+            <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
+            <div class="tit_con">
+                <h2>문화/역사/예술</h2>
+            </div>
+        </div>
+        <div class="main_con">
+            <!-- tnb 메뉴 -->
+            <div class="sub_tnb_con">
+                <ul>
+                    <li><a th:href="@{/culture/detail/1}">민속</a></li>
+                    <li><a th:href="@{/myth/detail/1}">개국신화</a></li>
+                    <li><a th:href="@{1}" class="active">유네스코</a></li>
+                    <li><a th:href="@{/culture/detail/2}">역사</a></li>
+                    <li><a th:href="@{/culture/detail/3}">탄생설화</a></li>
+                </ul>
+            </div>
+
+
+            <!-- 메인 컨텐츠 -->
+            <div class="page_tit">
+                <h3>유네스코</h3>
+                <h4>유네스코를 홀린 화산섬 제주</h4>
+            </div>
+            <div class="page_content">
+                <ul class="page_grid">
+                    <div class="grid_item">
+                        <div class="page_grid_txt">
+                            <p>
+                                <span class="strong">핵심 유네스코 등재 내용</span><br><br>
+                                <span class="bold">세계자연유산 (2007년 등재)</span><br>&nbsp;&nbsp;'제주 화산섬과 용암 동굴'이라는 이름으로, 한라산 천연보호구역, 거문오름 용암동굴계, 성산일출봉 응회환 등 3개 구역이 포함된다.<br><br>
+                                <span class="bold">세계지질공원 (2010년 인증)</span>&nbsp;&nbsp;섬 전체가 지질학적 가치를 인정받아 인증되었으며, 재인증을 통해 위상을 유지 중이다.<br><br>
+                                <span class="bold">생물권보전지역 (2002년 지정)</span>&nbsp;&nbsp;한라산을 중심으로 시작하여 현재는 곶자왈, 추자도, 우도 등 도 전체로 확대되었다.<br><br>
+                                <span class="bold">인류무형문화유산 (2016년 등재)</span>&nbsp;&nbsp;제주 해녀 문화가 지정되었다.<br><br>
+                                <span class="bold">세계기록유산 (2025년 등재)</span>&nbsp;&nbsp;제주 4·3 사건 기록물이 등재되었다. <br><br><br>
+                                <span class="strong">주요 세계자연유산 명소</span><br><br>
+                                <span class="bold">한라산 천연보호구역</span>&nbsp;&nbsp;1,950m의 한라산과 백록담, 40여 개의 오름 등 다양한 화산 지형.<br><br>
+                                <span class="bold">성산일출봉 응회환</span>&nbsp;&nbsp;바다 위로 솟아오른 독특한 화산체<br><br>
+                                <span class="bold">거문오름 용암동굴계</span>&nbsp;&nbsp;벵뒤굴, 만장굴, 김녕굴, 용천동굴, 당처물동굴 등 화산 활동의 증거. <br><br>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid_item_img">
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco1.jpg}" alt="">
+                            <figcaption>한라산</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco2.jpg}" alt="">
+                            <figcaption>용암동굴</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco3.jpg}" alt="">
+                            <figcaption>산방산&용머리해안</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco4.jpg}" alt="">
+                            <figcaption>천지연폭포</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco5.jpg}" alt="">
+                            <figcaption>수월봉</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco6.jpg}" alt="">
+                            <figcaption>비양도</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco7.jpg}" alt="">
+                            <figcaption>선흘곳자왈</figcaption>
+                        </figure>
+                        <figure class="page_grid_img">
+                            <img th:src="@{/images/jeju/culture/unesco8.jpg}" alt="">
+                            <figcaption>주상절리대</figcaption>
+                        </figure>
+                    </div>
+                    <div class="video_title"><h4>UNESCO 트레일 영상</h4></div>
+                    <div class="video_wrapper">
+                        <div class="video_list">
+                            <div class="video_item" id="video_item1">
+                                <a href="https://www.youtube.com/watch?v=WnixQGAfULU" target="_blank">
+                                    <div class="video_thumb">
+                                        <img class="full_image" th:src="@{/images/jeju/culture/unesco_thumb1.jpg}"
+                                             alt="">
+                                    </div>
+                                    <h5 class="video_text">세계자연유산 거문오름탐방</h5>
+                                </a>
+                            </div>
+                            <div class="video_item" id="video_item2">
+                                <a href="https://www.youtube.com/watch?v=hk0RT7iVTCU" target="_blank">
+                                    <div class="video_thumb">
+                                        <img class="full_image" th:src="@{/images/jeju/culture/unesco_thumb2.jpg}"
+                                             alt="">
+                                    </div>
+                                    <h5 class="video_text">수월봉 지질트레일</h5>
+                                </a>
+                            </div>
+                            <div class="video_item" id="video_item3">
+                                <a href="https://www.youtube.com/watch?v=7pr5pTpmu48" target="_blank">
+                                    <div class="video_thumb">
+                                        <img class="full_image" th:src="@{/images/jeju/culture/unesco_thumb3.jpg}"
+                                             alt="">
+                                    </div>
+                                    <h5 class="video_text">비양도 지질탐험</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>
