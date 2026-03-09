@@ -34,8 +34,17 @@ public class FestivalController {
         else if (id == 2) {
             return "festival/olle";
         }
+        else if (id == 3) {
+            return "festival/forest";
+        }
+        else if (id == 4) {
+            return "festival/haenyeo";
+        }
+        else if (id == 5) {
+            return "festival/flower";
+        }
 
-        return "festival/detail";
+        return "festival/list";
     }
     //등록 폼 로딩
     @GetMapping("/insert")

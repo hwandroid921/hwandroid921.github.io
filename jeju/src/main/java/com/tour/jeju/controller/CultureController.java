@@ -27,7 +27,15 @@ public class CultureController {
     public String detail(@PathVariable("id") Long id, Model model) {
         Culture culture = cultureService.findById(id);
         model.addAttribute("culture", culture);
-
+        if (id == 1) {
+            return "culture/detail";
+        }
+        else if (id == 2) {
+            return "culture/history";
+        }
+        else if (id == 3) {
+            return "culture/story";
+        }
         return "culture/detail";
     }
     //등록 폼 로딩
