@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>여행후기 상세 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/community/travelogue.css}">
+        <style>
+            .travelogue_detail_wrap { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+            .detail_header { border-bottom: 2px solid #FFA500; padding-bottom: 16px; margin-bottom: 24px; }
+            .detail_header h2 { font-size: 24px; font-weight: 700; color: #222; margin-bottom: 10px; }
+            .detail_meta { display: flex; gap: 20px; font-size: 14px; color: #888; }
+            .detail_meta span { display: flex; align-items: center; gap: 4px; }
+            .detail_img_gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 24px; }
+            .detail_img_gallery img { width: 100%; max-height: 320px; object-fit: cover; border-radius: 8px; }
+            .detail_body { font-size: 16px; line-height: 1.8; color: #333; white-space: pre-wrap; margin-bottom: 40px; }
+            .btn_group { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+            .btn_edit { padding: 8px 20px; background: #FFA500; color: #fff; border-radius: 5px; text-decoration: none; font-size: 14px; }
+            .btn_edit:hover { background: #e69400; }
+            .btn_delete { padding: 8px 20px; background: #e04040; color: #fff; border: none; border-radius: 5px; font-size: 14px; cursor: pointer; }
+            .btn_delete:hover { background: #c73030; }
+            .btn_list { padding: 8px 20px; background: #fff; color: #555; border: 1px solid #D1D1D1; border-radius: 5px; text-decoration: none; font-size: 14px; }
+            .btn_list:hover { background: #f5f5f5; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/community/community_trave_bg.jpg}" alt="">
+        <div class="tit_con">
+            <h2>여행후기</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+                <li><a th:href="@{/community/tourguide/list}">여행후기</a></li>
+                <li><a th:href="@{/community/event}">이벤트</a></li>
+                <li><a th:href="@{/community/complaint}">불편신고</a></li>
+                <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            </ul>
+        </div>
+
+        <!-- 상세 컨텐츠 -->
+        <div class="page" id="travelogue_page">
+            <div class="page_wrap">
+                <div class="travelogue_detail_wrap">
+
+                    <!-- 헤더 -->
+                    <div class="detail_header">
+                        <h2 th:text="${travelogue.title}"></h2>
+                        <div class="detail_meta">
+                            <span>작성자: <strong th:text="${travelogue.author}"></strong></span>
+                            <span>작성일: <span th:text="${#temporals.format(travelogue.createdAt, 'yyyy-MM-dd')}"></span></span>
+                            <span>조회수: <span th:text="${travelogue.views}"></span></span>
+                        </div>
+                    </div>
+
+                    <!-- 이미지 갤러리 (여러 장) -->
+                    <div class="detail_img_gallery"
+                         th:if="${travelogue.imgUrls != null and !#lists.isEmpty(travelogue.imgUrls)}">
+                        <img th:each="imgUrl : ${travelogue.imgUrls}"
+                             th:src="${imgUrl}"
+                             th:alt="${travelogue.title}">
+                    </div>
+
+                    <!-- 본문 -->
+                    <div class="detail_body" th:text="${travelogue.content}"></div>
+
+                    <!-- 버튼 그룹 -->
+                    <div class="btn_group">
+                        <a th:href="@{/community/tourguide/list}" class="btn_list">목록</a>
+                        <div th:if="${isWriter}">
+                            <a th:href="@{/community/tourguide/edit/{id}(id=${travelogue.id})}" class="btn_edit">수정</a>
+                            <form th:action="@{/community/tourguide/delete/{id}(id=${travelogue.id})}"
+                                  method="post"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('정말 삭제하시겠습니까?')">
+                                <button type="submit" class="btn_delete">삭제</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script th:if="${message}">
+        alert("[[${message}]]");
+    </script>
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>

@@ -1,8 +1,12 @@
 package com.tour.jeju.dto;
 
+import com.tour.jeju.entity.Member;
 import com.tour.jeju.entity.TourGuide;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class TourGuideRequest {
@@ -11,13 +15,13 @@ public class TourGuideRequest {
     private String title;
 
     private String content;
-    private String imgUrl;
 
-    public TourGuide toEntity() {
+    public TourGuide toEntity(Member member, List<String> imgUrls) {
         return TourGuide.builder()
                 .title(title)
                 .content(content)
-                .imgUrl(imgUrl)
+                .imgUrls(imgUrls != null ? imgUrls : new ArrayList<>())
+                .member(member)
                 .build();
     }
 }
