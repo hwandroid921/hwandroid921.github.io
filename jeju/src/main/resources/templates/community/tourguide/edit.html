@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>여행후기 수정 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/community/travelogue.css}">
+        <style>
+            .form_wrap { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+            .form_wrap form { display: flex; flex-direction: column; gap: 16px; }
+            .form_group { display: flex; flex-direction: column; gap: 6px; }
+            .form_group label { font-size: 14px; font-weight: 600; color: #333; }
+            .form_group input[type="text"],
+            .form_group textarea { width: 100%; padding: 10px 14px; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 14px; box-sizing: border-box; }
+            .form_group input[type="text"]:focus,
+            .form_group textarea:focus { border-color: #FFA500; outline: none; }
+            .form_group textarea { min-height: 300px; resize: vertical; }
+            .form_hint { font-size: 12px; color: #aaa; }
+            .form_error { color: #e04040; font-size: 13px; }
+            .form_global_error { padding: 10px; background: #fff0f0; border: 1px solid #e04040; border-radius: 5px; color: #e04040; font-size: 14px; }
+            .form_actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+            .btn_submit { padding: 10px 28px; background: #FFA500; color: #fff; border: none; border-radius: 5px; font-size: 15px; cursor: pointer; }
+            .btn_submit:hover { background: #e69400; }
+            .btn_cancel { padding: 10px 28px; background: #fff; color: #555; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 15px; text-decoration: none; }
+            .btn_cancel:hover { background: #f5f5f5; }
+
+            /* 이미지 영역 */
+            .img_section_label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 6px; }
+            .img_existing_wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+            .img_existing_item { position: relative; width: 100px; height: 100px; border-radius: 6px; overflow: hidden; border: 1px solid #e0e0e0; }
+            .img_existing_item img { width: 100%; height: 100%; object-fit: cover; }
+            .img_existing_item .remove_btn { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+            .img_existing_item.removed { opacity: 0.3; }
+            .img_existing_item.removed .remove_btn { background: #e04040; }
+            .img_upload_area { border: 2px dashed #D1D1D1; border-radius: 8px; padding: 20px; background: #fafafa; }
+            .img_upload_area:hover { border-color: #FFA500; }
+            .img_upload_label { display: flex; align-items: center; gap: 8px; cursor: pointer; color: #888; font-size: 14px; }
+            .img_upload_label svg { width: 24px; height: 24px; }
+            .img_preview_wrap { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+            .img_preview_item { position: relative; width: 100px; height: 100px; border-radius: 6px; overflow: hidden; border: 1px solid #e0e0e0; }
+            .img_preview_item img { width: 100%; height: 100%; object-fit: cover; }
+            .img_preview_item .remove_btn { position: absolute; top: 3px; right: 3px; width: 20px; height: 20px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; line-height: 1; }
+            .img_count_info { font-size: 12px; color: #aaa; margin-top: 6px; }
+            .img_count_info.limit { color: #e04040; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/community/community_trave_bg.jpg}" alt="">
+        <div class="tit_con">
+            <h2>여행후기</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+                <li><a th:href="@{/community/tourguide/list}">여행후기</a></li>
+                <li><a th:href="@{/community/event}">이벤트</a></li>
+                <li><a th:href="@{/community/complaint}">불편신고</a></li>
+                <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            </ul>
+        </div>
+
+        <div class="page" id="travelogue_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3>후기 수정</h3>
+                </div>
+
+                <div class="form_wrap">
+                    <form th:action="@{/community/tourguide/edit/{id}(id=${travelogueId})}"
+                          method="post"
+                          enctype="multipart/form-data"
+                          th:object="${tourGuideRequest}">
+
+                        <!-- 전역 에러 -->
+                        <div th:if="${#fields.hasGlobalErrors()}" class="form_global_error">
+                            <span th:each="err : ${#fields.globalErrors()}" th:text="${err}"></span>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="title">제목 <span style="color:#e04040">*</span></label>
+                            <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요">
+                            <span class="form_error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                        </div>
+
+                        <div class="form_group">
+                            <label for="content">내용</label>
+                            <textarea id="content" th:field="*{content}" placeholder="여행 후기를 자유롭게 작성해 주세요"></textarea>
+                        </div>
+
+                        <!-- 기존 이미지 관리 -->
+                        <div class="form_group"
+                             th:if="${existingImgUrls != null and !#lists.isEmpty(existingImgUrls)}">
+                            <div class="img_section_label">기존 이미지 <span class="form_hint">(X 버튼으로 삭제)</span></div>
+                            <div class="img_existing_wrap" id="existingWrap">
+                                <div th:each="url, iter : ${existingImgUrls}"
+                                     class="img_existing_item"
+                                     th:id="'existing_' + ${iter.index}">
+                                    <img th:src="${url}" alt="기존 이미지">
+                                    <!-- 유지할 이미지 URL을 hidden input으로 전달 -->
+                                    <input type="hidden" name="keepImages" th:value="${url}"
+                                           th:id="'keepInput_' + ${iter.index}">
+                                    <button type="button" class="remove_btn"
+                                            th:onclick="'removeExisting(' + ${iter.index} + ')'">✕</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 새 이미지 추가 -->
+                        <div class="form_group">
+                            <label>새 이미지 추가 <span class="form_hint">(기존+신규 합산 최대 8장)</span></label>
+                            <div class="img_upload_area">
+                                <label class="img_upload_label" for="newImages">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    이미지를 선택하거나 여기에 드래그하세요
+                                </label>
+                                <input type="file" id="newImages" name="newImages"
+                                       accept="image/jpeg,image/png,image/gif,image/webp"
+                                       multiple style="display:none;">
+                                <div class="img_preview_wrap" id="newPreviewWrap"></div>
+                                <div class="img_count_info" id="imgCountInfo">0장 추가 선택됨</div>
+                            </div>
+                        </div>
+
+                        <div class="form_actions">
+                            <a th:href="@{/community/tourguide/detail/{id}(id=${travelogueId})}" class="btn_cancel">취소</a>
+                            <button type="submit" class="btn_submit">수정완료</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script>
+        const MAX_IMAGES = 8;
+        let newSelectedFiles = [];
+
+        // 기존 이미지 제거
+        function removeExisting(index) {
+            const item = document.getElementById('existing_' + index);
+            const keepInput = document.getElementById('keepInput_' + index);
+            if (item.classList.contains('removed')) {
+                // 복원
+                item.classList.remove('removed');
+                keepInput.disabled = false;
+                item.querySelector('.remove_btn').textContent = '✕';
+            } else {
+                // 삭제 표시
+                item.classList.add('removed');
+                keepInput.disabled = true;
+                item.querySelector('.remove_btn').textContent = '↩';
+            }
+            updateCountInfo();
+        }
+
+        function getKeptCount() {
+            const keepInputs = document.querySelectorAll('input[name="keepImages"]');
+            let count = 0;
+            keepInputs.forEach(inp => { if (!inp.disabled) count++; });
+            return count;
+        }
+
+        function updateCountInfo() {
+            const total = getKeptCount() + newSelectedFiles.length;
+            const info = document.getElementById('imgCountInfo');
+            info.textContent = '새 이미지 ' + newSelectedFiles.length + '장 선택됨 (전체 ' + total + '/8장)';
+            info.className = 'img_count_info' + (total >= MAX_IMAGES ? ' limit' : '');
+        }
+
+        const fileInput = document.getElementById('newImages');
+        const newPreviewWrap = document.getElementById('newPreviewWrap');
+
+        fileInput.addEventListener('change', function () {
+            const keptCount = getKeptCount();
+            const remaining = MAX_IMAGES - keptCount - newSelectedFiles.length;
+            if (remaining <= 0) {
+                alert('이미지는 최대 8장까지 첨부할 수 있습니다.');
+                this.value = '';
+                return;
+            }
+            const newFiles = Array.from(this.files);
+            const toAdd = newFiles.slice(0, remaining);
+            if (newFiles.length > remaining) {
+                alert(remaining + '장까지만 추가할 수 있습니다.');
+            }
+            newSelectedFiles = newSelectedFiles.concat(toAdd);
+            syncFileInput();
+            renderNewPreviews();
+            updateCountInfo();
+        });
+
+        function removeNew(index) {
+            newSelectedFiles.splice(index, 1);
+            syncFileInput();
+            renderNewPreviews();
+            updateCountInfo();
+        }
+
+        function syncFileInput() {
+            const dt = new DataTransfer();
+            newSelectedFiles.forEach(f => dt.items.add(f));
+            fileInput.files = dt.files;
+        }
+
+        function renderNewPreviews() {
+            newPreviewWrap.innerHTML = '';
+            newSelectedFiles.forEach((file, idx) => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const item = document.createElement('div');
+                    item.className = 'img_preview_item';
+                    item.innerHTML = `<img src="${e.target.result}" alt="미리보기">
+                        <button type="button" class="remove_btn" onclick="removeNew(${idx})">✕</button>`;
+                    newPreviewWrap.appendChild(item);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        updateCountInfo();
+    </script>
+    <script th:if="${message}">
+        alert("[[${message}]]");
+    </script>
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>

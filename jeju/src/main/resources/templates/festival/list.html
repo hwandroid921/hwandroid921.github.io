@@ -13,7 +13,7 @@
 <div layout:fragment="content">
     <main id="main">
         <div class="bgi_con">
-            <img src="../images/bgi/bgi_hallasan2.jpg" alt="">
+            <img th:src="@{/images/bgi/bgi_hallasan2.jpg}" alt="">
             <div class="tit_con">
                 <h2>축제/행사</h2>
             </div>
@@ -23,11 +23,11 @@
             <div class="sub_tnb_con">
                 <ul>
                     <li><a th:href="@{/event/list}">월별행사</a></li>
-                    <li><a th:href="@{1}">성산일출봉일출축제</a></li>
-                    <li><a th:href="@{2}">올레걷기체험</a></li>
-                    <li><a href="../festival_page/forest.html">사려니숲에코힐링체험</a></li>
-                    <li><a href="../festival_page/haenyeo.html">제주해녀축제</a></li>
-                    <li><a href="../festival_page/flower.html">제주꽃축제</a></li>
+                    <li><a th:href="@{/festival/detail/1}">성산일출봉일출축제</a></li>
+                    <li><a th:href="@{/festival/detail/2}">올레걷기체험</a></li>
+                    <li><a th:href="@{/festival/list}">사려니숲에코힐링체험</a></li>
+                    <li><a th:href="@{/festival/list}">제주해녀축제</a></li>
+                    <li><a th:href="@{/festival/list}">제주꽃축제</a></li>
                 </ul>
             </div>
 
@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="content_bottom">
-                    <img src="../images/jeju/festival/festival-banner.jpg" alt="">
+                    <img th:src="@{/images/jeju/festival/festival-banner.jpg}" alt="">
                 </div>
             </div>
         </div>

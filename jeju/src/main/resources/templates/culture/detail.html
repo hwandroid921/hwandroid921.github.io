@@ -22,11 +22,11 @@
             <!-- tnb 메뉴 -->
             <div class="sub_tnb_con">
                 <ul>
-                    <li><a href="../culture_page/myth.html">개국신화</a></li>
-                    <li><a href="../culture_page/history.html">역사</a></li>
-                    <li><a href="../culture_page/culture.html" class="active">민속</a></li>
-                    <li><a href="../culture_page/story.html">탄생설화</a></li>
-                    <li><a href="../culture_page/unesco.html">유네스코</a></li>
+                    <li><a th:href="@{1}" class="active">민속</a></li>
+                    <li><a th:href="@{/myth/detail/1}">개국신화</a></li>
+                    <li><a th:href="@{/unesco/detail/1}">유네스코</a></li>
+                    <li><a th:href="@{2}">역사</a></li>
+                    <li><a th:href="@{3}">탄생설화</a></li>
                 </ul>
             </div>
 
@@ -66,35 +66,35 @@
                     </div>
                     <div class="grid_item_img">
                         <figure class="page_grid_img1">
-                            <img src="../images/jeju/culture/culture1.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture1.jpg}" alt="">
                             <figcaption>돌담</figcaption>
                         </figure>
                         <figure class="page_grid_img2">
-                            <img src="../images/jeju/culture/culture2.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture2.jpg}" alt="">
                             <figcaption>해녀</figcaption>
                         </figure>
                         <figure class="page_grid_img3">
-                            <img src="../images/jeju/culture/culture3.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture3.jpg}" alt="">
                             <figcaption>낭푼밥상</figcaption>
                         </figure>
                         <figure class="page_grid_img4">
-                            <img src="../images/jeju/culture/culture4.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture4.jpg}" alt="">
                             <figcaption>정낭</figcaption>
                         </figure>
                         <figure class="page_grid_img5">
-                            <img src="../images/jeju/culture/culture5.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture5.jpg}" alt="">
                             <figcaption>삼다도</figcaption>
                         </figure>
                         <figure class="page_grid_img2">
-                            <img src="../images/jeju/culture/culture6.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture6.jpg}" alt="">
                             <figcaption>제주굿</figcaption>
                         </figure>
                         <figure class="page_grid_img3">
-                            <img src="../images/jeju/culture/culture7.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture7.jpg}" alt="">
                             <figcaption>돗통시</figcaption>
                         </figure>
                         <figure class="page_grid_img4">
-                            <img src="../images/jeju/culture/culture8.jpg" alt="">
+                            <img th:src="@{/images/jeju/culture/culture8.jpg}" alt="">
                             <figcaption>갈옷</figcaption>
                         </figure>
                     </div>
@@ -102,16 +102,16 @@
                 <div class="page_con_bottom">
                     <h4>주요 체험관</h4>
                     <div class="row1">
-                        <li><img src="../images/jeju/culture/cul_con_item1.jpg" alt="">
+                        <li><img th:src="@{/images/jeju/culture/cul_con_item1.jpg}" alt="">
                             <a href="https://jeju.museum.go.kr/html/kr/index.html">국립제주박물관</a>
                         </li>
-                        <li><img src="../images/jeju/culture/cul_con_item2.jpg" alt="">
+                        <li><img th:src="@{/images/jeju/culture/cul_con_item2.jpg}" alt="">
                             <a href="https://www.jeju.go.kr/jejustonepark/index.htm">제주돌문화공원</a>
                         </li>
-                        <li><img src="../images/jeju/culture/cul_con_item3.jpg" alt="">
+                        <li><img th:src="@{/images/jeju/culture/cul_con_item3.jpg}" alt="">
                             <a href="https://jejufolk.com/index.php?">제주민속촌</a>
                         </li>
-                        <li><img src="../images/jeju/culture/cul_con_item4.jpg" alt="">
+                        <li><img th:src="@{/images/jeju/culture/cul_con_item4.jpg}" alt="">
                             <a href="https://inmun360.culture.go.kr/content/580.do?mode=view&page=16&cid=2369982">해녀 박물관</a>
                         </li>
                     </div>

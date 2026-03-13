@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
+
+<head>
+    <title>여행후기 - 제주관광</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/community/travelogue.css}">
+        <style>
+            .pagination .disabled { color: #ccc; cursor: default; pointer-events: none; }
+            .search_box { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+            .search_box select, .search_box input[type="text"] { padding: 8px 12px; border: 1px solid #D1D1D1; border-radius: 5px; font-size: 14px; }
+            .search_box button { padding: 8px 18px; background: #FFA500; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; }
+        </style>
+    </th:block>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <div class="bgi_con">
+        <img th:src="@{/images/community/community_trave_bg.jpg}" alt="">
+        <div class="tit_con">
+            <h2>여행후기</h2>
+        </div>
+    </div>
+    <div class="main_con">
+        <!-- tnb 메뉴 -->
+        <div class="sub_tnb_con">
+            <ul>
+                <li><a th:href="@{/community/notice/list}">공지사항</a></li>
+                <li><a th:href="@{/community/tourguide/list}">여행후기</a></li>
+                <li><a th:href="@{/community/event}">이벤트</a></li>
+                <li><a th:href="@{/community/complaint}">불편신고</a></li>
+                <li><a th:href="@{/community/qna}">자주묻는질문</a></li>
+            </ul>
+        </div>
+
+        <!-- 메인 컨텐츠 -->
+        <div class="page" id="travelogue_page">
+            <div class="page_wrap">
+                <div class="page_tit">
+                    <h3>여행후기</h3>
+                </div>
+                <div class="page_content">
+
+                    <!-- 검색 -->
+                    <div class="search_box">
+                        <form th:action="@{/community/tourguide/list}" method="get">
+                            <select name="searchType">
+                                <option value="title" th:selected="${searchType == 'title'}">제목</option>
+                                <option value="content" th:selected="${searchType == 'content'}">내용</option>
+                                <option value="all" th:selected="${searchType == 'all' or searchType == null}">전체</option>
+                            </select>
+                            <input type="text" name="keyword" th:value="${keyword}" placeholder="검색어를 입력하세요">
+                            <button type="submit">검색</button>
+                        </form>
+                    </div>
+
+                    <!-- 카드 목록 -->
+                    <ul class="travel_list">
+                        <li th:each="item : ${travelogueList}"
+                            th:if="${travelogueList != null and !#lists.isEmpty(travelogueList)}"
+                            class="travel_item">
+                            <a th:href="@{/community/tourguide/detail/{id}(id=${item.id})}">
+                                <div class="img_box">
+                                    <img th:if="${item.thumbnailUrl != null and item.thumbnailUrl != ''}"
+                                         th:src="${item.thumbnailUrl}" th:alt="${item.title}">
+                                    <img th:unless="${item.thumbnailUrl != null and item.thumbnailUrl != ''}"
+                                         th:src="@{/images/community/community_trave_bg.jpg}" th:alt="${item.title}">
+                                </div>
+                                <div class="txt_box">
+                                    <h4 th:text="${item.title}"></h4>
+                                    <div class="info">
+                                        <span class="author" th:text="${item.author}"></span>
+                                        <span class="date" th:text="${#temporals.format(item.createdAt, 'yyyy-MM-dd')}"></span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <p th:if="${travelogueList == null or #lists.isEmpty(travelogueList)}"
+                       style="text-align:center; padding: 40px 0; color: #888;">등록된 여행후기가 없습니다.</p>
+
+                    <!-- 글쓰기 버튼 (로그인 회원만) -->
+                    <div class="btn_con" th:if="${session.loginMember != null}">
+                        <a th:href="@{/community/tourguide/write}" class="btn_write">후기 작성하기</a>
+                    </div>
+
+                    <!-- 페이지네이션 -->
+                    <div class="pagination">
+                        <a th:if="${currentPage > 1}"
+                           th:href="@{/community/tourguide/list(page=${currentPage - 1}, searchType=${searchType}, keyword=${keyword})}"
+                           class="prev">◀</a>
+                        <span th:unless="${currentPage > 1}" class="prev disabled">◀</span>
+
+                        <a th:each="i : ${#numbers.sequence(startPage, endPage)}"
+                           th:href="@{/community/tourguide/list(page=${i}, searchType=${searchType}, keyword=${keyword})}"
+                           th:text="${i}"
+                           th:classappend="${i == currentPage} ? ' active'"></a>
+
+                        <a th:if="${currentPage < totalPages}"
+                           th:href="@{/community/tourguide/list(page=${currentPage + 1}, searchType=${searchType}, keyword=${keyword})}"
+                           class="next">▶</a>
+                        <span th:unless="${currentPage < totalPages}" class="next disabled">▶</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<th:block layout:fragment="script">
+    <script th:if="${message}">
+        alert("[[${message}]]");
+    </script>
+    <script th:if="${error}">
+        alert("[[${error}]]");
+    </script>
+</th:block>
+</body>
+</html>
