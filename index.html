@@ -4,7 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hwandroid Portfolio</title>
+  <meta name="description"
+    content="Java, Spring Boot, Vue 3, PostgreSQL 기반으로 성장하는 신입 풀스택 웹 개발자 유환희의 포트폴리오입니다.">
+  <meta name="author" content="유환희">
+  <meta name="theme-color" content="#343a40">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="유환희 | 풀스택 웹 개발자 포트폴리오">
+  <meta property="og:description"
+    content="서비스의 전체 흐름을 이해하고 구현하는 신입 풀스택 웹 개발자 유환희의 프로젝트와 성장 기록입니다.">
+  <meta property="og:url" content="https://hwandroid921.github.io/">
+  <meta property="og:image" content="https://hwandroid921.github.io/jeju-project.png">
+  <link rel="canonical" href="https://hwandroid921.github.io/">
+  <title>유환희 | 풀스택 웹 개발자 포트폴리오</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -38,6 +50,14 @@
     href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap"
     rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    main>section {
+      scroll-margin-top: 72px;
+    }
+
     @media print {
       @page {
         size: A4 landscape;
@@ -83,10 +103,14 @@
 </head>
 
 <body class="bg-white font-body text-ref-text">
+  <a href="#main-content"
+    class="fixed left-4 top-4 z-[60] -translate-y-24 rounded-ui bg-white px-4 py-2 font-heading font-semibold text-ref-text shadow-lg transition-transform focus:translate-y-0">
+    본문 바로가기
+  </a>
   <header class="sticky top-0 z-50 bg-ref-dark text-[#f2f2f2]">
     <div class="mx-auto flex max-w-[1140px] items-center justify-between px-4 py-4">
       <a href="#about" class="font-heading text-base font-semibold tracking-wide">Hwandroid</a>
-      <nav class="hidden items-center gap-8 font-heading text-sm font-semibold uppercase md:flex">
+      <nav aria-label="주요 메뉴" class="hidden items-center gap-8 font-heading text-sm font-semibold uppercase md:flex">
         <a href="#about" class="text-white">ABOUT</a>
         <a href="#resume" class="text-white/80 hover:text-white">RESUME</a>
         <a href="#tech-skills" class="text-white/80 hover:text-white">TECH</a>
@@ -99,7 +123,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section id="about" class="flex min-h-[calc(100vh-56px)] items-center py-8 md:py-10">
       <div class="mx-auto w-full max-w-[1140px] px-4">
         <div class="grid items-start gap-8 md:grid-cols-[300px_1fr] md:gap-12">
@@ -179,7 +203,7 @@
               </section>
               <section class="grid gap-3 py-5 md:grid-cols-[120px_1fr]">
                 <p class="font-heading text-sm font-semibold text-ref-blue">Blog</p>
-                <p class="font-body text-base leading-7 text-ref-muted">velog.io/@hwandroid</p>
+                <p class="font-body text-base leading-7 text-ref-muted">velog.io/@hwandroid921</p>
               </section>
             </div>
           </div>
@@ -578,7 +602,7 @@
   </main>
 
   <footer class="bg-ref-dark py-8 text-center font-body text-sm text-white/70">
-    Hwandroid Portfolio · Junior Full-stack Web Developer
+    Hwandroid Portfolio v2 · Junior Full-stack Web Developer
   </footer>
 </body>
 
