@@ -1,7 +1,7 @@
 # Hwandroid 포트폴리오 페이지
 
-## 이 페이지는 Hwandroid 포트폴리오 페이지 입니다.
+신입 웹 개발자 유환희의 포트폴리오 페이지입니다.
 
-- 6개월차 주니어 웹 개발자 입니다.
-- github : https://github.com/hwandroid921
-- mail : olgksgml@gmail.com
+- Spring Boot 3, Vue 3, PostgreSQL 기반 웹 개발을 학습하고 있습니다.
+- GitHub: https://github.com/hwandroid921
+- Email: olgksgml@gmail.com
