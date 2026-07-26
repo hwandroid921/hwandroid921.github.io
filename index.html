@@ -1,754 +1,2274 @@
 ﻿<!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Portfolio — Ultimate Full-Stack</title>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --bg:#020715;--fg:#D6FFF6;--accent:#231651;--accent2:#497AB7;--accent3:#7CB6DB;
-  --green:#22c55e;--orange:#f97316;--red:#ef4444;
-  --card:#18181b;--card2:#1c1c1f;--border:#27272a;--muted:#A6B2A9;
-  --r:5px;--trans:cubic-bezier(.4,0,.2,1);
-}
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--fg);font-family:'Inter','Noto Sans KR',sans-serif;overflow-x:hidden;}
-body.fullpage-ready{overflow-x:hidden;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-y:none;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hwandroid Portfolio — Junior Full-stack Web Developer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Geist+Mono:wght@400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #020715;
+      --fg: #D6FFF6;
+      --accent: #231651;
+      --accent2: #497AB7;
+      --accent3: #7CB6DB;
+      --green: #22c55e;
+      --orange: #f97316;
+      --red: #ef4444;
+      --card: #18181b;
+      --card2: #1c1c1f;
+      --border: #27272a;
+      --muted: #A6B2A9;
+      --r: 5px;
+      --trans: cubic-bezier(.4, 0, .2, 1);
+    }
 
-/* NOISE TEXTURE */
-body::before{content:'';position:fixed;inset:0;opacity:.03;pointer-events:none;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:256px 256px;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* AMBIENT GLOWS */
-.ambient{position:fixed;pointer-events:none;z-index:0;border-radius:50%;filter:blur(100px);opacity:.08;}
-.amb1{width:600px;height:600px;background:var(--accent);top:-200px;right:-100px;animation:ambFloat 20s ease-in-out infinite;}
-.amb2{width:500px;height:500px;background:var(--accent3);bottom:-100px;left:-150px;animation:ambFloat 25s ease-in-out infinite reverse;}
-.amb3{width:300px;height:300px;background:var(--green);top:50%;left:50%;animation:ambFloat 18s ease-in-out infinite 5s;}
-@keyframes ambFloat{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-30px) scale(1.1);}}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* NAV */
-nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:100;width:min(900px,calc(100vw - 2rem));background:rgba(9,9,11,.8);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:980px;padding:.6rem 1.2rem;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-size:.95rem;font-weight:800;letter-spacing:-.02em;display:flex;align-items:center;gap:.5rem;}
-.logo-dot{width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));}
-.nav-pills{display:flex;gap:.2rem;}
-.nav-group{position:relative;}
-.np{padding:.35rem .8rem;border-radius:980px;font-size:.8rem;color:var(--muted);text-decoration:none;transition:all .2s;}
-.np:hover,.np.active{background:rgba(255,255,255,.08);color:var(--fg);}
-.nav-sub{
-  position:absolute;
-  top:calc(100% + .6rem);
-  left:0;
-  min-width:180px;
-  padding:.45rem;
-  background:rgba(2,7,21,.94);
-  border:1px solid var(--border);
-  border-radius:8px;
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(-6px);
-  transition:all .2s;
-}
-.nav-group:hover .nav-sub,.nav-group:focus-within .nav-sub{opacity:1;visibility:visible;transform:translateY(0);}
-.nav-sub a{display:block;padding:.45rem .65rem;border-radius:5px;font-size:.78rem;color:var(--muted);text-decoration:none;white-space:nowrap;}
-.nav-sub a:hover{background:rgba(255,255,255,.08);color:var(--fg);}
-.nav-cta{padding:.45rem 1.1rem;background:var(--accent);color:#fff;border-radius:980px;font-size:.82rem;font-weight:600;cursor:pointer;border:none;font-family:inherit;transition:all .2s;}
-.nav-cta:hover{background:var(--accent2);transform:scale(1.03);}
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      overflow-x: hidden;
+    }
 
-/* HERO */
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:8rem 2rem 5rem;position:relative;z-index:1;}
-.hero-inner{max-width:820px;text-align:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);border-radius:980px;font-size:.75rem;color:#a5b4fc;font-weight:500;margin-bottom:2rem;animation:fadeUp .8s ease both;}
-.badge-pulse{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite;}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{opacity:.6;box-shadow:0 0 0 6px rgba(34,197,94,0);}}
-.hero h1{font-size:clamp(3rem,8vw,6rem);font-weight:900;line-height:1.02;letter-spacing:-.05em;margin-bottom:1.5rem;animation:fadeUp .8s ease .1s both;}
-.hero h1 .g1{background:linear-gradient(135deg,#fff,#a1a1aa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero h1 .g2{background:linear-gradient(135deg,var(--accent),var(--accent2),var(--accent3));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-sub{font-size:1.1rem;color:var(--muted);max-width:580px;margin:0 auto 2.5rem;line-height:1.75;animation:fadeUp .8s ease .2s both;}
-.hero-btns{display:flex;gap:.8rem;justify-content:center;margin-bottom:4rem;flex-wrap:wrap;animation:fadeUp .8s ease .3s both;}
-.btn{padding:.85rem 2rem;border-radius:10px;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .3s var(--trans);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;font-family:inherit;border:none;}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 0 0 0 rgba(99,102,241,.4);}
-.btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,.35);}
-.btn-secondary{background:rgba(255,255,255,.06);color:var(--fg);border:1px solid var(--border);}
-.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);}
-.hero-metrics{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;animation:fadeUp .8s ease .4s both;}
-.hm{text-align:center;}
-.hm-val{font-size:2rem;font-weight:800;letter-spacing:-.04em;display:block;background:linear-gradient(135deg,var(--fg),var(--muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hm-lbl{font-size:.72rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    body.fullpage-ready {
+      overflow-x: hidden;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      overscroll-behavior-y: none;
+    }
 
-/* SECTIONS */
-section{padding:7rem 2rem;position:relative;z-index:1;display:flex;align-items:center;}
-.container{max-width:1100px;margin:0 auto;}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;}
-.sec-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-.04em;margin-bottom:.8rem;}
-.sec-sub{color:var(--muted);font-size:.95rem;line-height:1.7;max-width:520px;}
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      opacity: .03;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 256px 256px;
+    }
 
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-top:4rem;}
-.about-visual{position:relative;}
-.about-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;}
-.about-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(99,102,241,.1),transparent 60%);}
-.ac-avatar{width:80px;height:80px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1rem;}
-.ac-name{font-size:1.2rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.2rem;}
-.ac-role{font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;}
-.ac-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;}
-.act{padding:.25rem .7rem;border-radius:6px;font-size:.72rem;font-weight:600;}
-.act1{background:rgba(99,102,241,.12);color:#a5b4fc;}
-.act2{background:rgba(6,182,212,.1);color:#67e8f9;}
-.act3{background:rgba(34,197,94,.1);color:#86efac;}
-.act4{background:rgba(249,115,22,.1);color:#fdba74;}
-.ac-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;}
-.acs{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:.8rem;text-align:center;}
-.acs-val{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;color:var(--accent);}
-.acs-lbl{font-size:.65rem;color:var(--muted);margin-top:.1rem;}
-.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:.95rem;}
-.about-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.6rem;}
-.al{display:flex;align-items:center;gap:.7rem;font-size:.88rem;}
-.al-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0;}
+    /* AMBIENT GLOWS */
+    .ambient {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .08;
+    }
 
-/* SKILLS */
-.skills-bg{background:rgba(255,255,255,.015);}
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3.5rem;}
-.skill-group{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;}
-.sg-header{display:flex;align-items:center;gap:.7rem;margin-bottom:1.2rem;}
-.sg-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
-.sgi1{background:rgba(99,102,241,.15);}
-.sgi2{background:rgba(6,182,212,.12);}
-.sgi3{background:rgba(249,115,22,.12);}
-.sgi4{background:rgba(34,197,94,.12);}
-.sg-title{font-size:.88rem;font-weight:700;}
-.skill-items{display:flex;flex-wrap:wrap;gap:.4rem;}
-.si{padding:.3rem .7rem;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:6px;font-size:.75rem;font-weight:500;transition:all .2s;}
-.si:hover{background:rgba(99,102,241,.1);border-color:rgba(99,102,241,.3);color:var(--accent);}
+    .amb1 {
+      width: 600px;
+      height: 600px;
+      background: var(--accent);
+      top: -200px;
+      right: -100px;
+      animation: ambFloat 20s ease-in-out infinite;
+    }
 
-/* ARCHITECTURE */
-.arch-section{text-align:center;}
-.arch-diagram{max-width:800px;margin:3rem auto 0;display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
-.arch-row{display:flex;background:var(--bg);}
-.arch-label{writing-mode:vertical-rl;padding:1rem .8rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:rgba(255,255,255,.03);border-right:1px solid var(--border);min-width:40px;display:flex;align-items:center;justify-content:center;}
-.arch-cells{flex:1;display:flex;gap:1px;padding:1rem;flex-wrap:wrap;}
-.arch-cell{padding:.5rem 1rem;border-radius:6px;font-size:.78rem;font-weight:600;white-space:nowrap;}
-.ac-front{background:rgba(34,197,94,.1);color:#86efac;border:1px solid rgba(34,197,94,.2);}
-.ac-back{background:rgba(99,102,241,.1);color:#a5b4fc;border:1px solid rgba(99,102,241,.2);}
-.ac-ai{background:rgba(139,92,246,.12);color:#c4b5fd;border:1px solid rgba(139,92,246,.25);}
-.ac-db{background:rgba(249,115,22,.1);color:#fdba74;border:1px solid rgba(249,115,22,.2);}
-.ac-ops{background:rgba(6,182,212,.1);color:#67e8f9;border:1px solid rgba(6,182,212,.2);}
+    .amb2 {
+      width: 500px;
+      height: 500px;
+      background: var(--accent3);
+      bottom: -100px;
+      left: -150px;
+      animation: ambFloat 25s ease-in-out infinite reverse;
+    }
 
-/* PROJECTS */
-.proj-hero{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;transition:all .3s;}
-.proj-hero:hover{border-color:rgba(99,102,241,.35);box-shadow:0 20px 60px rgba(0,0,0,.4);}
-.ph-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);border-radius:980px;font-size:.7rem;color:#a5b4fc;font-weight:600;margin-bottom:1rem;}
-.ph-title{font-size:1.6rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.7rem;}
-.ph-desc{color:var(--muted);font-size:.9rem;line-height:1.7;margin-bottom:1.5rem;}
-.ph-results{display:flex;gap:1.5rem;margin-bottom:1.5rem;}
-.phr{text-align:center;}
-.phr-val{font-size:1.3rem;font-weight:800;color:var(--accent);}
-.phr-lbl{font-size:.68rem;color:var(--muted);}
-.ph-links{display:flex;gap:.6rem;}
-.ph-link{padding:.5rem 1.1rem;border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;}
-.phl1{background:var(--accent);color:#fff;}
-.phl1:hover{background:var(--accent2);}
-.phl2{background:rgba(255,255,255,.06);color:var(--fg);border:1px solid var(--border);}
-.phl2:hover{background:rgba(255,255,255,.1);}
-.ph-visual{background:linear-gradient(135deg,#1a1040,#0f0828);border-radius:16px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
-.ph-visual::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(99,102,241,.15),transparent 60%);}
-.proj-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.pg3-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;cursor:pointer;}
-.pg3-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-4px);}
-.pg3-thumb{height:120px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:1rem;}
-.pgt1{background:linear-gradient(135deg,#0f2837,#1e4a63);}
-.pgt2{background:linear-gradient(135deg,#0f3720,#1e6340);}
-.pgt3{background:linear-gradient(135deg,#37110f,#63201e);}
-.pg3-type{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.3rem;}
-.pg3-title{font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
-.pg3-desc{color:var(--muted);font-size:.78rem;line-height:1.55;}
-.project-list{display:flex;flex-direction:column;margin-top:3rem;}
-.project-row{display:grid;grid-template-columns:1fr auto;gap:2rem;padding:1.25rem 0;border-top:1px solid var(--border);}
-.project-row:last-child{border-bottom:1px solid var(--border);}
-.project-name{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.35rem;}
-.project-desc{color:var(--muted);font-size:.88rem;line-height:1.65;max-width:680px;}
-.project-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem;}
-.project-tag{padding:.25rem .6rem;border:1px solid var(--border);border-radius:5px;font-size:.72rem;color:var(--muted);}
-.project-links{display:flex;gap:.5rem;align-items:start;justify-content:flex-end;flex-wrap:wrap;}
-.project-link{padding:.45rem .8rem;border-radius:5px;background:rgba(255,255,255,.06);border:1px solid var(--border);font-size:.78rem;color:var(--fg);text-decoration:none;}
-.project-link.primary{background:var(--accent);border-color:var(--accent);color:var(--fg);}
+    .amb3 {
+      width: 300px;
+      height: 300px;
+      background: var(--green);
+      top: 50%;
+      left: 50%;
+      animation: ambFloat 18s ease-in-out infinite 5s;
+    }
 
-/* RESEARCH */
-.research-bg{background:rgba(255,255,255,.015);}
-.papers-list{margin-top:3rem;display:flex;flex-direction:column;gap:1rem;}
-.paper-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;}
-.paper-card:hover{border-color:rgba(99,102,241,.3);}
-.paper-top{display:flex;align-items:flex-start;gap:1rem;margin-bottom:.8rem;}
-.paper-venue{padding:.2rem .7rem;border-radius:4px;font-size:.68rem;font-weight:700;background:rgba(239,68,68,.12);color:#fca5a5;flex-shrink:0;margin-top:.1rem;}
-.paper-title{font-size:.95rem;font-weight:700;line-height:1.4;}
-.paper-meta{display:flex;gap:1.5rem;font-size:.78rem;color:var(--muted);}
-.pm-item{display:flex;align-items:center;gap:.3rem;}
+    @keyframes ambFloat {
 
-/* TIMELINE */
-.timeline-list{margin-top:3rem;position:relative;}
-.timeline-list::before{content:'';position:absolute;left:22px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--border));}
-.tl-item{display:flex;gap:1.5rem;margin-bottom:2rem;padding-left:.2rem;}
-.tl-dot{width:44px;height:44px;border-radius:50%;background:var(--card);border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;position:relative;z-index:1;}
-.tl-dot.current{border-color:var(--accent);background:rgba(99,102,241,.12);}
-.tl-body{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.2rem 1.5rem;flex:1;}
-.tl-date{font-size:.7rem;color:var(--accent);font-weight:600;margin-bottom:.2rem;}
-.tl-title{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
-.tl-company{font-size:.8rem;color:var(--muted);}
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1);
+      }
 
-/* BLOG */
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
-.blog-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:1.5rem;transition:all .3s;cursor:pointer;}
-.blog-card:hover{border-color:rgba(99,102,241,.3);transform:translateY(-3px);}
-.bc-cat{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem;}
-.bc-title{font-size:.95rem;font-weight:700;line-height:1.4;margin-bottom:.5rem;}
-.bc-excerpt{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.8rem;}
-.bc-meta{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);}
+      50% {
+        transform: translate(30px, -30px) scale(1.1);
+      }
+    }
 
-/* CERTIFICATIONS */
-.certs-row{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.5rem;}
-.cert{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.5rem;display:flex;align-items:center;gap:.8rem;transition:all .2s;}
-.cert:hover{border-color:rgba(99,102,241,.3);}
-.cert-icon{font-size:1.5rem;}
-.cert-name{font-size:.85rem;font-weight:600;}
-.cert-issuer{font-size:.72rem;color:var(--muted);}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(900px, calc(100vw - 2rem));
+      background: rgba(9, 9, 11, .8);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 980px;
+      padding: .6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-/* CONTACT */
-.contact-ultimate{background:linear-gradient(135deg,rgba(99,102,241,.08),rgba(139,92,246,.06));}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
-.cg-left h3{font-size:1.5rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.7rem;}
-.cg-left p{color:var(--muted);line-height:1.7;margin-bottom:2rem;font-size:.9rem;}
-.contact-items{display:flex;flex-direction:column;gap:.7rem;}
-.contact-item{display:flex;align-items:center;gap:.8rem;padding:.85rem 1rem;background:var(--card);border:1px solid var(--border);border-radius:10px;text-decoration:none;color:var(--fg);transition:all .2s;}
-.contact-item:hover{border-color:rgba(99,102,241,.4);transform:translateX(4px);}
-.ci-icon-wrap{width:34px;height:34px;border-radius:8px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
-.ci-text .ci-label{font-size:.68rem;color:var(--muted);}
-.ci-text .ci-value{font-size:.88rem;font-weight:600;}
-.ci-arrow{margin-left:auto;font-size:.8rem;color:var(--muted);}
-.cg-right .form{display:flex;flex-direction:column;gap:.8rem;}
-.form-input{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;color:var(--fg);font-family:inherit;font-size:.88rem;transition:border .2s;}
-.form-input:focus{outline:none;border-color:var(--accent);}
-.form-input::placeholder{color:var(--muted);}
-textarea.form-input{resize:vertical;min-height:120px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
-.form-submit{padding:.9rem;background:var(--accent);border:none;border-radius:8px;color:#fff;font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
-.form-submit:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(99,102,241,.4);}
+    .logo {
+      font-size: .95rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
 
-/* FOOTER */
-footer{border-top:1px solid var(--border);padding:3rem 2rem;position:relative;z-index:1;}
-.footer-inner{max-width:1100px;margin:0 auto;}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem;}
-.ft-brand{}
-.ft-logo-name{font-size:1rem;font-weight:800;letter-spacing:-.02em;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
-.ft-desc{font-size:.82rem;color:var(--muted);line-height:1.65;max-width:260px;}
-.ft-col h4{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
-.ft-col ul a{font-size:.82rem;color:rgba(250,250,250,.5);text-decoration:none;transition:color .2s;}
-.ft-col ul a:hover{color:var(--fg);}
-.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--muted);}
+    .logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s var(--trans),transform .7s var(--trans);}
-.reveal.visible{opacity:1;transform:none;}
+    .nav-pills {
+      display: flex;
+      gap: .2rem;
+    }
 
-/* FULLPAGE SCROLL */
-.fullpage-panel{
-  min-height:100vh;
-  height:100vh;
-  overflow-y:auto;
-  scroll-behavior:smooth;
-  scroll-snap-align:start;
-  scrollbar-width:thin;
-  scrollbar-color:rgba(99,102,241,.45) transparent;
-}
-.fullpage-panel::-webkit-scrollbar{width:6px;}
-.fullpage-panel::-webkit-scrollbar-track{background:transparent;}
-.fullpage-panel::-webkit-scrollbar-thumb{background:rgba(99,102,241,.45);border-radius:999px;}
+    .nav-group {
+      position: relative;
+    }
 
-/* STYLE GUIDE APPLICATION */
-section{border-top:1px solid var(--border);}
-.hero{border-top:none;}
-.fullpage-panel>.container,.fullpage-panel>.hero-inner{
-  width:100%;
-}
-footer.fullpage-panel{
-  display:flex;
-  align-items:center;
-}
-footer.fullpage-panel>.footer-inner{
-  width:100%;
-}
-.eyebrow,.bc-cat,.pg3-type,.tl-date{color:var(--fg);}
-.hero-badge,.ph-badge{
-  background:rgba(35,22,81,.8);
-  border-color:rgba(214,255,246,.28);
-  color:var(--fg);
-}
-.btn-primary,.nav-cta,.phl1,.form-submit{
-  background:var(--accent);
-  color:var(--fg);
-}
-.btn-primary:hover,.nav-cta:hover,.phl1:hover,.form-submit:hover{
-  background:var(--accent2);
-}
-.about-card,.skill-group,.proj-hero,.pg3-card,.paper-card,.tl-body,.blog-card,.cert,.contact-item{
-  background:transparent;
-  border:0;
-  border-radius:0;
-  padding-left:0;
-  padding-right:0;
-  box-shadow:none;
-}
-.about-card::before,.ph-visual::after{content:none;}
-.about-card:hover,.skill-group:hover,.proj-hero:hover,.pg3-card:hover,.paper-card:hover,.blog-card:hover,.cert:hover,.contact-item:hover{
-  border-color:transparent;
-  box-shadow:none;
-}
-.acs{
-  background:transparent;
-  border:0;
-  border-radius:0;
-}
-.act1,.sgi1,.tl-dot.current,.ci-icon-wrap{
-  background:rgba(35,22,81,.8);
-  color:var(--fg);
-}
-.ac-back{
-  background:rgba(35,22,81,.8);
-  color:var(--fg);
-  border-color:rgba(214,255,246,.22);
-}
-.si:hover{
-  background:rgba(35,22,81,.8);
-  border-color:rgba(214,255,246,.22);
-  color:var(--fg);
-}
-.proj-hero:hover,.pg3-card:hover,.blog-card:hover,.contact-item:hover{
-  transform:none;
-}
-.contact-ultimate{
-  background:linear-gradient(135deg,rgba(35,22,81,.34),rgba(73,122,183,.12));
-}
-.fullpage-panel{
-  scrollbar-color:rgba(124,182,219,.45) transparent;
-}
-.fullpage-panel::-webkit-scrollbar-thumb{
-  background:rgba(124,182,219,.45);
-}
+    .np {
+      padding: .35rem .8rem;
+      border-radius: 980px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all .2s;
+    }
 
-@media(max-width:1024px){.about-grid,.proj-hero,.contact-grid{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
-@media(max-width:768px){.skills-grid,.proj-grid3,.blog-grid{grid-template-columns:1fr;}.hero-metrics{gap:1.5rem;}.arch-row{flex-direction:column;}.nav-pills{display:none;}.footer-top{grid-template-columns:1fr;}.project-row{grid-template-columns:1fr;}.project-links{justify-content:flex-start;}}
-</style>
+    .np:hover,
+    .np.active {
+      background: rgba(255, 255, 255, .08);
+      color: var(--fg);
+    }
+
+    .nav-sub {
+      position: absolute;
+      top: calc(100% + .6rem);
+      left: 0;
+      min-width: 180px;
+      padding: .45rem;
+      background: rgba(2, 7, 21, .94);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: all .2s;
+    }
+
+    .nav-group:hover .nav-sub,
+    .nav-group:focus-within .nav-sub {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-sub a {
+      display: block;
+      padding: .45rem .65rem;
+      border-radius: 5px;
+      font-size: .78rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-sub a:hover {
+      background: rgba(255, 255, 255, .08);
+      color: var(--fg);
+    }
+
+    .nav-cta {
+      padding: .45rem 1.1rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 980px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      transition: all .2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent2);
+      transform: scale(1.03);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      max-width: 820px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem .9rem;
+      background: rgba(99, 102, 241, .12);
+      border: 1px solid rgba(99, 102, 241, .3);
+      border-radius: 980px;
+      font-size: .75rem;
+      color: #a5b4fc;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      animation: fadeUp .8s ease both;
+    }
+
+    .badge-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, .4);
+      }
+
+      50% {
+        opacity: .6;
+        box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .8s ease .1s both;
+    }
+
+    .hero h1 .g1 {
+      background: linear-gradient(135deg, #fff, #a1a1aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 .g2 {
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+      animation: fadeUp .8s ease .2s both;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: .8rem;
+      justify-content: center;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      animation: fadeUp .8s ease .3s both;
+    }
+
+    .btn {
+      padding: .85rem 2rem;
+      border-radius: 10px;
+      font-size: .9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .3s var(--trans);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: inherit;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 0 0 rgba(99, 102, 241, .4);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, .35);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, .06);
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .2);
+    }
+
+    .hero-metrics {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      animation: fadeUp .8s ease .4s both;
+    }
+
+    .hm {
+      text-align: center;
+    }
+
+    .hm-val {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -.04em;
+      display: block;
+      background: linear-gradient(135deg, var(--fg), var(--muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hm-lbl {
+      font-size: .72rem;
+      color: var(--muted);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* SECTIONS */
+    section {
+      padding: clamp(6rem, 8vh, 7rem) 2rem clamp(3.5rem, 6vh, 5rem);
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .8rem;
+    }
+
+    .sec-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.04em;
+      margin-bottom: .8rem;
+    }
+
+    .sec-sub {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, .1), transparent 60%);
+    }
+
+    .ac-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .ac-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: .2rem;
+    }
+
+    .ac-role {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .ac-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .act {
+      padding: .25rem .7rem;
+      border-radius: 6px;
+      font-size: .72rem;
+      font-weight: 600;
+    }
+
+    .act1 {
+      background: rgba(99, 102, 241, .12);
+      color: #a5b4fc;
+    }
+
+    .act2 {
+      background: rgba(6, 182, 212, .1);
+      color: #67e8f9;
+    }
+
+    .act3 {
+      background: rgba(34, 197, 94, .1);
+      color: #86efac;
+    }
+
+    .act4 {
+      background: rgba(249, 115, 22, .1);
+      color: #fdba74;
+    }
+
+    .ac-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+    }
+
+    .acs {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .8rem;
+      text-align: center;
+    }
+
+    .acs-val {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      color: var(--accent);
+    }
+
+    .acs-lbl {
+      font-size: .65rem;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: .95rem;
+      max-width: 680px;
+    }
+
+    .about-text strong {
+      color: var(--fg);
+      font-weight: 700;
+    }
+
+    .about-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .6rem;
+    }
+
+    .al {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .88rem;
+    }
+
+    .al-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* SKILLS */
+    .skills-bg {
+      background: rgba(255, 255, 255, .015);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .skill-group {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+    }
+
+    .sg-header {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .sg-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+    }
+
+    .sgi1 {
+      background: rgba(99, 102, 241, .15);
+    }
+
+    .sgi2 {
+      background: rgba(6, 182, 212, .12);
+    }
+
+    .sgi3 {
+      background: rgba(249, 115, 22, .12);
+    }
+
+    .sgi4 {
+      background: rgba(34, 197, 94, .12);
+    }
+
+    .sg-title {
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .si {
+      padding: .3rem .7rem;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: .75rem;
+      font-weight: 500;
+      transition: all .2s;
+    }
+
+    .si:hover {
+      background: rgba(99, 102, 241, .1);
+      border-color: rgba(99, 102, 241, .3);
+      color: var(--accent);
+    }
+
+    /* PAGE EXPERIENCE */
+    .arch-section {
+      text-align: center;
+    }
+
+    .arch-diagram {
+      max-width: 800px;
+      margin: 3rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+
+    .arch-row {
+      display: flex;
+      background: var(--bg);
+    }
+
+    .arch-label {
+      padding: 1rem;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .03);
+      border-right: 1px solid var(--border);
+      width: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .arch-cells {
+      flex: 1;
+      display: flex;
+      gap: .45rem 1.25rem;
+      padding: 1rem;
+      flex-wrap: nowrap;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    .arch-cell {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: .35rem .75rem;
+      border-radius: 6px;
+      font-size: .76rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .arch-cell:not(:last-child)::after {
+      content: '→';
+      position: absolute;
+      right: -1.15rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .ac-front {
+      background: rgba(34, 197, 94, .1);
+      color: #86efac;
+      border: 1px solid rgba(34, 197, 94, .2);
+    }
+
+    .ac-back {
+      background: rgba(99, 102, 241, .1);
+      color: #a5b4fc;
+      border: 1px solid rgba(99, 102, 241, .2);
+    }
+
+    .ac-ai {
+      background: rgba(139, 92, 246, .12);
+      color: #c4b5fd;
+      border: 1px solid rgba(139, 92, 246, .25);
+    }
+
+    .ac-db {
+      background: rgba(249, 115, 22, .1);
+      color: #fdba74;
+      border: 1px solid rgba(249, 115, 22, .2);
+    }
+
+    .ac-ops {
+      background: rgba(6, 182, 212, .1);
+      color: #67e8f9;
+      border: 1px solid rgba(6, 182, 212, .2);
+    }
+
+    /* PROJECTS */
+    .proj-hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      transition: all .3s;
+    }
+
+    .proj-hero:hover {
+      border-color: rgba(99, 102, 241, .35);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+    }
+
+    .ph-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .8rem;
+      background: rgba(99, 102, 241, .1);
+      border: 1px solid rgba(99, 102, 241, .25);
+      border-radius: 980px;
+      font-size: .7rem;
+      color: #a5b4fc;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .ph-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .7rem;
+    }
+
+    .ph-desc {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .ph-results {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .phr {
+      text-align: center;
+    }
+
+    .phr-val {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .phr-lbl {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    .ph-links {
+      display: flex;
+      gap: .6rem;
+    }
+
+    .ph-link {
+      padding: .5rem 1.1rem;
+      border-radius: 8px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .phl1 {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .phl1:hover {
+      background: var(--accent2);
+    }
+
+    .phl2 {
+      background: rgba(255, 255, 255, .06);
+      color: var(--fg);
+      border: 1px solid var(--border);
+    }
+
+    .phl2:hover {
+      background: rgba(255, 255, 255, .1);
+    }
+
+    .ph-visual {
+      background: linear-gradient(135deg, #1a1040, #0f0828);
+      border-radius: 16px;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ph-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, .15), transparent 60%);
+    }
+
+    .proj-grid3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .pg3-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      transition: all .3s;
+      cursor: pointer;
+    }
+
+    .pg3-card:hover {
+      border-color: rgba(99, 102, 241, .3);
+      transform: translateY(-4px);
+    }
+
+    .pg3-thumb {
+      height: 120px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .pgt1 {
+      background: linear-gradient(135deg, #0f2837, #1e4a63);
+    }
+
+    .pgt2 {
+      background: linear-gradient(135deg, #0f3720, #1e6340);
+    }
+
+    .pgt3 {
+      background: linear-gradient(135deg, #37110f, #63201e);
+    }
+
+    .pg3-type {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .3rem;
+    }
+
+    .pg3-title {
+      font-size: .92rem;
+      font-weight: 700;
+      margin-bottom: .4rem;
+    }
+
+    .pg3-desc {
+      color: var(--muted);
+      font-size: .78rem;
+      line-height: 1.55;
+    }
+
+    .project-list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.75rem;
+      padding: 0;
+    }
+
+    #projects,
+    #projects-more {
+      position: relative;
+    }
+
+    .project-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-page {
+      display: block;
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .project-row:last-child {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-row.is-empty {
+      opacity: .45;
+      pointer-events: none;
+    }
+
+    .project-row.is-empty .project-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: .72rem;
+    }
+
+    .project-thumb {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/10;
+      border: 1px dashed rgba(214, 255, 246, .28);
+      border-radius: var(--r);
+      background: rgba(255, 255, 255, .025);
+      overflow: hidden;
+    }
+
+    .project-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-name {
+      display: inline-flex;
+      width: max-content;
+      max-width: 100%;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -.02em;
+      margin-bottom: .45rem;
+      color: var(--fg);
+      text-decoration: none;
+    }
+
+    .project-name:hover {
+      color: var(--accent3);
+    }
+
+    .project-line {
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: .65rem;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.5;
+      max-width: 740px;
+    }
+
+    .project-line strong {
+      color: var(--fg);
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .6rem;
+    }
+
+    .project-tag {
+      padding: .25rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* EDUCATION */
+    .research-bg {
+      background: rgba(255, 255, 255, .015);
+    }
+
+    .papers-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .paper-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      transition: all .3s;
+    }
+
+    .paper-card:hover {
+      border-color: rgba(99, 102, 241, .3);
+    }
+
+    .paper-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: .8rem;
+    }
+
+    .paper-venue {
+      padding: .2rem .7rem;
+      border-radius: 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      background: rgba(239, 68, 68, .12);
+      color: #fca5a5;
+      flex-shrink: 0;
+      margin-top: .1rem;
+    }
+
+    .paper-title {
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      max-width: 720px;
+    }
+
+    .paper-meta {
+      display: flex;
+      gap: 1.5rem;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+
+    .pm-item {
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+
+    /* TIMELINE */
+    .timeline-list {
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .timeline-list::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--border));
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-left: .2rem;
+    }
+
+    .tl-dot {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tl-dot.current {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, .12);
+    }
+
+    .tl-body {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.2rem 1.5rem;
+      flex: 1;
+    }
+
+    .tl-date {
+      font-size: .7rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+
+    .tl-title {
+      font-size: .95rem;
+      font-weight: 700;
+      margin-bottom: .2rem;
+    }
+
+    .tl-company {
+      font-size: .8rem;
+      color: var(--muted);
+      max-width: 720px;
+      line-height: 1.6;
+    }
+
+    /* BLOG */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .blog-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.5rem;
+      transition: all .3s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      border-color: rgba(99, 102, 241, .3);
+      transform: translateY(-3px);
+    }
+
+    .bc-cat {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem;
+    }
+
+    .bc-title {
+      font-size: .95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: .5rem;
+    }
+
+    .bc-excerpt {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: .8rem;
+    }
+
+    .bc-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* CERTIFICATIONS */
+    .certs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .cert {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      transition: all .2s;
+    }
+
+    .cert:hover {
+      border-color: rgba(99, 102, 241, .3);
+    }
+
+    .cert-icon {
+      font-size: 1.5rem;
+    }
+
+    .cert-name {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .cert-issuer {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    /* CONTACT */
+    .contact-ultimate {
+      background: linear-gradient(135deg, rgba(99, 102, 241, .08), rgba(139, 92, 246, .06));
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .cg-left h3 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: .7rem;
+    }
+
+    .cg-left p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-size: .9rem;
+      max-width: 560px;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      padding: .85rem 1rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--fg);
+      transition: all .2s;
+    }
+
+    .contact-item:hover {
+      border-color: rgba(99, 102, 241, .4);
+      transform: translateX(4px);
+    }
+
+    .ci-icon-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(99, 102, 241, .12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    .ci-text .ci-label {
+      font-size: .68rem;
+      color: var(--muted);
+    }
+
+    .ci-text .ci-value {
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    .ci-arrow {
+      margin-left: auto;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .cg-right .form {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
+    .form-input {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .85rem 1rem;
+      color: var(--fg);
+      font-family: inherit;
+      font-size: .88rem;
+      transition: border .2s;
+    }
+
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-input::placeholder {
+      color: var(--muted);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem;
+    }
+
+    .form-submit {
+      padding: .9rem;
+      background: var(--accent);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+    }
+
+    .form-submit:hover {
+      background: var(--accent2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, .4);
+    }
+
+    /* REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s var(--trans), transform .7s var(--trans);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* FULLPAGE SCROLL */
+    .fullpage-panel {
+      min-height: 100svh;
+      height: 100svh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      scroll-snap-align: start;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(99, 102, 241, .45) transparent;
+    }
+
+    .fullpage-panel::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .fullpage-panel::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .fullpage-panel::-webkit-scrollbar-thumb {
+      background: rgba(99, 102, 241, .45);
+      border-radius: 999px;
+    }
+
+    /* STYLE GUIDE APPLICATION */
+    section {
+      border-top: 1px solid var(--border);
+    }
+
+    .hero {
+      border-top: none;
+    }
+
+    .fullpage-panel>.container,
+    .fullpage-panel>.hero-inner {
+      width: 100%;
+    }
+
+    .eyebrow,
+    .bc-cat,
+    .pg3-type,
+    .tl-date {
+      color: var(--fg);
+    }
+
+    .hero-badge,
+    .ph-badge {
+      background: rgba(35, 22, 81, .8);
+      border-color: rgba(214, 255, 246, .28);
+      color: var(--fg);
+    }
+
+    .btn-primary,
+    .nav-cta,
+    .phl1,
+    .form-submit {
+      background: var(--accent);
+      color: var(--fg);
+    }
+
+    .btn-primary:hover,
+    .nav-cta:hover,
+    .phl1:hover,
+    .form-submit:hover {
+      background: var(--accent2);
+    }
+
+    .about-card,
+    .skill-group,
+    .proj-hero,
+    .pg3-card,
+    .paper-card,
+    .tl-body,
+    .blog-card,
+    .cert,
+    .contact-item {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding-left: 0;
+      padding-right: 0;
+      box-shadow: none;
+    }
+
+    .about-card::before,
+    .ph-visual::after {
+      content: none;
+    }
+
+    .about-card:hover,
+    .skill-group:hover,
+    .proj-hero:hover,
+    .pg3-card:hover,
+    .paper-card:hover,
+    .blog-card:hover,
+    .cert:hover,
+    .contact-item:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .acs {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .act1,
+    .sgi1,
+    .tl-dot.current,
+    .ci-icon-wrap {
+      background: rgba(35, 22, 81, .8);
+      color: var(--fg);
+    }
+
+    .ac-back {
+      background: rgba(35, 22, 81, .8);
+      color: var(--fg);
+      border-color: rgba(214, 255, 246, .22);
+    }
+
+    .si:hover {
+      background: rgba(35, 22, 81, .8);
+      border-color: rgba(214, 255, 246, .22);
+      color: var(--fg);
+    }
+
+    .proj-hero:hover,
+    .pg3-card:hover,
+    .blog-card:hover,
+    .contact-item:hover {
+      transform: none;
+    }
+
+    .contact-ultimate {
+      background: linear-gradient(135deg, rgba(35, 22, 81, .34), rgba(73, 122, 183, .12));
+    }
+
+    .fullpage-panel {
+      scrollbar-color: rgba(124, 182, 219, .45) transparent;
+    }
+
+    .fullpage-panel::-webkit-scrollbar-thumb {
+      background: rgba(124, 182, 219, .45);
+    }
+
+    @media(max-width:1024px) {
+
+      .about-grid,
+      .proj-hero,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media(max-width:768px) {
+      section {
+        padding: 5.75rem 1.25rem 3rem;
+      }
+
+      .skills-grid,
+      .proj-grid3,
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-metrics {
+        gap: 1.5rem;
+      }
+
+      .arch-row {
+        flex-direction: column;
+      }
+
+      .arch-label {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-pills {
+        display: none;
+      }
+
+      .project-row {
+        grid-template-columns: 1fr;
+      }
+
+      .project-head {
+        align-items: flex-start;
+      }
+
+      .project-thumb {
+        max-width: 320px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="ambient amb1"></div>
-<div class="ambient amb2"></div>
-<div class="ambient amb3"></div>
+  <div class="ambient amb1"></div>
+  <div class="ambient amb2"></div>
+  <div class="ambient amb3"></div>
 
-<nav>
-  <div class="logo"><div class="logo-dot"></div>Hwandroid</div>
-  <div class="nav-pills">
-    <div class="nav-group">
-      <a class="np" href="#about">About</a>
-      <div class="nav-sub">
-        <a href="#about">About Me</a>
-      </div>
+  <nav>
+    <div class="logo">
+      <div class="logo-dot"></div>Hwandroid
     </div>
-    <div class="nav-group">
-      <a class="np" href="#skills">Skills</a>
-      <div class="nav-sub">
-        <a href="#skills">Tech Stack</a>
-        <a href="#architecture">Architecture</a>
+    <div class="nav-pills">
+      <div class="nav-group">
+        <a class="np" href="#about">About</a>
+        <div class="nav-sub">
+          <a href="#about">About Me</a>
+        </div>
       </div>
-    </div>
-    <div class="nav-group">
-      <a class="np" href="#projects">Projects</a>
-      <div class="nav-sub">
-        <a href="#projects">Project List</a>
+      <div class="nav-group">
+        <a class="np" href="#skills">Skills</a>
+        <div class="nav-sub">
+          <a href="#skills">Tech Stack</a>
+        </div>
       </div>
-    </div>
-    <div class="nav-group">
-      <a class="np" href="#publications">Research</a>
-      <div class="nav-sub">
-        <a href="#publications">Publications</a>
-        <a href="#career">Career Timeline</a>
-        <a href="#qualifications">Qualifications</a>
+      <div class="nav-group">
+        <a class="np" href="#career">Experience</a>
+        <div class="nav-sub">
+          <a href="#career">Growth Timeline</a>
+          <a href="#architecture">Feature Flow</a>
+          <a href="#qualifications">Core Strengths</a>
+        </div>
       </div>
+      <div class="nav-group">
+        <a class="np" href="#projects">Projects</a>
+        <div class="nav-sub">
+          <a href="#projects">Project List 01</a>
+          <a href="#projects-more">Project List 02</a>
+        </div>
+      </div>
+      <a class="np" href="#education">Education</a>
+      <a class="np" href="#contact">Contact</a>
     </div>
-    <a class="np" href="#contact">Contact</a>
-  </div>
-  <button class="nav-cta">Hire Me →</button>
-</nav>
+    <button class="nav-cta">Contact →</button>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-badge"><div class="badge-pulse"></div>6개월차 신입 웹 개발자 · Hwandroid</div>
-    <h1><span class="g1">Full Stack Web</span><br><span class="g2">Developer</span></h1>
-    <p class="hero-sub">PostgreSQL, Spring Boot 3, Vue.js 기반의 풀스택 웹 페이지 개발을 지향합니다. Docker 배포, GitHub 협업, Notion/Figma 문서화, Codex와 Claude를 활용한 개인 프로젝트 개발 경험을 쌓아가고 있습니다.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-primary">🚀 View Projects</a>
-      <a href="#contact" class="btn btn-secondary">💬 Let's Talk</a>
-      <a href="#" class="btn btn-secondary">📄 Resume</a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <div class="badge-pulse"></div>신입 웹 개발자 · Hwandroid
+      </div>
+      <h1><span class="g2">디테일</span><span class="g1">의</span><br>
+        <span class="g1">중요성을 아는</span></h1>
+      <p class="hero-sub">Spring Boot 3, Vue 3, PostgreSQL을 중심으로 웹 서비스를 구현하며 성장하고 있습니다. GitHub 협업, Docker 배포,
+        Notion/Figma 문서화, AI 개발 도구 활용까지 실무에 가까운 개발 흐름을 익히고 있습니다.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">🚀 View Projects</a>
+        <a href="#contact" class="btn btn-secondary">💬 Let's Talk</a>
+        <a href="#contact" class="btn btn-secondary">📄 Resume</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="hm"><span class="hm-val">5</span><span class="hm-lbl">Projects</span></div>
+        <div class="hm"><span class="hm-val">6개월</span><span class="hm-lbl">Learning</span></div>
+        <div class="hm"><span class="hm-val">3+</span><span class="hm-lbl">Core Stack</span></div>
+        <div class="hm"><span class="hm-val">Docs</span><span class="hm-lbl">Notion / Figma</span></div>
+      </div>
     </div>
-    <div class="hero-metrics">
-      <div class="hm"><span class="hm-val">5</span><span class="hm-lbl">Git Projects</span></div>
-      <div class="hm"><span class="hm-val">6mo</span><span class="hm-lbl">Experience</span></div>
-      <div class="hm"><span class="hm-val">3</span><span class="hm-lbl">Core Stack</span></div>
-      <div class="hm"><span class="hm-val">Docs</span><span class="hm-lbl">Notion / Figma</span></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="eyebrow reveal">About Me</div>
-    <h2 class="sec-title reveal">디테일의 중요성을 아는<br>풀스택 웹 개발자</h2>
-    <div class="about-grid reveal">
-      <div class="about-visual">
-        <div class="about-card">
-          <div class="ac-avatar">HW</div>
-          <div class="ac-name">유환희 · Hwandroid</div>
-          <div class="ac-role">Junior Full-stack Web Developer · Incheon, Korea</div>
-          <div class="ac-tags">
-            <span class="act act1">Web Developer</span><span class="act act2">Spring Boot 3</span>
-            <span class="act act3">Vue 3</span><span class="act act4">Docker</span>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="eyebrow reveal">About Me</div>
+      <h2 class="sec-title reveal">기본기와 기록을 함께 쌓는<br>풀스택 웹 개발자</h2>
+      <div class="about-grid reveal">
+        <div class="about-visual">
+          <div class="about-card">
+            <div class="ac-avatar">🤖</div>
+            <div class="ac-name">유환희 · Hwandroid</div>
+            <div class="ac-role">Junior Full-stack Web Developer · Incheon, Korea</div>
+            <div class="ac-tags">
+              <span class="act act1">Web Developer</span><span class="act act2">Spring Boot 3</span>
+              <span class="act act3">Vue 3</span><span class="act act4">Docker</span>
+            </div>
+            <div class="ac-stats">
+              <div class="acs">
+                <div class="acs-val">5</div>
+                <div class="acs-lbl">Repos</div>
+              </div>
+              <div class="acs">
+                <div class="acs-val">6M</div>
+                <div class="acs-lbl">Learning</div>
+              </div>
+              <div class="acs">
+                <div class="acs-val">Full</div>
+                <div class="acs-lbl">Stack</div>
+              </div>
+            </div>
           </div>
-          <div class="ac-stats">
-            <div class="acs"><div class="acs-val">5</div><div class="acs-lbl">Repos</div></div>
-            <div class="acs"><div class="acs-val">6mo</div><div class="acs-lbl">Junior</div></div>
-            <div class="acs"><div class="acs-val">Full</div><div class="acs-lbl">Stack</div></div>
+        </div>
+        <div class="about-text">
+          <p>안녕하세요. 웹 개발자로 성장 중인 신입 개발자 유환희입니다. <strong>Spring Boot, Vue 3, PostgreSQL 기반의 팀 프로젝트와 개인 프로젝트</strong>를 진행하며 <strong>백엔드 API, 화면 구현, 데이터 흐름</strong>을 함께 이해하려고 노력하고 있습니다. 기능 구현뿐 아니라 <strong>기록과 협업 과정</strong>도 중요하게 생각하며, <strong>Spring Boot 3, Vue 3, PostgreSQL 기반 웹 개발</strong>, <strong>Spring Security, JWT, JPA 기반 인증/인가와 데이터 흐름</strong>, <strong>Docker, Nginx, GitHub 기반 실행 환경과 협업 흐름</strong>, <strong>Notion 문서화 및 Figma 와이어프레임을 활용한 기획 정리</strong>, <strong>Codex, Claude, Antigravity를 활용한 설계 검토 및 개인 프로젝트 개발</strong>을 경험했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-bg" id="skills">
+    <div class="container">
+      <div class="eyebrow reveal">Tech Stack</div>
+      <h2 class="sec-title reveal">핵심 기술 역량</h2>
+      <div class="skills-grid reveal">
+        <div class="skill-group">
+          <div class="sg-header">
+            <div class="sg-icon sgi1">☕</div>
+            <div class="sg-title">Backend</div>
+          </div>
+          <div class="skill-items"><span class="si">Java</span><span class="si">Spring Boot 3</span><span
+              class="si">Spring Security</span><span class="si">JWT</span><span class="si">JPA</span><span
+              class="si">Thymeleaf</span><span class="si">FastAPI</span><span class="si">Python</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-header">
+            <div class="sg-icon sgi2">🧩</div>
+            <div class="sg-title">Frontend</div>
+          </div>
+          <div class="skill-items"><span class="si">HTML5</span><span class="si">CSS3</span><span class="si">Vue
+              3</span><span class="si">Node.js</span><span class="si">Vite</span><span class="si">Thymeleaf
+              Template</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-header">
+            <div class="sg-icon sgi3">🗄️</div>
+            <div class="sg-title">Database / Infra</div>
+          </div>
+          <div class="skill-items"><span class="si">PostgreSQL</span><span class="si">Docker</span><span
+              class="si">Nginx</span><span class="si">GitHub</span><span class="si">Docker Compose</span></div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-header">
+            <div class="sg-icon sgi4">📝</div>
+            <div class="sg-title">Docs / AI Tools</div>
+          </div>
+          <div class="skill-items"><span class="si">Notion</span><span class="si">Figma</span><span
+              class="si">Codex</span><span class="si">Claude</span><span class="si">Antigravity</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="career">
+    <div class="container">
+      <div class="eyebrow reveal">Experience</div>
+      <h2 class="sec-title reveal">성장 과정</h2>
+      <div class="timeline-list reveal">
+        <div class="tl-item">
+          <div class="tl-dot current">🚀</div>
+          <div class="tl-body">
+            <div class="tl-date">2026 – Present</div>
+            <div class="tl-title">신입 풀스택 웹 개발자로 성장 중</div>
+            <div class="tl-company">Spring Boot 3, PostgreSQL, Vue 3를 중심으로 웹 서비스 구현과 배포 흐름을 학습하고 있습니다.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">💼</div>
+          <div class="tl-body">
+            <div class="tl-date">Team Project</div>
+            <div class="tl-title">GitHub 기반 협업 프로젝트 경험</div>
+            <div class="tl-company">readme, logmile, OfficeOps Hub 저장소에서 역할 분담, README 작성, 브랜치/PR 흐름을 경험했습니다.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🐳</div>
+          <div class="tl-body">
+            <div class="tl-date">Deploy</div>
+            <div class="tl-title">Docker / Nginx 실행 환경 경험</div>
+            <div class="tl-company">Docker Compose, Nginx 리버스 프록시, PostgreSQL 컨테이너 기반 실행 환경을 정리했습니다.</div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">🧠</div>
+          <div class="tl-body">
+            <div class="tl-date">Personal</div>
+            <div class="tl-title">AI 도구를 활용한 개인 프로젝트 개발</div>
+            <div class="tl-company">Codex, Claude, Antigravity를 활용해 TokenMonitor를 설계하고 개인 개발 흐름을 실험했습니다.</div>
           </div>
         </div>
       </div>
-      <div class="about-text">
-        <p>안녕하세요. 웹 개발자를 목표로 성장 중인 6개월차 신입 개발자 유환희입니다. 닉네임 Hwandroid로 활동하며, PostgreSQL + Spring Boot + Vue.js 기반의 풀스택 웹 페이지 개발 프로젝트를 중심으로 경험을 쌓고 있습니다.</p>
-        <p>기능 구현만큼 문서화와 협업 흐름을 중요하게 봅니다. GitHub 기반 협업, Docker 배포, Notion 문서 정리, Figma 와이어프레임 작업을 경험했고, Codex와 Claude를 활용해 개인 프로젝트의 설계와 구현 속도를 높이고 있습니다.</p>
-        <div class="about-list">
-          <div class="al"><div class="al-dot"></div>PostgreSQL + Spring Boot 3 + Vue.js 기반 풀스택 웹 개발 경험</div>
-          <div class="al"><div class="al-dot"></div>Spring Security, JWT, JPA 기반 인증/인가 및 데이터 흐름 학습</div>
-          <div class="al"><div class="al-dot"></div>Docker, Nginx, GitHub 기반 배포와 협업 흐름 경험</div>
-          <div class="al"><div class="al-dot"></div>Notion 문서화 및 Figma 와이어프레임을 활용한 기획 정리</div>
-          <div class="al"><div class="al-dot"></div>Codex, Claude, Antigravity를 활용한 개인 프로젝트 개발 경험</div>
+    </div>
+  </section>
+
+  <!-- PAGE EXPERIENCE -->
+  <section id="architecture">
+    <div class="container">
+      <div class="eyebrow reveal text-center" style="text-align:center">Experience</div>
+      <h2 class="sec-title reveal" style="text-align:center">서비스별 구현 기능 흐름</h2>
+      <div class="arch-diagram reveal">
+        <div class="arch-row">
+          <div class="arch-label">문화 관광 안내 페이지</div>
+          <div class="arch-cells">
+            <span class="arch-cell ac-front">관광지 탐색</span>
+            <span class="arch-cell ac-front">회원 인증</span>
+            <span class="arch-cell ac-front">여행 리뷰</span>
+            <span class="arch-cell ac-front">페이지 리뷰</span>
+            <span class="arch-cell ac-front">게시판 문의</span>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">쇼핑몰</div>
+          <div class="arch-cells">
+            <span class="arch-cell ac-back">상품 목록</span>
+            <span class="arch-cell ac-back">상품 상세</span>
+            <span class="arch-cell ac-back">장바구니</span>
+            <span class="arch-cell ac-back">주문 / 결제</span>
+            <span class="arch-cell ac-back">주문 내역</span>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">기업 페이지</div>
+          <div class="arch-cells">
+            <span class="arch-cell ac-ai">회사 소개</span>
+            <span class="arch-cell ac-ai">사업 분야</span>
+            <span class="arch-cell ac-ai">공지 / 소식</span>
+            <span class="arch-cell ac-ai">문의 작성</span>
+            <span class="arch-cell ac-ai">관리자 확인</span>
+          </div>
+        </div>
+        <div class="arch-row">
+          <div class="arch-label">B2B 업체 페이지</div>
+          <div class="arch-cells">
+            <span class="arch-cell ac-db">서비스 소개</span>
+            <span class="arch-cell ac-db">도입 사례</span>
+            <span class="arch-cell ac-db">견적 문의</span>
+            <span class="arch-cell ac-db">상태 관리</span>
+            <span class="arch-cell ac-db">응대 기록</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- SKILLS -->
-<section class="skills-bg" id="skills">
-  <div class="container">
-    <div class="eyebrow reveal">Tech Stack</div>
-    <h2 class="sec-title reveal">핵심 기술 역량</h2>
-    <div class="skills-grid reveal">
-      <div class="skill-group"><div class="sg-header"><div class="sg-icon sgi1">☕</div><div class="sg-title">Backend</div></div><div class="skill-items"><span class="si">Java</span><span class="si">Spring Boot 3</span><span class="si">Spring Security</span><span class="si">JWT</span><span class="si">JPA</span><span class="si">Thymeleaf</span><span class="si">FastAPI</span><span class="si">Python</span></div></div>
-      <div class="skill-group"><div class="sg-header"><div class="sg-icon sgi2">🧩</div><div class="sg-title">Frontend</div></div><div class="skill-items"><span class="si">HTML5</span><span class="si">CSS3</span><span class="si">Vue 3</span><span class="si">Node.js</span><span class="si">Vite</span><span class="si">Thymeleaf Template</span></div></div>
-      <div class="skill-group"><div class="sg-header"><div class="sg-icon sgi3">🗄️</div><div class="sg-title">Database / Infra</div></div><div class="skill-items"><span class="si">PostgreSQL</span><span class="si">Docker</span><span class="si">Nginx</span><span class="si">GitHub</span><span class="si">Docker Compose</span></div></div>
-      <div class="skill-group"><div class="sg-header"><div class="sg-icon sgi4">📝</div><div class="sg-title">Docs / AI Tools</div></div><div class="skill-items"><span class="si">Notion</span><span class="si">Figma</span><span class="si">Codex</span><span class="si">Claude</span><span class="si">Antigravity</span></div></div>
+  <!-- CERTIFICATIONS -->
+  <section id="qualifications">
+    <div class="container">
+      <div class="eyebrow reveal">Qualifications</div>
+      <h2 class="sec-title reveal">핵심 강점</h2>
+      <div class="certs-row reveal">
+        <div class="cert">
+          <div class="cert-icon">☕</div>
+          <div>
+            <div class="cert-name">Backend Foundation</div>
+            <div class="cert-issuer">Java · Spring Boot 3 · JPA · Security</div>
+          </div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🧩</div>
+          <div>
+            <div class="cert-name">Frontend Implementation</div>
+            <div class="cert-issuer">Vue 3 · HTML5 · CSS3 · Thymeleaf</div>
+          </div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">🐳</div>
+          <div>
+            <div class="cert-name">Deployment Flow</div>
+            <div class="cert-issuer">Docker · Nginx · PostgreSQL</div>
+          </div>
+        </div>
+        <div class="cert">
+          <div class="cert-icon">📝</div>
+          <div>
+            <div class="cert-name">Collaboration & Docs</div>
+            <div class="cert-issuer">GitHub · Notion · Figma · AI Tools</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ARCHITECTURE -->
-<section id="architecture">
-  <div class="container">
-    <div class="eyebrow reveal text-center" style="text-align:center">Architecture</div>
-    <h2 class="sec-title reveal" style="text-align:center">풀스택 웹 아키텍처 경험</h2>
-    <div class="arch-diagram reveal">
-      <div class="arch-row"><div class="arch-label">Frontend</div><div class="arch-cells"><span class="arch-cell ac-front">Vue 3</span><span class="arch-cell ac-front">HTML5</span><span class="arch-cell ac-front">CSS3</span><span class="arch-cell ac-front">Thymeleaf</span></div></div>
-      <div class="arch-row"><div class="arch-label">Backend</div><div class="arch-cells"><span class="arch-cell ac-back">Spring Boot 3</span><span class="arch-cell ac-back">Spring Security</span><span class="arch-cell ac-back">JPA</span><span class="arch-cell ac-back">FastAPI</span></div></div>
-      <div class="arch-row"><div class="arch-label">Auth</div><div class="arch-cells"><span class="arch-cell ac-ai">JWT</span><span class="arch-cell ac-ai">Role Guard</span><span class="arch-cell ac-ai">Router Guard</span></div></div>
-      <div class="arch-row"><div class="arch-label">Database</div><div class="arch-cells"><span class="arch-cell ac-db">PostgreSQL</span><span class="arch-cell ac-db">Entity Design</span><span class="arch-cell ac-db">Repository</span></div></div>
-      <div class="arch-row"><div class="arch-label">Deploy</div><div class="arch-cells"><span class="arch-cell ac-ops">Docker</span><span class="arch-cell ac-ops">Nginx</span><span class="arch-cell ac-ops">GitHub</span><span class="arch-cell ac-ops">Notion Docs</span><span class="arch-cell ac-ops">Figma Wireframe</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="eyebrow reveal">Project List</div>
-    <h2 class="sec-title reveal">Git Projects</h2>
-    <div class="project-list reveal">
-      <div class="project-row">
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="project-head reveal">
         <div>
-          <div class="project-name">hwandroid921.github.io / Web Portfolio</div>
-          <p class="project-desc">Spring Boot 3, Java 21, PostgreSQL, Thymeleaf 기반 웹 페이지 프로젝트입니다. 팀 리더로 백엔드 설계, DB 설계, Docker 인프라 구성을 담당한 경험이 README에 정리되어 있습니다.</p>
-          <div class="project-meta">
-            <span class="project-tag">Spring Boot 3</span>
-            <span class="project-tag">Java 21</span>
-            <span class="project-tag">PostgreSQL</span>
-            <span class="project-tag">Thymeleaf</span>
-            <span class="project-tag">Docker</span>
-          </div>
-        </div>
-        <div class="project-links">
-          <a class="project-link primary" href="https://github.com/hwandroid921/hwandroid921.github.io" target="_blank" rel="noreferrer">GitHub</a>
+          <div class="eyebrow">Project List</div>
+          <h2 class="sec-title">주요 프로젝트</h2>
         </div>
       </div>
-      <div class="project-row">
-        <div>
-          <div class="project-name">readme / Online Bookstore</div>
-          <p class="project-desc">Java 21, Spring Boot 3, Vue 3 기반 온라인 서점 팀 프로젝트입니다. Vue 3 전체 화면 구현, 레이아웃 설계, Pinia 상태 관리, 결제 흐름, 라우터 가드 작업을 담당했습니다.</p>
-          <div class="project-meta">
-            <span class="project-tag">Vue 3</span>
-            <span class="project-tag">Pinia</span>
-            <span class="project-tag">Spring Boot 3</span>
-            <span class="project-tag">JWT</span>
-            <span class="project-tag">Nginx</span>
+      <div class="project-list reveal">
+        <div class="project-page">
+          <div class="project-row">
+            <a class="project-thumb" href="https://github.com/hwandroid921/hwandroid921.github.io" target="_blank"
+              rel="noreferrer" aria-label="jeju-project 프로젝트 링크 열기">
+              <img src="jeju-project.png" alt="제주문화관광 프로젝트 메인 화면">
+            </a>
+            <div class="project-content">
+              <a class="project-name" href="https://github.com/hwandroid921/hwandroid921.github.io" target="_blank"
+                rel="noreferrer">jeju-project / Jeju Culture & Tourism</a>
+              <p class="project-line"><strong>기간</strong><span>2026 · 팀 프로젝트</span></p>
+              <p class="project-line"><strong>개요</strong><span>제주 관광지 정보 탐색, 리뷰, 게시판 문의 기능을 제공하는 문화관광 안내 서비스입니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>회원 인증, 여행 리뷰 작성, 페이지 리뷰, 게시판 문의 흐름 구현</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>관광지 탐색 · 회원 인증 · 리뷰 작성 · 게시판 문의</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">PostgreSQL</span><span class="project-tag">Spring Boot 3</span><span
+                  class="project-tag">Java 21</span><span class="project-tag">Thymeleaf</span><span
+                  class="project-tag">Docker</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-links">
-          <a class="project-link primary" href="https://github.com/hwandroid921/readme" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </div>
-      <div class="project-row">
-        <div>
-          <div class="project-name">logmile / Mobility Monitoring Platform</div>
-          <p class="project-desc">화물차 운전자 피로도 모니터링 프로젝트입니다. Spring Boot API, JPA Entity, 피로도 점수 계산, 휴식 판단, JWT/Security, FastAPI 번호판 인식 구조가 포함되어 있습니다.</p>
-          <div class="project-meta">
-            <span class="project-tag">Spring Boot 3.5</span>
-            <span class="project-tag">Vue 3</span>
-            <span class="project-tag">FastAPI</span>
-            <span class="project-tag">PostgreSQL</span>
-            <span class="project-tag">Docker Compose</span>
+          <div class="project-row">
+            <a class="project-thumb" href="https://github.com/hwandroid921/readme" target="_blank" rel="noreferrer"
+              aria-label="readme 프로젝트 링크 열기">
+              <img src="readme-project.png" alt="ReadMe 온라인 서점 프로젝트 화면">
+            </a>
+            <div class="project-content">
+              <a class="project-name" href="https://github.com/hwandroid921/readme" target="_blank"
+                rel="noreferrer">readme / Online Bookstore</a>
+              <p class="project-line"><strong>기간</strong><span>2026 · 팀 프로젝트</span></p>
+              <p class="project-line"><strong>개요</strong><span>도서 조회, 장바구니, 주문/결제 흐름을 포함한 온라인 서점 서비스입니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>Vue 화면 구현, Pinia 상태 관리, 장바구니/결제 흐름 구현</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>도서 조회 · 장바구니 · 결제 · 주문 내역</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">Spring Boot 3</span><span class="project-tag">JWT</span><span
+                  class="project-tag">Vue 3</span><span class="project-tag">Pinia</span><span
+                  class="project-tag">Nginx</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-links">
-          <a class="project-link primary" href="https://github.com/hwandroid921/logmile" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </div>
-      <div class="project-row">
-        <div>
-          <div class="project-name">OfficeOps_Hub / Internal Operations Hub</div>
-          <p class="project-desc">비품 요청, 방문 신청, 시설 요청, 회의실 예약, 자산 대여/반납 업무를 통합 관리하는 실무형 팀 프로젝트 기획 저장소입니다. 권한 분리, 상태 전이, 예약 중복 방지, 감사 이력, 문서 버전 관리가 정리되어 있습니다.</p>
-          <div class="project-meta">
-            <span class="project-tag">Spring Boot 3</span>
-            <span class="project-tag">Spring Security</span>
-            <span class="project-tag">JPA</span>
-            <span class="project-tag">PostgreSQL</span>
-            <span class="project-tag">Docs</span>
+          <div class="project-row">
+            <a class="project-thumb" href="https://github.com/hwandroid921/logmile" target="_blank" rel="noreferrer"
+              aria-label="logmile 프로젝트 링크 열기">
+              <img src="logmile-project.png" alt="Logmile 모빌리티 모니터링 프로젝트 화면">
+            </a>
+            <div class="project-content">
+              <a class="project-name" href="https://github.com/hwandroid921/logmile" target="_blank"
+                rel="noreferrer">logmile / Mobility Monitoring Platform</a>
+              <p class="project-line"><strong>기간</strong><span>2026 · 팀 프로젝트</span></p>
+              <p class="project-line"><strong>개요</strong><span>화물차 운전자의 피로도와 운행 상태를 모니터링하고 휴식 판단을 돕는 서비스입니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>피로도 점수 계산, 운행 상태 모니터링, 번호판 인식 연동 구조 정리</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>피로도 계산 · 휴식 판단 · JWT 인증 · FastAPI 연동</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">PostgreSQL</span><span class="project-tag">Spring Boot 3.5</span><span
+                  class="project-tag">FastAPI</span><span class="project-tag">Vue 3</span><span
+                  class="project-tag">Docker Compose</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-links">
-          <a class="project-link primary" href="https://github.com/1in1bot/OfficeOps_Hub" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-      </div>
-      <div class="project-row">
-        <div>
-          <div class="project-name">TokenMonitor / AI Tool Quota Dashboard</div>
-          <p class="project-desc">Windows에서 Codex, Claude, Antigravity 사용량과 quota 상태를 확인하는 데스크톱 앱입니다. Node.js 기반 앱 구조와 provider별 수집 흐름, overlay UX, 민감 정보 비노출 정책을 다룹니다.</p>
-          <div class="project-meta">
-            <span class="project-tag">Node.js</span>
-            <span class="project-tag">Electron</span>
-            <span class="project-tag">Codex</span>
-            <span class="project-tag">Claude</span>
-            <span class="project-tag">Antigravity</span>
+          <div class="project-row">
+            <a class="project-thumb" href="https://github.com/1in1bot/OfficeOps_Hub" target="_blank" rel="noreferrer"
+              aria-label="OfficeOps_Hub 프로젝트 링크 열기"></a>
+            <div class="project-content">
+              <a class="project-name" href="https://github.com/1in1bot/OfficeOps_Hub" target="_blank"
+                rel="noreferrer">OfficeOps_Hub / Internal Operations Hub</a>
+              <p class="project-line"><strong>기간</strong><span>2026 · 팀 프로젝트 기획</span></p>
+              <p class="project-line"><strong>개요</strong><span>비품, 방문, 시설, 회의실, 자산 대여 업무를 통합 관리하는 사내 운영 허브입니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>요구사항 정리, 권한 분리, 상태 전이, 예약 중복 방지 기준 설계</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>업무 요청 · 예약 관리 · 권한 분리 · 감사 이력</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">PostgreSQL</span><span class="project-tag">Spring Boot 3</span><span
+                  class="project-tag">Spring Security</span><span class="project-tag">JPA</span><span
+                  class="project-tag">Docs</span>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="project-links">
-          <a class="project-link primary" href="https://github.com/hwandroid921/TokenMonitor" target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- RESEARCH -->
-<section class="research-bg" id="publications">
-  <div class="container">
-    <div class="eyebrow reveal">Research</div>
-    <h2 class="sec-title reveal">Publications & Project Docs</h2>
-    <div class="papers-list reveal">
-      <div class="paper-card"><div class="paper-top"><span class="paper-venue">Docs</span><div class="paper-title">OfficeOps Hub 요구사항, 권한, 워크플로우, 문서 버전 관리 정리</div></div><div class="paper-meta"><span class="pm-item">Notion / README</span><span class="pm-item">팀 프로젝트 기획</span><span class="pm-item">GitHub Issues 기반 협업</span></div></div>
-      <div class="paper-card"><div class="paper-top"><span class="paper-venue" style="background:rgba(73,122,183,.18);color:#D6FFF6;">Wireframe</span><div class="paper-title">Figma 기반 화면 흐름과 Vue 3 페이지 레이아웃 설계</div></div><div class="paper-meta"><span class="pm-item">Figma</span><span class="pm-item">Vue Router</span><span class="pm-item">사용자 흐름 정리</span></div></div>
-      <div class="paper-card"><div class="paper-top"><span class="paper-venue" style="background:rgba(34,197,94,.1);color:#86efac;">README</span><div class="paper-title">Docker, Nginx, PostgreSQL, Spring Boot 실행 환경 문서화</div></div><div class="paper-meta"><span class="pm-item">Docker Compose</span><span class="pm-item">배포 환경 정리</span><span class="pm-item">환경 변수 관리</span></div></div>
+  <!-- PROJECTS MORE -->
+  <section id="projects-more">
+    <div class="container">
+      <div class="project-head reveal">
+        <div>
+          <div class="eyebrow">Project List 02</div>
+          <h2 class="sec-title">개인 프로젝트 · 추가 예정</h2>
+        </div>
+      </div>
+      <div class="project-list reveal">
+        <div class="project-page">
+          <div class="project-row">
+            <a class="project-thumb" href="https://github.com/hwandroid921/TokenMonitor" target="_blank" rel="noreferrer"
+              aria-label="TokenMonitor 프로젝트 링크 열기"></a>
+            <div class="project-content">
+              <a class="project-name" href="https://github.com/hwandroid921/TokenMonitor" target="_blank"
+                rel="noreferrer">TokenMonitor / AI Tool Quota Dashboard</a>
+              <p class="project-line"><strong>기간</strong><span>2026 · 개인 프로젝트</span></p>
+              <p class="project-line"><strong>개요</strong><span>Windows에서 AI 개발 도구의 사용량과 quota 상태를 확인하는 데스크톱 대시보드입니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>provider별 사용량 수집 흐름, 오버레이 UX, 민감 정보 비노출 원칙 설계</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>사용량 수집 · quota 확인 · 오버레이 표시 · 민감 정보 보호</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">Node.js</span><span class="project-tag">Electron</span><span
+                  class="project-tag">Codex</span><span class="project-tag">Claude</span><span
+                  class="project-tag">Antigravity</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-row is-empty" aria-hidden="true">
+            <div class="project-thumb">Empty Slot</div>
+            <div class="project-content">
+              <div class="project-name">프로젝트 추가 예정</div>
+              <p class="project-line"><strong>기간</strong><span>-</span></p>
+              <p class="project-line"><strong>개요</strong><span>새 프로젝트를 추가하면 이 영역에 표시됩니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>-</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>-</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">DB</span><span class="project-tag">BE</span><span class="project-tag">FE</span><span class="project-tag">Infra</span><span class="project-tag">Other</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-row is-empty" aria-hidden="true">
+            <div class="project-thumb">Empty Slot</div>
+            <div class="project-content">
+              <div class="project-name">프로젝트 추가 예정</div>
+              <p class="project-line"><strong>기간</strong><span>-</span></p>
+              <p class="project-line"><strong>개요</strong><span>새 프로젝트를 추가하면 이 영역에 표시됩니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>-</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>-</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">DB</span><span class="project-tag">BE</span><span class="project-tag">FE</span><span class="project-tag">Infra</span><span class="project-tag">Other</span>
+              </div>
+            </div>
+          </div>
+          <div class="project-row is-empty" aria-hidden="true">
+            <div class="project-thumb">Empty Slot</div>
+            <div class="project-content">
+              <div class="project-name">프로젝트 추가 예정</div>
+              <p class="project-line"><strong>기간</strong><span>-</span></p>
+              <p class="project-line"><strong>개요</strong><span>새 프로젝트를 추가하면 이 영역에 표시됩니다.</span></p>
+              <p class="project-line"><strong>담당</strong><span>-</span></p>
+              <p class="project-line"><strong>핵심 구현</strong><span>-</span></p>
+              <div class="project-meta" aria-label="사용 기술">
+                <span class="project-tag">DB</span><span class="project-tag">BE</span><span class="project-tag">FE</span><span class="project-tag">Infra</span><span class="project-tag">Other</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- EXPERIENCE -->
-<section id="career">
-  <div class="container">
-    <div class="eyebrow reveal">Experience</div>
-    <h2 class="sec-title reveal">Career Timeline</h2>
-    <div class="timeline-list reveal">
-      <div class="tl-item"><div class="tl-dot current">🚀</div><div class="tl-body"><div class="tl-date">2026 – Present</div><div class="tl-title">신입 풀스택 웹 개발자로 성장 중</div><div class="tl-company">Spring Boot 3, PostgreSQL, Vue 3 중심 학습 및 프로젝트 수행</div></div></div>
-      <div class="tl-item"><div class="tl-dot">💼</div><div class="tl-body"><div class="tl-date">Team Project</div><div class="tl-title">GitHub 기반 협업 프로젝트 경험</div><div class="tl-company">readme, logmile, OfficeOps Hub 저장소에서 역할 분담, README, 브랜치/PR 흐름 경험</div></div></div>
-      <div class="tl-item"><div class="tl-dot">🐳</div><div class="tl-body"><div class="tl-date">Deploy</div><div class="tl-title">Docker / Nginx 배포 흐름 경험</div><div class="tl-company">Docker Compose, Nginx 리버스 프록시, PostgreSQL 컨테이너 실행 환경 정리</div></div></div>
-      <div class="tl-item"><div class="tl-dot">🧠</div><div class="tl-body"><div class="tl-date">Personal</div><div class="tl-title">AI 도구 활용 개인 프로젝트 개발</div><div class="tl-company">Codex, Claude, Antigravity를 활용한 TokenMonitor 및 개인 개발 흐름 실험</div></div></div>
+  <!-- EDUCATION -->
+  <section class="research-bg" id="education">
+    <div class="container">
+      <div class="eyebrow reveal">Education</div>
+      <h2 class="sec-title reveal">학력 · 교육 이력 · 자격증</h2>
+      <div class="papers-list reveal">
+        <div class="paper-card">
+          <div class="paper-top"><span class="paper-venue">Education</span>
+            <div class="paper-title">학력 사항</div>
+          </div>
+          <div class="paper-meta"><span class="pm-item">학교명 / 전공 입력</span><span class="pm-item">재학 또는 졸업 기간 입력</span><span
+              class="pm-item">관련 학습 내용 입력</span></div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-top"><span class="paper-venue"
+              style="background:rgba(73,122,183,.18);color:#D6FFF6;">Training</span>
+            <div class="paper-title">개발 교육 이력</div>
+          </div>
+          <div class="paper-meta"><span class="pm-item">교육기관명 입력</span><span class="pm-item">Java · Spring · Vue 중심 과정</span><span
+              class="pm-item">팀 프로젝트 / 실습 내용 입력</span></div>
+        </div>
+        <div class="paper-card">
+          <div class="paper-top"><span class="paper-venue"
+              style="background:rgba(34,197,94,.1);color:#86efac;">Certificate</span>
+            <div class="paper-title">자격증 및 수료 내역</div>
+          </div>
+          <div class="paper-meta"><span class="pm-item">자격증명 입력</span><span class="pm-item">발급기관 입력</span><span
+              class="pm-item">취득일 / 수료일 입력</span></div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- CERTIFICATIONS -->
-<section id="qualifications">
-  <div class="container">
-    <div class="eyebrow reveal">Qualifications</div>
-    <h2 class="sec-title reveal">Core Strengths</h2>
-    <div class="certs-row reveal">
-      <div class="cert"><div class="cert-icon">☕</div><div><div class="cert-name">Backend Foundation</div><div class="cert-issuer">Java · Spring Boot 3 · JPA · Security</div></div></div>
-      <div class="cert"><div class="cert-icon">🧩</div><div><div class="cert-name">Frontend Implementation</div><div class="cert-issuer">Vue 3 · HTML5 · CSS3 · Thymeleaf</div></div></div>
-      <div class="cert"><div class="cert-icon">🐳</div><div><div class="cert-name">Deployment Flow</div><div class="cert-issuer">Docker · Nginx · PostgreSQL</div></div></div>
-      <div class="cert"><div class="cert-icon">📝</div><div><div class="cert-name">Collaboration & Docs</div><div class="cert-issuer">GitHub · Notion · Figma · AI Tools</div></div></div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!-- CONTACT -->
-<section class="contact-ultimate" id="contact">
-  <div class="container">
-    <div class="eyebrow reveal">Contact</div>
-    <h2 class="sec-title reveal">함께 만들어가요</h2>
-    <div class="contact-grid reveal">
-      <div class="cg-left">
-        <h3>웹 개발자로 성장할 기회,<br>함께 이야기하고 싶습니다</h3>
-        <p>신입 개발자 포지션, 팀 프로젝트 협업, 웹 페이지 개발 관련 문의를 환영합니다. GitHub 프로젝트와 문서를 바탕으로 성장 과정을 보여드리겠습니다.</p>
-        <div class="contact-items">
-          <a href="https://github.com/hwandroid921" target="_blank" rel="noreferrer" class="contact-item"><div class="ci-icon-wrap">🐙</div><div class="ci-text"><div class="ci-label">GitHub</div><div class="ci-value">hwandroid921</div></div><div class="ci-arrow">→</div></a>
-          <a href="https://github.com/hwandroid921/logmile" target="_blank" rel="noreferrer" class="contact-item"><div class="ci-icon-wrap">🚚</div><div class="ci-text"><div class="ci-label">Main Project</div><div class="ci-value">logmile</div></div><div class="ci-arrow">→</div></a>
-          <a href="https://github.com/hwandroid921/readme" target="_blank" rel="noreferrer" class="contact-item"><div class="ci-icon-wrap">📚</div><div class="ci-text"><div class="ci-label">Team Project</div><div class="ci-value">readme</div></div><div class="ci-arrow">→</div></a>
-          <a href="https://github.com/hwandroid921/TokenMonitor" target="_blank" rel="noreferrer" class="contact-item"><div class="ci-icon-wrap">🧠</div><div class="ci-text"><div class="ci-label">Personal Project</div><div class="ci-value">TokenMonitor</div></div><div class="ci-arrow">→</div></a>
-        </div>
-      </div>
-      <div class="cg-right">
-        <div class="form">
-          <div class="form-row">
-            <input class="form-input" type="text" placeholder="이름 *">
-            <input class="form-input" type="email" placeholder="이메일 *">
+  <section class="contact-ultimate" id="contact">
+    <div class="container">
+      <div class="eyebrow reveal">Contact</div>
+      <h2 class="sec-title reveal">함께 성장할 기회를 기다립니다</h2>
+      <div class="contact-grid reveal">
+        <div class="cg-left">
+          <h3>신입 웹 개발자로서<br>팀에 기여할 기회를 찾고 있습니다</h3>
+          <p>신입 개발자 포지션, 팀 프로젝트 협업, 웹 페이지 개발 관련 문의를 환영합니다. GitHub 프로젝트와 문서를 바탕으로 학습 과정과 구현 경험을 보여드리겠습니다.</p>
+          <div class="contact-items">
+            <a href="mailto:olgksgml@gmail.com" class="contact-item">
+              <div class="ci-icon-wrap">✉</div>
+              <div class="ci-text">
+                <div class="ci-label">Gmail</div>
+                <div class="ci-value">olgksgml@gmail.com</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
+            <a href="https://github.com/hwandroid921" target="_blank" rel="noreferrer" class="contact-item">
+              <div class="ci-icon-wrap">GH</div>
+              <div class="ci-text">
+                <div class="ci-label">GitHub</div>
+                <div class="ci-value">github.com/hwandroid921</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
+            <a href="mailto:olgksgml@gmail.com" class="contact-item">
+              <div class="ci-icon-wrap">☎</div>
+              <div class="ci-text">
+                <div class="ci-label">Contact</div>
+                <div class="ci-value">메일로 문의</div>
+              </div>
+              <div class="ci-arrow">→</div>
+            </a>
           </div>
-          <input class="form-input" type="text" placeholder="회사명 / 소속">
-          <input class="form-input" type="text" placeholder="문의 유형 (예: 채용, 협업, 프로젝트)">
-          <textarea class="form-input" placeholder="문의 내용 *"></textarea>
-          <button class="form-submit">🚀 메시지 보내기</button>
+        </div>
+        <div class="cg-right">
+          <div class="form">
+            <div class="form-row">
+              <input class="form-input" type="text" placeholder="이름 *">
+              <input class="form-input" type="email" placeholder="이메일 *">
+            </div>
+            <input class="form-input" type="text" placeholder="회사명 / 소속">
+            <input class="form-input" type="text" placeholder="문의 유형 (예: 채용, 협업, 프로젝트)">
+            <textarea class="form-input" placeholder="문의 내용 *"></textarea>
+            <button class="form-submit">🚀 메시지 보내기</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="ft-brand">
-        <div class="ft-logo-name"><div class="logo-dot"></div>Hwandroid</div>
-        <p class="ft-desc">6개월차 신입 웹 개발자 유환희의 포트폴리오입니다. Spring Boot 3, PostgreSQL, Vue 3 기반 풀스택 웹 개발을 중심으로 성장하고 있습니다.</p>
-      </div>
-      <div class="ft-col"><h4>Stack</h4><ul><li><a href="#skills">Spring Boot 3</a></li><li><a href="#skills">Vue 3</a></li><li><a href="#skills">PostgreSQL</a></li><li><a href="#skills">Docker</a></li></ul></div>
-      <div class="ft-col"><h4>Work</h4><ul><li><a href="#projects">Projects</a></li><li><a href="#publications">Docs</a></li><li><a href="#career">Career</a></li><li><a href="#qualifications">Strengths</a></li></ul></div>
-      <div class="ft-col"><h4>Connect</h4><ul><li><a href="https://github.com/hwandroid921" target="_blank" rel="noreferrer">GitHub</a></li><li><a href="https://github.com/hwandroid921/logmile" target="_blank" rel="noreferrer">Logmile</a></li><li><a href="https://github.com/hwandroid921/readme" target="_blank" rel="noreferrer">ReadMe</a></li><li><a href="#contact">Contact</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Hwandroid.dev · All rights reserved</span>
-      <span>Incheon, Korea · Junior Full-stack Web Developer</span>
-    </div>
-  </div>
-</footer>
+  <script>
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-<script>
-// Reveal on scroll
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
-},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    // Active nav
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.np');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      const navSectionMap = { architecture: 'career', qualifications: 'career', 'projects-more': 'projects' };
+      const activeId = navSectionMap[cur] || cur;
+      navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + activeId); });
+    });
 
-// Active nav
-const sections=document.querySelectorAll('section[id]');
-const navLinks=document.querySelectorAll('.np');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});
-  const navSectionMap={architecture:'skills',career:'publications',qualifications:'publications'};
-  const activeId=navSectionMap[cur]||cur;
-  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+activeId);});
-});
+    // Fullpage scroll
+    const fullpagePanels = [...document.querySelectorAll('section')];
+    let fullpageIndex = 0;
+    let isFullpageMoving = false;
 
-// Fullpage scroll
-const fullpagePanels=[...document.querySelectorAll('section'),document.querySelector('footer')].filter(Boolean);
-let fullpageIndex=0;
-let isFullpageMoving=false;
+    document.body.classList.add('fullpage-ready');
+    fullpagePanels.forEach(panel => panel.classList.add('fullpage-panel'));
 
-document.body.classList.add('fullpage-ready');
-fullpagePanels.forEach(panel=>panel.classList.add('fullpage-panel'));
+    const setActivePanel = idx => {
+      fullpageIndex = Math.max(0, Math.min(idx, fullpagePanels.length - 1));
+      isFullpageMoving = true;
+      fullpagePanels[fullpageIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => { isFullpageMoving = false; }, 750);
+    };
 
-const setActivePanel=idx=>{
-  fullpageIndex=Math.max(0,Math.min(idx,fullpagePanels.length-1));
-  isFullpageMoving=true;
-  fullpagePanels[fullpageIndex].scrollIntoView({behavior:'smooth',block:'start'});
-  setTimeout(()=>{isFullpageMoving=false;},750);
-};
+    const syncFullpageIndex = () => {
+      let nearest = 0;
+      let nearestDistance = Infinity;
+      fullpagePanels.forEach((panel, idx) => {
+        const distance = Math.abs(panel.getBoundingClientRect().top);
+        if (distance < nearestDistance) { nearest = idx; nearestDistance = distance; }
+      });
+      fullpageIndex = nearest;
+    };
 
-const syncFullpageIndex=()=>{
-  let nearest=0;
-  let nearestDistance=Infinity;
-  fullpagePanels.forEach((panel,idx)=>{
-    const distance=Math.abs(panel.getBoundingClientRect().top);
-    if(distance<nearestDistance){nearest=idx;nearestDistance=distance;}
-  });
-  fullpageIndex=nearest;
-};
+    const panelCanScroll = (panel, deltaY) => {
+      const maxScroll = panel.scrollHeight - panel.clientHeight;
+      if (maxScroll <= 1) return false;
+      if (deltaY > 0) return panel.scrollTop < maxScroll - 2;
+      return panel.scrollTop > 2;
+    };
 
-const panelCanScroll=(panel,deltaY)=>{
-  const maxScroll=panel.scrollHeight-panel.clientHeight;
-  if(maxScroll<=1)return false;
-  if(deltaY>0)return panel.scrollTop<maxScroll-2;
-  return panel.scrollTop>2;
-};
+    window.addEventListener('wheel', event => {
+      syncFullpageIndex();
+      const active = fullpagePanels[fullpageIndex];
+      if (!active || isFullpageMoving || Math.abs(event.deltaY) < 8) return;
+      if (active.contains(event.target) && panelCanScroll(active, event.deltaY)) return;
+      event.preventDefault();
+      setActivePanel(fullpageIndex + (event.deltaY > 0 ? 1 : -1));
+    }, { passive: false });
 
-window.addEventListener('wheel',event=>{
-  syncFullpageIndex();
-  const active=fullpagePanels[fullpageIndex];
-  if(!active || isFullpageMoving || Math.abs(event.deltaY)<8)return;
-  if(active.contains(event.target) && panelCanScroll(active,event.deltaY))return;
-  event.preventDefault();
-  setActivePanel(fullpageIndex+(event.deltaY>0?1:-1));
-},{passive:false});
+    window.addEventListener('keydown', event => {
+      syncFullpageIndex();
+      const tag = document.activeElement?.tagName;
+      if (['INPUT', 'TEXTAREA', 'SELECT'].includes(tag)) return;
+      const nextKeys = ['ArrowDown', 'PageDown', 'Space'];
+      const prevKeys = ['ArrowUp', 'PageUp'];
+      if (!nextKeys.includes(event.code) && !prevKeys.includes(event.code)) return;
+      event.preventDefault();
+      setActivePanel(fullpageIndex + (nextKeys.includes(event.code) ? 1 : -1));
+    });
 
-window.addEventListener('keydown',event=>{
-  syncFullpageIndex();
-  const tag=document.activeElement?.tagName;
-  if(['INPUT','TEXTAREA','SELECT'].includes(tag))return;
-  const nextKeys=['ArrowDown','PageDown','Space'];
-  const prevKeys=['ArrowUp','PageUp'];
-  if(!nextKeys.includes(event.code)&&!prevKeys.includes(event.code))return;
-  event.preventDefault();
-  setActivePanel(fullpageIndex+(nextKeys.includes(event.code)?1:-1));
-});
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', event => {
+        const target = document.querySelector(link.getAttribute('href'));
+        const idx = fullpagePanels.indexOf(target);
+        if (idx < 0) return;
+        event.preventDefault();
+        setActivePanel(idx);
+      });
+    });
 
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
-  link.addEventListener('click',event=>{
-    const target=document.querySelector(link.getAttribute('href'));
-    const idx=fullpagePanels.indexOf(target);
-    if(idx<0)return;
-    event.preventDefault();
-    setActivePanel(idx);
-  });
-});
+    const moveToHashPanel = () => {
+      const hashPanel = document.querySelector(window.location.hash);
+      const hashIndex = fullpagePanels.indexOf(hashPanel);
+      if (hashIndex >= 0) setActivePanel(hashIndex);
+    };
 
-let touchStartY=0;
-window.addEventListener('touchstart',event=>{
-  touchStartY=event.touches[0].clientY;
-},{passive:true});
+    let touchStartY = 0;
+    window.addEventListener('touchstart', event => {
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
 
-window.addEventListener('touchend',event=>{
-  syncFullpageIndex();
-  const deltaY=touchStartY-event.changedTouches[0].clientY;
-  const active=fullpagePanels[fullpageIndex];
-  if(!active || isFullpageMoving || Math.abs(deltaY)<48)return;
-  if(panelCanScroll(active,deltaY))return;
-  setActivePanel(fullpageIndex+(deltaY>0?1:-1));
-},{passive:true});
+    window.addEventListener('touchend', event => {
+      syncFullpageIndex();
+      const deltaY = touchStartY - event.changedTouches[0].clientY;
+      const active = fullpagePanels[fullpageIndex];
+      if (!active || isFullpageMoving || Math.abs(deltaY) < 48) return;
+      if (panelCanScroll(active, deltaY)) return;
+      setActivePanel(fullpageIndex + (deltaY > 0 ? 1 : -1));
+    }, { passive: true });
 
-window.addEventListener('load',()=>{
-  const hashPanel=document.querySelector(window.location.hash);
-  const hashIndex=fullpagePanels.indexOf(hashPanel);
-  if(hashIndex>=0)setActivePanel(hashIndex);
-});
-</script>
+    window.addEventListener('hashchange', moveToHashPanel);
+    window.addEventListener('load', moveToHashPanel);
+  </script>
 </body>
+
 </html>
+
+
