@@ -57,3 +57,7 @@ python -m http.server 8000
 - GitHub: https://github.com/hwandroid921
 - Blog: https://velog.io/@hwandroid921
 - Email: olgksgml@gmail.com
+
+## 취업 준비 문서
+
+- [이력서·자기소개서 문서 모음](docs/job-application/README.md)
