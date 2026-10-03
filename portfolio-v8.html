@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="신입 풀스택 웹 개발자 유환희의 포트폴리오. LogMile, ReadMe, 제주 문화관광, TokenMonitor 프로젝트의 역할과 구현 내용, 문제 해결 과정을 소개합니다.">
+  <meta name="theme-color" content="#ebf3ff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="유환희 | 풀스택 웹 개발자 포트폴리오">
+  <meta property="og:description" content="Java·Spring Boot와 Vue 3로 화면부터 API, 데이터 저장, 배포까지 구현한 프로젝트를 소개합니다.">
+  <meta property="og:url" content="https://hwandroid921.github.io/">
+  <meta property="og:image" content="https://hwandroid921.github.io/logmile-project.png">
+  <title>유환희 | 풀스택 웹 개발자 포트폴리오</title>
+  <link rel="stylesheet" href="designs/style.css">
+  <link rel="stylesheet" href="portfolio-v7.css">
+  <style>
+    /* v8: v7 위에 덧씌우는 수정. 기존 designs/style.css, portfolio-v7.css는 그대로 사용합니다. */
+    body { word-break: keep-all; overflow-wrap: break-word; }
+    #projects > h2::after { content: none; }
+
+    /* 사이드바: 현재 위치 표시와 넉넉한 클릭 영역 */
+    .profile-aside nav { gap: 2px; }
+    .profile-aside nav a { display: block; padding: 8px 0 8px 12px; border-left: 2px solid transparent; font-size: 15px; color: #5f6f83; }
+    .profile-aside nav a:hover { color: #172b46; text-decoration: none; }
+    .profile-aside nav a[aria-current="true"] { color: #172b46; font-weight: 650; border-left-color: #315a99; }
+    .profile-aside .intro { font-size: 17px; }
+
+    /* 프로젝트 요약 카드 */
+    .project-preview .project-media a { display: block; }
+    .project-media img { aspect-ratio: 16 / 10; height: auto; object-fit: cover; object-position: top center; background: #eaf0f7; }
+    .project-preview h3 { margin-top: 16px; }
+    .preview-meta { margin-top: 4px; font-size: 13px; color: #315a99; font-weight: 650; }
+    .preview-desc { margin-top: 8px; font-size: 15px; color: #5f6f83; line-height: 1.7; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 0; padding: 0; list-style: none; }
+    .tags li { padding: 2px 10px; border: 1px solid #dce5f0; border-radius: 3px; background: #fbfcff; font-size: 13px; color: #44566d; line-height: 1.7; }
+
+    /* 프로젝트 상세 */
+    #project-details .project-detail { padding: 40px 0; }
+    #project-details .project-detail:first-of-type { margin-top: 0; padding-top: 12px; }
+    .detail-header h3 { margin-bottom: 8px; }
+    .detail-figure { margin: 24px 0 0; max-width: 640px; }
+    .detail-meta { margin: 24px 0; }
+    .detail-meta > div { grid-template-columns: 96px minmax(0, 1fr); }
+    .detail-meta dd .tags { margin-top: 0; }
+    .detail-row p, .detail-row li, .resolution dd { color: #44566d; }
+    .detail-row ul { margin-top: 0; }
+    .detail-row li + li { margin-top: 6px; }
+    .resolution dt { color: #315a99; }
+
+    /* 기술 역량 · 교육 */
+    .skill p { font-size: 15px; }
+    .item small { display: block; margin-bottom: 4px; }
+
+    @media (max-width: 1100px) {
+      .project-previews { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+    }
+    @media (max-width: 720px) {
+      .project-previews { grid-template-columns: 1fr; }
+      .profile-aside nav { gap: 4px 4px; }
+      .profile-aside nav a { padding: 6px 10px 6px 0; border-left: 0; }
+      .profile-aside nav a[aria-current="true"] { border-left: 0; }
+    }
+
+    .print-url { display: none; }
+    @media print {
+      body { word-break: keep-all; }
+      .hybrid-main > .columns:first-of-type { break-before: auto; }
+      #project-details { break-before: auto; }
+      #project-details .project-detail + .project-detail { break-before: auto; border-top: 1px solid #dce5f0; }
+      #project-details .project-detail { padding: 5mm 0; }
+      #project-details .project-detail:first-of-type { margin-top: 0; padding-top: 2mm; }
+      .project-preview { break-inside: avoid; }
+      .project-media img { height: 38mm; object-fit: cover; }
+      .detail-figure { display: none; }
+      .preview-meta { font-size: 8pt; }
+      .preview-desc { margin-top: 1mm; font-size: 9pt; line-height: 1.5; }
+      .tags { gap: 1mm; margin-top: 1.5mm; }
+      .tags li { padding: 0 2mm; font-size: 8pt; background: #fff; }
+      .detail-meta > div { align-items: baseline; }
+      .detail-header { break-after: avoid; }
+      .detail-row { break-inside: avoid; }
+      .print-url { display: block; margin-top: 2mm; font-size: 9pt; color: #315a99; }
+    }
+  </style>
+</head>
+<body data-layout="hybrid" id="top">
+  <a class="skip-link" href="#main-content">본문 바로가기</a>
+  <main class="container" id="main-content" tabindex="-1">
+    <div class="profile-layout hybrid-layout">
+      <aside class="profile-aside" aria-label="프로필과 목차">
+        <div class="sticky">
+          <p class="eyebrow">HWANDROID</p>
+          <h1>유환희</h1>
+          <p class="role">Full-stack <br>Web Developer</p>
+          <p class="intro">Java·Spring Boot와 Vue 3로 화면부터 API, 데이터 저장, 배포까지 연결합니다. 예외 상황과 작은 디테일까지 확인합니다.</p>
+          <nav aria-label="본문 목차">
+            <a href="#projects">프로젝트 요약</a>
+            <a href="#project-details">프로젝트 상세</a>
+            <a href="#skills">기술 역량</a>
+            <a href="#education">교육 및 자격</a>
+            <a href="#contact">연락처</a>
+          </nav>
+          <div class="actions">
+            <button class="button" type="button" id="print-portfolio">인쇄 / PDF 저장</button>
+            <a href="https://github.com/hwandroid921" target="_blank" rel="noopener noreferrer">GitHub 프로필</a>
+            <a href="mailto:olgksgml@gmail.com">이메일 보내기</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="profile-main hybrid-main">
+        <header class="hybrid-hero">
+          <span class="eyebrow">PORTFOLIO / SELECTED WORK</span>
+          <h2>화면부터 API, 데이터, <br>배포까지 구현합니다.</h2>
+          <p class="muted">팀 프로젝트 3개와 개인 프로젝트 1개를 만들었습니다. LogMile에서는 팀장과 백엔드를, ReadMe에서는 Vue 프론트엔드 전체를 맡아 양쪽 역할을 모두 경험했습니다.</p>
+        </header>
+
+        <section id="projects" aria-labelledby="projects-title">
+          <h2 id="projects-title">프로젝트 요약</h2>
+          <div class="project-previews">
+            <article class="project-preview" aria-labelledby="logmile-preview-title">
+              <figure class="project-media">
+                <a href="#logmile" tabindex="-1" aria-hidden="true">
+                  <img src="logmile-project.png" alt="" width="2032" height="1104" fetchpriority="high">
+                </a>
+              </figure>
+              <h3 id="logmile-preview-title"><a href="#logmile">LogMile</a></h3>
+              <p class="preview-meta">2026.04 ~ 2026.06 · 2인 팀 · 팀장, 백엔드</p>
+              <p class="preview-desc">운행 데이터로 화물차 운전자의 피로도를 모니터링하는 B2B 플랫폼</p>
+              <ul class="tags" aria-label="사용 기술"><li>Spring Boot</li><li>Spring Security</li><li>PostgreSQL</li><li>FastAPI</li></ul>
+            </article>
+
+            <article class="project-preview" aria-labelledby="bookstore-preview-title">
+              <figure class="project-media">
+                <a href="#bookstore" tabindex="-1" aria-hidden="true">
+                  <img src="readme-project.png" alt="" width="2032" height="1104" loading="lazy" decoding="async">
+                </a>
+              </figure>
+              <h3 id="bookstore-preview-title"><a href="#bookstore">온라인 서점 ReadMe</a></h3>
+              <p class="preview-meta">2026.03 ~ 2026.04 · 3인 팀 · 프론트엔드 전체</p>
+              <p class="preview-desc">도서 탐색부터 장바구니, 주문, 결제로 이어지는 온라인 서점</p>
+              <ul class="tags" aria-label="사용 기술"><li>Vue 3</li><li>Pinia</li><li>Vue Router</li><li>Axios</li></ul>
+            </article>
+
+            <article class="project-preview" aria-labelledby="jeju-preview-title">
+              <figure class="project-media">
+                <a href="#jeju" tabindex="-1" aria-hidden="true">
+                  <img src="jeju-project.png" alt="" width="1906" height="939" loading="lazy" decoding="async">
+                </a>
+              </figure>
+              <h3 id="jeju-preview-title"><a href="#jeju">제주 문화관광 페이지</a></h3>
+              <p class="preview-meta">2026.02 ~ 2026.03 · 3인 팀 · 팀 리더, 백엔드</p>
+              <p class="preview-desc">관광지 탐색, 회원 인증, 리뷰와 게시판 문의를 제공하는 관광 안내 사이트</p>
+              <ul class="tags" aria-label="사용 기술"><li>Spring Boot</li><li>Thymeleaf</li><li>PostgreSQL</li></ul>
+            </article>
+
+            <article class="project-preview" aria-labelledby="tokenmonitor-preview-title">
+              <figure class="project-media">
+                <a href="#tokenmonitor" tabindex="-1" aria-hidden="true">
+                  <img src="token-monitor-project.png" alt="" width="1266" height="813" loading="lazy" decoding="async">
+                </a>
+              </figure>
+              <h3 id="tokenmonitor-preview-title"><a href="#tokenmonitor">TokenMonitor</a></h3>
+              <p class="preview-meta">개인 프로젝트 · 기획부터 패키징까지</p>
+              <p class="preview-desc">여러 AI 도구의 잔여 사용량과 초기화 시간을 한 화면에서 보는 데스크톱 앱</p>
+              <ul class="tags" aria-label="사용 기술"><li>Electron</li><li>React</li><li>TypeScript</li></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="project-details" aria-labelledby="project-details-title">
+          <h2 id="project-details-title">프로젝트 상세</h2>
+
+          <article class="project-detail" id="logmile" aria-labelledby="logmile-title">
+            <header class="detail-header">
+              <h3 id="logmile-title">LogMile</h3>
+              <p class="muted">운행 데이터를 기반으로 화물차 운전자의 피로도를 모니터링하고 관리하는 B2B 플랫폼입니다.</p>
+            </header>
+            <figure class="project-media detail-figure">
+              <img src="logmile-project.png" alt="LogMile 소개 화면. 화물차 운전자 피로도와 차량별 상태를 보여주는 모니터링 서비스" width="2032" height="1104" loading="lazy" decoding="async">
+            </figure>
+            <dl class="detail-meta">
+              <div><dt>기간</dt><dd>2026.04.27 ~ 2026.06.01</dd></div>
+              <div><dt>구성</dt><dd>2인 팀</dd></div>
+              <div><dt>역할</dt><dd>팀장, 프로젝트 기획·설계, 백엔드, AI 서버 연동</dd></div>
+              <div><dt>사용 기술</dt><dd><ul class="tags"><li>Java 21</li><li>Spring Boot</li><li>Spring Security</li><li>JPA</li><li>PostgreSQL</li><li>FastAPI</li><li>YOLO11</li><li>easyOCR</li><li>Vue 3</li><li>Docker</li></ul></dd></div>
+            </dl>
+            <div class="detail-row">
+              <h4>주요 구현</h4>
+              <div>
+                <ul>
+                  <li>Spring Boot 기반 운행 기록 및 피로도 관리 REST API 설계</li>
+                  <li>Spring Security와 JWT 기반 인증·인가 구현</li>
+                  <li>PostgreSQL 엔티티와 연관관계 설계</li>
+                  <li>FastAPI 기반 번호판 OCR 서버 연동</li>
+                  <li>피로도 계산과 휴식 권고 비즈니스 로직 구현</li>
+                  <li>Docker 기반 애플리케이션 실행 환경 구성</li>
+                </ul>
+                <p class="detail-flow">상태 수집 → 이상 판단 → 모니터링 → 결과 확인</p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <h4>문제 해결</h4>
+              <div>
+                <h5>번호판 오인식 결과가 운행 기록에 저장되는 문제</h5>
+                <dl class="resolution">
+                  <div><dt>문제</dt><dd>FastAPI 번호판 인식 기능을 Spring Boot 서비스와 연동하는 과정에서, 촬영 각도·거리·조명에 따라 YOLO가 번호판 영역을 찾지 못하거나 일부만 탐지했습니다. 영역이 정상적으로 추출되어도 OCR이 비슷한 숫자와 문자를 잘못 읽는 경우가 있었습니다.</dd></div>
+                  <div><dt>판단</dt><dd>인식 결과를 그대로 차량번호로 사용하면, 잘못된 결과가 데이터베이스에 저장되어 다른 차량의 운행 기록과 연결될 수 있다고 판단했습니다.</dd></div>
+                  <div><dt>해결</dt><dd>객체 탐지 성공 여부와 문자 인식 결과를 구분해 처리했습니다. OCR 결과가 없거나 번호판 형식에 맞지 않으면 정상 데이터로 확정하지 않도록 예외 흐름을 구성하고, 신뢰도가 낮은 결과는 사용자가 확인하거나 다시 촬영할 수 있도록 설계했습니다.</dd></div>
+                  <div><dt>배운 점</dt><dd>AI 기능을 서비스에 적용할 때는 모델의 결과를 정답으로 가정하지 않고, 신뢰도 기준과 데이터 형식 검증, 사용자 확인과 실패 처리 구조를 함께 두어야 한다는 점을 배웠습니다.</dd></div>
+                </dl>
+              </div>
+            </div>
+            <div class="detail-actions"><a href="https://github.com/hwandroid921/logmile" target="_blank" rel="noopener noreferrer">LogMile GitHub 저장소</a><a href="logmile-project.png" target="_blank" rel="noopener noreferrer">대표 화면 원본 보기</a><a href="#projects">프로젝트 요약으로</a></div>
+            <p class="print-url">GitHub: github.com/hwandroid921/logmile</p>
+          </article>
+
+          <article class="project-detail" id="bookstore" aria-labelledby="bookstore-title">
+            <header class="detail-header">
+              <h3 id="bookstore-title">온라인 서점 ReadMe</h3>
+              <p class="muted">교보문고를 참고해 만든 온라인 서점으로, 도서 탐색부터 장바구니, 주문, 결제로 이어지는 쇼핑몰 서비스입니다.</p>
+            </header>
+            <figure class="project-media detail-figure">
+              <img src="readme-project.png" alt="ReadMe 온라인 서점 메인 화면. 도서 검색, 카테고리와 추천 도서 영역" width="2032" height="1104" loading="lazy" decoding="async">
+            </figure>
+            <dl class="detail-meta">
+              <div><dt>기간</dt><dd>2026.03.13 ~ 2026.04.12</dd></div>
+              <div><dt>구성</dt><dd>3인 팀</dd></div>
+              <div><dt>역할</dt><dd>Vue 프론트엔드 전체</dd></div>
+              <div><dt>사용 기술</dt><dd><ul class="tags"><li>Vue 3</li><li>Pinia</li><li>Vue Router</li><li>Axios</li><li>Spring Boot</li><li>PostgreSQL</li><li>Docker</li></ul></dd></div>
+            </dl>
+            <div class="detail-row">
+              <h4>주요 구현</h4>
+              <div>
+                <ul>
+                  <li>Vue 3 기반 사용자·관리자 화면 구현</li>
+                  <li>Pinia를 이용한 장바구니와 사용자 상태 관리</li>
+                  <li>Router Guard 기반 페이지 접근 제어</li>
+                  <li>Axios 기반 백엔드 REST API 연동</li>
+                  <li>주문·결제 상태에 따른 화면 흐름 구현</li>
+                  <li>Docker를 활용한 배포와 결과 발표 진행</li>
+                </ul>
+                <p class="detail-flow">도서 조회 → 상세 확인 → 장바구니 → 주문·결제 → 주문 내역</p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <h4>설계 시 고민한 점</h4>
+              <div>
+                <h5>장바구니와 주문 단계의 상태 분리</h5>
+                <p>장바구니에서 주문으로 넘어가는 단계에서 상태가 꼬이지 않도록, 화면 단위 상태와 서버 요청 흐름을 분리해 구성했습니다. 이 과정에서 사용자의 행동이 화면 상태와 데이터베이스에 어떻게 연결되는지 이해했습니다.</p>
+              </div>
+            </div>
+            <div class="detail-actions"><a href="https://github.com/hwandroid921/readme" target="_blank" rel="noopener noreferrer">ReadMe GitHub 저장소</a><a href="readme-project.png" target="_blank" rel="noopener noreferrer">대표 화면 원본 보기</a><a href="#projects">프로젝트 요약으로</a></div>
+            <p class="print-url">GitHub: github.com/hwandroid921/readme</p>
+          </article>
+
+          <article class="project-detail" id="jeju" aria-labelledby="jeju-title">
+            <header class="detail-header">
+              <h3 id="jeju-title">제주 문화관광 페이지</h3>
+              <p class="muted">관광지 탐색부터 회원 인증, 리뷰 작성, 게시판 문의까지 이어지는 제주 문화관광 안내 사이트입니다.</p>
+            </header>
+            <figure class="project-media detail-figure">
+              <img src="jeju-project.png" alt="제주문화관광 메인 화면. 관광 메뉴와 성산일출축제 배너" width="1906" height="939" loading="lazy" decoding="async">
+            </figure>
+            <dl class="detail-meta">
+              <div><dt>기간</dt><dd>2026.02 ~ 2026.03 (1개월)</dd></div>
+              <div><dt>구성</dt><dd>3인 팀 (팀 코딩모코코)</dd></div>
+              <div><dt>역할</dt><dd>팀 리더, 인프라 관리와 협업 주도, 백엔드 설계·구현</dd></div>
+              <div><dt>사용 기술</dt><dd><ul class="tags"><li>Java</li><li>Spring Boot</li><li>PostgreSQL</li><li>Thymeleaf</li><li>HTML</li><li>CSS</li><li>JavaScript</li></ul></dd></div>
+            </dl>
+            <div class="detail-row">
+              <h4>주요 구현</h4>
+              <div>
+                <ul>
+                  <li>회원 인증, 게시글, 리뷰 기능의 백엔드 설계와 구현</li>
+                  <li>사용자 동작에 따른 데이터 저장 과정 정리</li>
+                  <li>팀 리더로서 인프라 관리와 협업 주도</li>
+                  <li>GitHub 협업 방식을 익혀 팀 작업에 직접 적용</li>
+                  <li>팀원별 대표·서브 페이지를 하나의 사이트로 통합</li>
+                </ul>
+                <p class="detail-flow">관광지 탐색 → 회원 인증 → 리뷰 작성 → 게시판 문의</p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <h4>설계 시 고민한 점</h4>
+              <div>
+                <h5>기능별로 흩어지는 사용자 흐름</h5>
+                <p>관광 정보, 인증, 리뷰와 문의를 각자 나누어 만들다 보니 화면 이동과 데이터 흐름이 흩어지기 쉬웠습니다. 사용자 시나리오를 기준으로 API와 화면 이동을 정리해 하나의 서비스로 이어지도록 구성했습니다.</p>
+              </div>
+            </div>
+            <div class="detail-actions"><a href="https://github.com/hwandroid921/Jeju" target="_blank" rel="noopener noreferrer">제주 문화관광 GitHub 저장소</a><a href="jeju-project.png" target="_blank" rel="noopener noreferrer">대표 화면 원본 보기</a><a href="#projects">프로젝트 요약으로</a></div>
+            <p class="print-url">GitHub: github.com/hwandroid921/Jeju</p>
+          </article>
+
+          <article class="project-detail" id="tokenmonitor" aria-labelledby="tokenmonitor-title">
+            <header class="detail-header">
+              <h3 id="tokenmonitor-title">TokenMonitor</h3>
+              <p class="muted">여러 AI 개발 도구의 플랜, 잔여 사용량과 초기화 시간을 한 화면에서 확인하는 개인용 데스크톱 애플리케이션입니다.</p>
+            </header>
+            <figure class="project-media detail-figure">
+              <img src="token-monitor-project.png" alt="TokenMonitor Windows 대시보드. ChatGPT, Claude, Antigravity의 잔여 사용량과 초기화 시간을 비교하는 화면" width="1266" height="813" loading="lazy" decoding="async">
+            </figure>
+            <dl class="detail-meta">
+              <div><dt>구성</dt><dd>개인 프로젝트</dd></div>
+              <div><dt>역할</dt><dd>기획, 설계, 개발, 패키징</dd></div>
+              <div><dt>표시 대상</dt><dd>ChatGPT, Claude, Antigravity</dd></div>
+              <div><dt>사용 기술</dt><dd><ul class="tags"><li>Electron</li><li>React</li><li>TypeScript</li></ul></dd></div>
+            </dl>
+            <div class="detail-row">
+              <h4>주요 구현</h4>
+              <div>
+                <ul>
+                  <li>Electron과 React, TypeScript 기반 데스크톱 UI 구현</li>
+                  <li>도구별 플랜, 잔여 사용량, 초기화 시간을 한 화면에 통합</li>
+                  <li>서비스마다 다른 응답을 공통 데이터 구조로 변환</li>
+                  <li>사용자 세션과 데이터를 로컬 환경에서 처리</li>
+                  <li>Windows 배포 패키지 구성</li>
+                </ul>
+                <p class="detail-flow">도구별 사용량 확인 → 상태 비교 → 갱신 및 외부 링크 이동</p>
+              </div>
+            </div>
+            <div class="detail-row">
+              <h4>설계 시 고민한 점</h4>
+              <div>
+                <h5>흩어진 AI 도구 사용량 정보 통합</h5>
+                <p>AI 도구마다 사용량을 확인하는 위치와 형식이 달라 잔여 사용량과 초기화 시간을 한 번에 비교하기 어려웠습니다. 직접 느낀 불편에서 출발해, 주요 정보를 같은 구조로 정리하고 하나의 대시보드에 모아 확인 시간을 줄였습니다.</p>
+              </div>
+            </div>
+            <div class="detail-actions"><a href="https://github.com/hwandroid921/TokenMonitor" target="_blank" rel="noopener noreferrer">TokenMonitor GitHub 저장소</a><a href="token-monitor-project.png" target="_blank" rel="noopener noreferrer">대표 화면 원본 보기</a><a href="#projects">프로젝트 요약으로</a></div>
+            <p class="print-url">GitHub: github.com/hwandroid921/TokenMonitor</p>
+          </article>
+        </section>
+
+        <div class="columns equal">
+          <section id="skills" aria-labelledby="skills-title">
+            <h2 id="skills-title">기술 역량</h2>
+            <div class="skills">
+              <div class="skill"><h3>백엔드</h3><p>Java 21, Spring Boot 3, Spring Security, JWT, Spring Data JPA, FastAPI</p><small>REST API와 인증·인가 구현 (LogMile, 제주 문화관광)</small></div>
+              <div class="skill"><h3>프론트엔드</h3><p>Vue 3, Pinia, Vue Router, Axios, Thymeleaf, React, TypeScript, Electron</p><small>화면 구성과 상태 관리 (ReadMe, TokenMonitor)</small></div>
+              <div class="skill"><h3>데이터베이스 및 인프라</h3><p>PostgreSQL, Docker, Docker Compose, Nginx, AWS, GitHub Actions</p><small>엔티티 설계와 실행·배포 환경 구성</small></div>
+              <div class="skill"><h3>영상 인식 연동</h3><p>YOLO, easyOCR, OpenCV</p><small>번호판 인식 결과를 웹 서비스와 연동 (LogMile)</small></div>
+              <div class="skill"><h3>협업 및 도구</h3><p>GitHub, Notion, Figma, Codex, Claude Code</p><small>브랜치·PR 기반 협업, AI 도구는 설계 검토와 코드 리뷰, 디버깅 보조에 활용</small></div>
+            </div>
+          </section>
+          <section id="education" aria-labelledby="education-title">
+            <h2 id="education-title">교육 및 자격</h2>
+            <div class="item"><div><small>교육 / 2025.12.29 - 2026.07.02 (1000시간)</small><h3>스마트 모빌리티 DX Academy</h3><p class="muted">에스트래픽 연계 K-디지털 트레이닝, MBC 아카데미<br>Java, Spring Boot, Vue 3, PostgreSQL 기반 풀스택 과정. 팀 프로젝트 3개를 진행하며 Git 협업과 Docker·AWS 배포를 경험했습니다.</p></div></div>
+            <div class="item"><div><small>자격 / 2026.04.17</small><h3>프로그래밍기능사</h3><p class="muted">전 정보처리기능사<br>한국산업인력공단</p></div></div>
+            <div class="item"><div><small>학력 / 2018.03 - 2023.05</small><h3>한국산업기술대학교</h3><p class="muted">게임공학과<br>현 한국공학대학교</p></div></div>
+          </section>
+        </div>
+
+        <section id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">연락처</h2>
+          <p class="muted">신입 풀스택 웹 개발자로 팀의 서비스와 사용자 경험에 기여할 기회를 찾고 있습니다.</p>
+          <dl class="contact-details">
+            <div><dt>이메일</dt><dd><a href="mailto:olgksgml@gmail.com">olgksgml@gmail.com</a></dd></div>
+            <div><dt>전화</dt><dd><a href="tel:01063126671">010-6312-6671</a></dd></div>
+            <div><dt>GitHub</dt><dd><a href="https://github.com/hwandroid921" target="_blank" rel="noopener noreferrer">github.com/hwandroid921</a></dd></div>
+            <div><dt>블로그</dt><dd><a href="https://velog.io/@hwandroid921" target="_blank" rel="noopener noreferrer">velog.io/@hwandroid921</a></dd></div>
+          </dl>
+        </section>
+      </div>
+    </div>
+    <footer class="footer"><small>유환희 / Full-stack Web Developer</small><a href="#top">맨 위로</a></footer>
+  </main>
+  <script>
+    document.getElementById('print-portfolio')?.addEventListener('click', () => window.print());
+
+    // 사이드바 목차에 현재 보고 있는 섹션을 표시합니다.
+    (() => {
+      const links = [...document.querySelectorAll('.profile-aside nav a')];
+      const sections = links.map((a) => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      if (!sections.length) return;
+      const update = () => {
+        const line = window.scrollY + window.innerHeight * 0.3;
+        // 같은 높이에 나란히 놓인 섹션(2열)은 앞의 것을 현재 위치로 봅니다.
+        let current = sections[0];
+        let currentTop = -Infinity;
+        for (const s of sections) {
+          const top = s.getBoundingClientRect().top + window.scrollY;
+          if (top <= line && top > currentTop + 1) { current = s; currentTop = top; }
+        }
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = sections[sections.length - 1];
+        links.forEach((a) => {
+          if (a.getAttribute('href') === '#' + current.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      };
+      let ticking = false;
+      window.addEventListener('scroll', () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => { update(); ticking = false; });
+      }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+  </script>
+</body>
+</html>

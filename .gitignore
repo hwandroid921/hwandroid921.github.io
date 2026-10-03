@@ -1,0 +1,9 @@
+# Local backups and verification output
+*.zip
+artifacts/
+output/
+node_modules/
+.env
+.env.*
+!.env.example
+

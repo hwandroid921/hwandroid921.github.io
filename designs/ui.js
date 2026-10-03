@@ -1,0 +1,1 @@
+const dialog=document.querySelector('dialog');document.querySelectorAll('[data-empty]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();dialog.querySelector('p').textContent=el.dataset.empty+' 항목은 아직 비어 있습니다. 실제 자료나 링크를 넣으면 연결할 수 있습니다.';dialog.showModal()}));dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
