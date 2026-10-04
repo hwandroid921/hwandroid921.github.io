@@ -1,0 +1,250 @@
+# Vue 경험으로 배우는 React 포트폴리오 전환
+
+Vue와 Vite를 사용해 본 개발자가 현재 HTML 포트폴리오를 React와 TypeScript로 옮기는 학습 계획입니다. 기존 화면을 그대로 실행하는 것부터 시작해 컴포넌트, props, 반복 출력과 상태 관리를 차례로 배웁니다. Cloudflare 배포와 백엔드 연결은 화면 전환을 마친 뒤 진행합니다.
+
+이 문서는 진행 계획과 연습 예제를 담고 있습니다. 아직 React 앱을 생성하거나 기존 사이트를 변경하지 않았습니다.
+
+## 현재 파일과 작업 범위
+
+배포 페이지는 저장소 루트의 `index.html`, `index.css`, `index.js`입니다. 학습과 개발은 `prototype/`에서 진행하며 메인 반영을 요청하기 전까지 루트의 배포 파일을 유지합니다. 학습 문서는 `docs/learning/`에 둡니다.
+
+현재 프로토타입은 `prototype/index.html`이 화면을 담고 `prototype/index.css`가 배치와 인쇄 스타일을 맡습니다. `prototype/index.js`에는 인쇄 버튼을 누르면 `window.print()`를 호출하는 코드가 있습니다. 이미지와 폰트도 프로토타입 안에 있습니다.
+
+React 전환 과정에서는 현재 문구와 디자인을 기준으로 작업합니다. 삭제한 설명을 다시 넣거나 컴포넌트를 나누면서 화면을 새로 디자인하지 않습니다. JSX 속성 이름이 바뀌더라도 CSS 클래스 이름은 유지합니다.
+
+## 학습 진행 방식
+
+한 번에 전체 코드를 바꾸면 어떤 개념 때문에 코드가 달라졌는지 따라가기 어렵습니다. 각 단계에서 개념을 설명하고 작은 부분을 수정한 다음 브라우저에서 확인합니다. 마지막에는 바뀐 파일과 변경 이유를 함께 정리합니다.
+
+단계마다 아래 질문에 답해 봅니다.
+
+- 이번에 배운 문법을 Vue에서는 어떻게 작성했는가?
+- 어느 파일을 수정하면 화면이 바뀌는가?
+- 브라우저에서 확인한 결과가 예상과 같은가?
+- 직접 한 줄을 바꾸고 그 결과를 설명할 수 있는가?
+
+## Vue와 React 개념 연결
+
+| 익숙한 Vue 코드 | React에서 배울 코드 | 차이를 볼 부분 |
+| --- | --- | --- |
+| `.vue`의 `<template>` | JSX를 반환하는 컴포넌트 함수 | JavaScript 안에 화면 표현을 작성합니다. |
+| `defineProps` | 함수 인자로 받는 props | 부모가 자식에게 데이터를 전달합니다. |
+| `v-for` | 배열의 `.map()` | 반복 출력할 요소에 안정적인 `key`를 붙입니다. |
+| `v-if` | 조건식이나 조건부 반환 | JavaScript 문법으로 출력 여부를 정합니다. |
+| `@click` | `onClick` | 이벤트에 실행할 함수를 전달합니다. |
+| `ref`, `reactive` | `useState` | 상태를 바꿀 때 setter를 사용합니다. |
+| `computed` | 렌더링 중 계산, 필요하면 `useMemo` | 계산된 값마다 Hook을 추가하지 않습니다. |
+| `onMounted` 등 | 외부 시스템과 동기화하는 `useEffect` | Vue 생명주기와 일대일로 대응하지 않습니다. |
+
+React 컴포넌트는 렌더링할 때 함수를 다시 실행합니다. 이 특성을 먼저 이해하면 상태 변경과 이벤트 처리도 따라가기 쉽습니다. Hook의 호출 순서가 유지되도록 `useState`와 `useEffect`는 컴포넌트 최상위에서 호출합니다.
+
+## 1단계 Vite 실행 흐름 이해
+
+Vite는 개발 서버와 빌드를 맡고 React는 컴포넌트로 화면을 표현합니다. TypeScript는 코드에서 사용하는 값의 형태를 검사합니다. Vue 프로젝트에서도 사용했던 Vite를 계속 사용하므로 개발 서버를 켜고 빌드하는 흐름은 익숙할 것입니다.
+
+React 프로젝트를 시작할 때는 Vite의 `react-ts` 템플릿을 사용할 수 있습니다. 기존 파일이 있는 `prototype/`에 초기화 명령을 바로 실행하면 파일 충돌이 생길 수 있으므로 실제 실습에서는 먼저 원본 보존과 파일 배치를 정합니다. 준비가 끝난 뒤 학습용 임시 디렉터리에서 템플릿을 만들고 `prototype/`에 필요한 파일을 옮기는 방식으로 진행합니다.
+
+목표 구조입니다. 아직 만들어진 구조는 아닙니다.
+
+```text
+prototype/
+├── index.html
+├── package.json
+├── vite.config.ts
+├── tsconfig.json
+├── public/
+│   ├── images/
+│   └── assets/
+└── src/
+    ├── main.tsx
+    ├── App.tsx
+    ├── index.css
+    ├── components/
+    └── data/
+```
+
+기존 HTML에 쓰인 `<body>` 속성도 확인합니다. 현재 CSS는 `body[data-layout="hybrid"]`를 사용하므로 이 속성을 유지해야 기존 배치가 적용됩니다. 이미지와 폰트 경로는 `public/` 배치에 맞춰 수정합니다.
+
+React 앱의 실행 흐름은 `index.html → main.tsx → App.tsx → 하위 컴포넌트`입니다. `index.html`에는 React가 화면을 넣을 `root` 요소가 있고 `main.tsx`가 그 요소에 앱을 연결합니다. `App.tsx`는 전체 화면을 조합합니다. `.ts`는 TypeScript 파일이며 `.tsx`는 JSX도 작성하는 TypeScript 파일입니다.
+
+실습에서는 프로토타입 프로젝트 디렉터리에서 `npm install`, `npm run dev`, `npm run build`의 역할을 확인합니다. 현재 Vite의 Node.js 요구 버전은 실습을 시작할 때 공식 문서와 설치 환경을 대조합니다.
+
+완료 기준은 개발 서버에서 React 화면이 열리고 위 실행 흐름을 설명할 수 있는 것입니다. 이 단계에서는 API나 데이터베이스를 추가하지 않습니다.
+
+## 2단계 HTML을 JSX로 옮기기
+
+현재 HTML의 본문을 `App.tsx`로 옮겨 같은 화면을 만듭니다. `<head>`의 제목과 메타 정보는 Vite의 `index.html`에 남깁니다. CSS는 `main.tsx`에서 가져오는 방식으로 연결할 수 있습니다.
+
+JSX에서 처음 확인할 규칙은 `className`, 닫는 태그, 하나로 묶인 반환 요소입니다. `aria-label`과 `data-layout` 같은 속성은 하이픈을 유지합니다.
+
+```html
+<!-- 현재 HTML -->
+<img class="profile-photo" src="images/profiles/Hwan2.png" alt="유환희 프로필 사진">
+```
+
+```tsx
+// public/images/profiles/Hwan2.png를 사용하는 JSX 예제
+<img
+  className="profile-photo"
+  src="/images/profiles/Hwan2.png"
+  alt="유환희 프로필 사진"
+/>
+```
+
+이 예제의 절대 경로는 사이트 루트에 배포하는 구성을 가정합니다. 하위 경로로 배포한다면 Vite의 `base` 설정과 이미지 경로도 함께 확인합니다.
+
+완료 기준은 기존 화면과 React 화면의 배치, 이미지, 목차 이동 및 인쇄 스타일이 같은 것입니다. 현재 HTML을 문자열로 넣는 `dangerouslySetInnerHTML` 방식 대신 JSX로 옮겨 컴포넌트와 이벤트를 배우도록 합니다.
+
+## 3단계 사이드바와 이벤트 분리
+
+화면이 같게 나온 뒤 사이드바를 `Sidebar.tsx`로 분리합니다. 프로필과 목차를 먼저 옮기고 퀵 메뉴는 필요한 시점에 별도 컴포넌트로 나눕니다. 컴포넌트는 화면에서 맡는 역할을 기준으로 구분하며 모든 태그를 별도 파일로 만들 필요는 없습니다.
+
+Vue에서 익숙한 인쇄 이벤트는 아래와 같습니다.
+
+```vue
+<button @click="printPortfolio">인쇄 / PDF 저장</button>
+```
+
+React에서는 함수를 `onClick`에 전달합니다.
+
+```tsx
+export function PrintButton() {
+  function printPortfolio() {
+    window.print();
+  }
+
+  return (
+    <button className="button" type="button" onClick={printPortfolio}>
+      인쇄 / PDF 저장
+    </button>
+  );
+}
+```
+
+`onClick={printPortfolio}`는 클릭할 때 실행할 함수를 전달합니다. `onClick={printPortfolio()}`는 렌더링 중 함수를 호출하므로 인쇄 창이 뜨는 시점이 달라집니다. 이 예제로 두 표현의 차이를 설명합니다.
+
+기존 `index.js`의 이벤트 리스너는 React 이벤트로 옮긴 뒤 제거해 두 번 연결되지 않게 합니다. 이미지, GitHub·블로그·이메일·전화 아이콘의 순서와 하단 고정 동작도 확인합니다.
+
+## 4단계 프로젝트 데이터와 props 배우기
+
+프로젝트 요약에는 비슷한 형태의 카드가 반복됩니다. 이 부분에서 TypeScript 타입과 props를 배웁니다. 아래 타입은 카드가 사용하는 데이터의 형태만 정의한 예제입니다.
+
+```tsx
+type Project = {
+  id: string;
+  title: string;
+  image: string;
+  imageAlt: string;
+};
+
+type ProjectCardProps = {
+  project: Project;
+};
+
+function ProjectCard({ project }: ProjectCardProps) {
+  return (
+    <article className="project-preview">
+      <a href={`#${project.id}`}>
+        <img src={project.image} alt={project.imageAlt} />
+      </a>
+      <h3><a href={`#${project.id}`}>{project.title}</a></h3>
+    </article>
+  );
+}
+```
+
+이 코드는 props와 타입을 설명하는 축약 예제입니다. 실제 카드로 옮길 때는 현재 페이지의 `figure`, 상세 보기 링크, 이미지 크기와 로딩 속성을 유지합니다. CSS 선택자가 특정 태그 구조를 전제로 하는지도 확인합니다.
+
+`id: string`은 `id`에 문자열을 넣도록 검사합니다. `ProjectCardProps`는 컴포넌트가 `project`라는 데이터를 받는다고 설명합니다. Vue의 props처럼 자식 컴포넌트는 전달받은 데이터를 직접 변경하지 않습니다.
+
+`src/data/projects.ts`에 프로젝트 배열을 두면 아래처럼 반복 출력합니다.
+
+```tsx
+{projects.map((project) => (
+  <ProjectCard key={project.id} project={project} />
+))}
+```
+
+Vue의 `v-for`와 비교하면서 `.map()`이 각 프로젝트를 화면 요소로 바꾸는 과정을 봅니다. `key`는 React가 목록 항목을 구분하는 데 사용하며 일반 props로 전달되지 않습니다. 현재 프로젝트의 고정된 `id`를 쓰고 임의의 난수는 피합니다.
+
+TypeScript는 개발 중 잘못된 타입 사용을 찾습니다. 서버가 보낸 JSON의 실제 값을 자동으로 검사하지는 않으므로 API 연결 단계에서 응답 검증을 따로 배웁니다.
+
+연습으로 프로젝트 제목을 데이터 파일에서 바꿔 보고 화면을 확인합니다. `title`에 숫자를 넣었을 때 어떤 타입 오류가 나오는지도 살펴봅니다. 확인 후 원래 제목으로 되돌립니다.
+
+## 5단계 상세 내용과 나머지 영역 나누기
+
+프로젝트 카드가 동작하면 상세 영역, 기술 역량, 학습 및 활동, 연락처와 푸터를 분리합니다. 프로젝트마다 다른 설명은 그대로 유지하고 반복되는 구조만 공통으로 묶습니다.
+
+처음에는 프로젝트 상세 내용을 각 컴포넌트에 남겨도 됩니다. 데이터 구조를 설명할 수 있게 된 뒤 별도 파일로 옮깁니다. JSX와 TypeScript 타입을 한 번에 복잡하게 만드는 일을 줄이려는 순서입니다.
+
+기존 `id`를 유지해 사이드바와 상세 보기 링크가 같은 위치로 이동하도록 합니다. 삭제한 공통 제목이나 설명은 다시 넣지 않습니다. 푸터는 오른쪽 본문 안에 두고 페이지 끝에서도 사이드바가 밀리지 않는지 확인합니다.
+
+## 6단계 필요한 상태와 빌드 확인
+
+현재 인쇄 버튼에는 상태가 필요하지 않습니다. 상태는 화면이 사용자 동작에 따라 달라질 때 도입합니다. 모바일 목차를 펼치고 닫는 연습에서 `useState`를 배울 수 있습니다. 아래 코드는 기존 화면에 적용하기 전의 독립된 연습 예제입니다.
+
+```tsx
+import { useState } from 'react';
+
+export function MobileMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls="mobile-menu"
+        onClick={() => setIsOpen((previous) => !previous)}
+      >
+        목차
+      </button>
+      <nav id="mobile-menu" aria-label="모바일 목차" hidden={!isOpen}>
+        <a href="#projects">프로젝트 요약</a>
+      </nav>
+    </>
+  );
+}
+```
+
+Vue의 `ref(false)`와 비교해 `isOpen`을 읽고 `setIsOpen`으로 바꾸는 흐름을 확인합니다. React는 setter로 상태 변경을 요청받으면 컴포넌트를 다시 렌더링합니다. `useEffect`는 이 단계에서 억지로 추가하지 않습니다. 외부 시스템과 동기화할 일이 생겼을 때 배웁니다.
+
+React 전환을 마치면 개발 서버뿐 아니라 빌드 결과도 확인합니다. Vite는 기본적으로 `dist/`에 결과물을 만듭니다. `npm run preview`는 로컬에서 빌드 결과를 확인하는 용도이며 운영 서버로 사용하지 않습니다.
+
+최종 확인 항목입니다.
+
+- TypeScript 검사와 빌드가 통과하는가?
+- 프로필, 프로젝트 이미지, 아이콘과 폰트가 정상적으로 열리는가?
+- 좁은 화면과 낮은 화면에서도 목차와 하단 버튼을 사용할 수 있는가?
+- 인쇄 버튼과 인쇄 스타일이 유지되는가?
+- 블로그와 GitHub 링크, 내부 앵커 이동이 맞는가?
+- 페이지 끝에서 푸터가 사이드바를 밀어 올리지 않는가?
+
+## Cloudflare와 풀스택 학습으로 이어가기
+
+첫 목표는 현재 화면을 React로 옮기고 직접 수정할 수 있게 되는 것입니다. 그다음 Cloudflare에서 프론트엔드를 배포하고 Workers API와 D1을 연결하는 순서로 학습합니다.
+
+후속 학습에서는 프로젝트 데이터를 API로 조회하고 로딩·오류 화면을 처리합니다. 관리자 편집 기능은 인증과 서버 권한 검사를 함께 배운 뒤 추가합니다. React 화면 전환만으로 API와 데이터베이스가 생기는 것은 아닙니다.
+
+## 공식 문서
+
+2026-10-03에 확인한 공식 문서입니다. 실습 환경과 배포 설정은 진행 시점에 다시 확인합니다.
+
+- [React의 JSX 규칙](https://react.dev/learn/writing-markup-with-jsx)
+- [React에서 TypeScript 사용하기](https://react.dev/learn/typescript)
+- [React의 상태 관리 입문](https://react.dev/learn/state-a-components-memory)
+- [Effect가 필요한 경우](https://react.dev/learn/you-might-not-need-an-effect)
+- [Vite 시작하기](https://vite.dev/guide/)
+- [Vite 정적 배포](https://vite.dev/guide/static-deploy.html)
+- [Cloudflare의 React와 Vite 가이드](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/)
+<!-- HUMANIZE-SUMMARY -->
+<!--
+경로: light / monolith
+장르: essay(학습 안내 문서)
+진단: 정량 사전 점수 risk_band low. D-3 열거 도입 표현 2건만 정리했습니다. 학습 문서에 필요한 표·목록·코드와 단계별 제목은 보존했습니다.
+핵심 수정: “목표 구조는 다음과 같습니다.” → “목표 구조입니다.” / “최종 확인 항목은 다음과 같습니다.” → “최종 확인 항목입니다.”
+자체검증: 6/6 통과. 고유명사·수치·날짜·인용·내용 앵커·코드·URL·서법·register를 보존했습니다. 새 비유·수사·상투구를 추가하지 않았습니다.
+변경률: 소폭 수정. 확정 수치는 verify_gates.py의 측정 결과를 따릅니다.
+등급: B(보수적 최소 수정).
+남은 경고: 없음. 정량 지표의 관형절 중첩 2건은 학습 개념을 구분하는 수식으로 판단해 보존했습니다.
+-->
