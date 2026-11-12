@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const files = new Set([
-  '/index.css', '/index.js',
+  '/index.css', '/index.js', '/project-data.js', '/project-detail.css',
   '/index.html', '/assets/PretendardVariable.woff2', '/images/profiles/Hwan2.png', '/assets/icons/github-logo.svg', '/assets/icons/envelope-simple.svg', '/assets/icons/notebook.svg', '/assets/icons/phone.svg',
   '/images/projects/jeju-project.png', '/images/projects/readme-project.png', '/images/projects/logmile-project.png',
   '/images/projects/token-monitor-project.png'

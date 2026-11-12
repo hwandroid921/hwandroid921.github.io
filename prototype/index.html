@@ -9,7 +9,9 @@
   <meta name="theme-color" content="#ebf3ff">
   <title>유환희 | 풀스택 웹 개발자 포트폴리오</title>
   <link rel="stylesheet" href="index.css">
+  <script src="project-data.js" defer></script>
   <script src="index.js" defer></script>
+  <link rel="stylesheet" href="project-detail.css">
 </head>
 
 <body data-layout="hybrid" id="top">
@@ -30,7 +32,6 @@
               <a href="#skills">기술 역량</a>
               <a href="#writing">기술 기록</a>
               <a href="#education">교육 및 자격</a>
-              <a href="#project-details">프로젝트 상세</a>
               <a href="#contact">연락처</a>
             </nav>
           </div>
@@ -64,47 +65,51 @@
           <div class="project-previews">
             <article class="project-preview" aria-labelledby="jeju-preview-title">
               <figure class="project-media">
-                <a href="#jeju" aria-label="제주 문화관광 프로젝트 상세 보기">
+                <a href="?project=jeju" aria-label="제주 문화관광 프로젝트 상세 보기">
                   <img src="images/projects/jeju-project.png" alt="제주문화관광 메인 화면. 관광 메뉴와 성산일출축제 배너" width="1906"
                     height="939" fetchpriority="high">
                 </a>
               </figure>
-              <h3 id="jeju-preview-title"><a href="#jeju">제주 문화관광 페이지</a></h3>
-              <a class="preview-detail-link" href="#jeju" aria-label="제주 문화관광 상세 설명으로 이동">상세 보기</a>
+              <h3 id="jeju-preview-title"><a href="?project=jeju">제주 문화관광 페이지</a></h3>
+              <p class="project-summary">관광지 탐색부터 회원 인증, 리뷰와 문의까지 이어지는 문화관광 안내 서비스입니다.</p><p class="project-focus">인증과 사용자 참여 흐름</p>
+              <a class="preview-detail-link" href="?project=jeju" aria-label="제주 문화관광 상세 설명으로 이동">상세 보기</a>
             </article>
 
             <article class="project-preview" aria-labelledby="bookstore-preview-title">
               <figure class="project-media">
-                <a href="#bookstore" aria-label="ReadMe 프로젝트 상세 보기">
+                <a href="?project=bookstore" aria-label="ReadMe 프로젝트 상세 보기">
                   <img src="images/projects/readme-project.png" alt="ReadMe 온라인 서점 메인 화면. 도서 검색, 카테고리와 추천 도서 영역"
                     width="2032" height="1104" loading="lazy" decoding="async">
                 </a>
               </figure>
-              <h3 id="bookstore-preview-title"><a href="#bookstore">온라인 서점 ReadMe</a></h3>
-              <a class="preview-detail-link" href="#bookstore" aria-label="ReadMe 상세 설명으로 이동">상세 보기</a>
+              <h3 id="bookstore-preview-title"><a href="?project=bookstore">온라인 서점 ReadMe</a></h3>
+              <p class="project-summary">도서 조회, 장바구니, 주문과 주문 내역으로 이어지는 구매 과정을 구현한 온라인 서점입니다.</p><p class="project-focus">Vue 화면과 구매 상태 관리</p>
+              <a class="preview-detail-link" href="?project=bookstore" aria-label="ReadMe 상세 설명으로 이동">상세 보기</a>
             </article>
 
             <article class="project-preview" aria-labelledby="logmile-preview-title">
               <figure class="project-media">
-                <a href="#logmile" aria-label="LogMile 프로젝트 상세 보기">
+                <a href="?project=logmile" aria-label="LogMile 프로젝트 상세 보기">
                   <img src="images/projects/logmile-project.png" alt="LogMile 소개 화면. 화물차 운전자 피로도와 차량별 상태를 보여주는 모니터링 서비스"
                     width="2032" height="1104" loading="lazy" decoding="async">
                 </a>
               </figure>
-              <h3 id="logmile-preview-title"><a href="#logmile">LogMile</a></h3>
-              <a class="preview-detail-link" href="#logmile" aria-label="LogMile 상세 설명으로 이동">상세 보기</a>
+              <h3 id="logmile-preview-title"><a href="?project=logmile">LogMile</a></h3>
+              <p class="project-summary">주행 상태를 수집하고 이상 상태를 판단해, 화물차 운전자 피로도를 모니터링하는 플랫폼입니다.</p><p class="project-focus">분석 API와 모니터링 연결</p>
+              <a class="preview-detail-link" href="?project=logmile" aria-label="LogMile 상세 설명으로 이동">상세 보기</a>
             </article>
 
             <article class="project-preview" aria-labelledby="tokenmonitor-preview-title">
               <figure class="project-media">
-                <a href="#tokenmonitor" aria-label="TokenMonitor 프로젝트 상세 보기">
+                <a href="?project=tokenmonitor" aria-label="TokenMonitor 프로젝트 상세 보기">
                   <img src="images/projects/token-monitor-project.png"
                     alt="TokenMonitor Windows 대시보드. ChatGPT, Claude, Antigravity의 잔여 사용량과 초기화 시간을 비교하는 화면" width="1266"
                     height="813" loading="lazy" decoding="async">
                 </a>
               </figure>
-              <h3 id="tokenmonitor-preview-title"><a href="#tokenmonitor">TokenMonitor</a></h3>
-              <a class="preview-detail-link" href="#tokenmonitor" aria-label="TokenMonitor 상세 설명으로 이동">상세 보기</a>
+              <h3 id="tokenmonitor-preview-title"><a href="?project=tokenmonitor">TokenMonitor</a></h3>
+              <p class="project-summary">여러 AI 개발 도구의 플랜, 잔여 사용량과 초기화 시간을 한 화면에서 확인하는 개인용 대시보드입니다.</p><p class="project-focus">개인 사용 흐름과 데스크톱 UI</p>
+              <a class="preview-detail-link" href="?project=tokenmonitor" aria-label="TokenMonitor 상세 설명으로 이동">상세 보기</a>
             </article>
           </div>
         </section>
@@ -204,243 +209,6 @@
             </div>
           </section>
         </div>
-
-        <section id="project-details" aria-label="프로젝트 상세">
-
-          <article class="project-detail" id="jeju" aria-labelledby="jeju-title">
-            <header class="detail-header">
-              <h2 id="jeju-title">제주 문화관광 페이지</h2>
-              <p class="muted">관광지 탐색부터 회원 인증, 리뷰와 문의까지 이어지는 문화관광 안내 서비스입니다.</p>
-            </header>
-            <dl class="detail-meta">
-              <div>
-                <dt>담당 작업</dt>
-                <dd>인증, 게시글, 리뷰 흐름 구현과 사용자 동작에 따른 데이터 저장 과정 정리</dd>
-              </div>
-              <div>
-                <dt>구현 영역</dt>
-                <dd>웹 화면, API, 회원 인증, 게시글 및 리뷰 데이터 처리</dd>
-              </div>
-            </dl>
-            <div class="detail-row">
-              <h3>요구사항</h3>
-              <div>
-                <p>관광 정보를 탐색한 사용자가 회원 인증을 거쳐 리뷰를 작성하거나 게시판으로 문의할 수 있어야 합니다.</p>
-                <ul>
-                  <li>관광지 정보 탐색</li>
-                  <li>회원 인증과 리뷰 작성</li>
-                  <li>게시판을 통한 문의</li>
-                </ul>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>방법 및 구현 흐름</h3>
-              <div>
-                <p>인증, 게시글, 리뷰 기능을 각각 구현하되 사용자가 이동하는 순서를 기준으로 API와 화면을 연결했습니다. 사용자 동작이 데이터 저장으로 이어지는 과정을 함께 정리했습니다.</p>
-                <p class="detail-flow">관광지 탐색 → 회원 인증 → 리뷰 작성 → 게시판 문의</p>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>트러블슈팅 및 문제 해결</h3>
-              <div>
-                <h4>기능별로 흩어진 사용자 흐름 연결</h4>
-                <dl class="resolution">
-                  <div>
-                    <dt>문제</dt>
-                    <dd>관광 정보, 인증, 리뷰와 문의를 개별 기능으로만 구성하면 서비스 전체의 화면 이동과 데이터 흐름을 파악하기 어렵습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>접근</dt>
-                    <dd>사용자 시나리오를 기준으로 API와 화면 이동을 정리하고, 인증·게시글·리뷰의 저장 흐름을 연결했습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>구현 내용</dt>
-                    <dd>관광지 탐색과 사용자 참여 기능을 하나의 서비스 흐름으로 구성했습니다.</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-            <div class="detail-actions"><a href="https://github.com/hwandroid921/Jeju" target="_blank"
-                rel="noopener noreferrer">GitHub</a><a href="#projects">목록으로</a></div>
-          </article>
-
-          <article class="project-detail" id="bookstore" aria-labelledby="bookstore-title">
-            <header class="detail-header">
-              <h2 id="bookstore-title">온라인 서점 ReadMe</h2>
-              <p class="muted">도서 조회, 장바구니, 주문과 주문 내역으로 이어지는 구매 과정을 구현한 온라인 서점입니다.</p>
-            </header>
-            <dl class="detail-meta">
-              <div>
-                <dt>담당 작업</dt>
-                <dd>Vue 3 화면 구현과 Pinia 상태 관리를 중심으로 구매 과정 구성</dd>
-              </div>
-              <div>
-                <dt>확인된 기술</dt>
-                <dd>Vue 3, Pinia</dd>
-              </div>
-            </dl>
-            <div class="detail-row">
-              <h3>요구사항</h3>
-              <div>
-                <p>사용자가 도서를 조회하고 상세 정보를 확인한 뒤, 장바구니와 주문 과정을 거쳐 주문 내역을 확인할 수 있어야 합니다.</p>
-                <ul>
-                  <li>도서 목록 및 상세 조회</li>
-                  <li>장바구니와 주문·결제 흐름</li>
-                  <li>주문 내역 확인</li>
-                </ul>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>방법 및 기술 스택</h3>
-              <div>
-                <p>Vue 3로 구매 단계별 화면을 구성하고 Pinia로 상태를 관리했습니다. 화면 단위 상태와 요청 흐름을 분리해, 장바구니에서 주문으로 이어지는 과정을 정리했습니다.</p>
-                <p class="detail-flow">도서 조회 → 상세 확인 → 장바구니 → 주문 → 주문 내역</p>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>트러블슈팅 및 문제 해결</h3>
-              <div>
-                <h4>장바구니와 주문 단계의 상태 분리</h4>
-                <dl class="resolution">
-                  <div>
-                    <dt>문제</dt>
-                    <dd>구매 과정에서는 화면 상태와 요청 흐름이 섞이지 않도록 관리해야 했습니다. 특히 장바구니에서 주문으로 이동하는 단계가 주요 고려 사항이었습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>접근</dt>
-                    <dd>Vue 3 화면과 Pinia 상태 관리를 바탕으로 화면 단위 상태와 요청 흐름을 분리했습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>구현 내용</dt>
-                    <dd>도서 탐색, 장바구니, 주문 및 내역 확인을 구매 순서에 맞게 구성했습니다.</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-            <div class="detail-actions"><a href="https://github.com/hwandroid921/readme" target="_blank"
-                rel="noopener noreferrer">GitHub</a><a href="#projects">목록으로</a></div>
-          </article>
-
-          <article class="project-detail" id="logmile" aria-labelledby="logmile-title">
-            <header class="detail-header">
-              <h2 id="logmile-title">LogMile</h2>
-              <p class="muted">주행 상태를 수집하고 이상 상태를 판단해, 화물차 운전자 피로도를 모니터링하는 플랫폼입니다.</p>
-            </header>
-            <dl class="detail-meta">
-              <div>
-                <dt>담당 작업</dt>
-                <dd>상태 데이터 흐름과 모니터링 화면 연결, 백엔드와 AI 분석 API 연동 구조 정리</dd>
-              </div>
-              <div>
-                <dt>확인된 기술</dt>
-                <dd>FastAPI 연동</dd>
-              </div>
-            </dl>
-            <div class="detail-row">
-              <h3>요구사항</h3>
-              <div>
-                <p>수집한 주행 상태를 분석하고, 판단 결과를 모니터링 화면에서 이해할 수 있는 정보로 제공해야 합니다.</p>
-                <ul>
-                  <li>주행 상태 데이터 수집</li>
-                  <li>이상 상태 판단과 AI 분석 API 연동</li>
-                  <li>모니터링 화면을 통한 결과 확인</li>
-                </ul>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>방법 및 기술 스택</h3>
-              <div>
-                <p>데이터 수집, 분석과 화면 표시를 나누어 흐름을 구성했습니다. FastAPI 연동을 포함한 백엔드·AI 분석 API 구조를 정리하고, 상태 데이터와 모니터링 화면을 연결했습니다.
-                </p>
-                <p class="detail-flow">상태 수집 → 이상 판단 및 분석 → 모니터링 → 결과 확인</p>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>트러블슈팅 및 문제 해결</h3>
-              <div>
-                <h4>분석 결과를 모니터링 정보로 전달</h4>
-                <dl class="resolution">
-                  <div>
-                    <dt>문제</dt>
-                    <dd>상태 데이터를 수집하는 것만으로는 사용자가 판단 결과를 이해하기 어렵습니다. 분석 과정과 화면 표시를 연결해야 했습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>접근</dt>
-                    <dd>수집, 분석, 표시 단계를 구분하고 각 단계의 데이터 흐름을 정리했습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>구현 내용</dt>
-                    <dd>주행 상태 수집부터 이상 상태 판단과 결과 확인까지 모니터링 흐름을 구성했습니다.</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-            <div class="detail-actions"><a href="https://github.com/hwandroid921/logmile" target="_blank"
-                rel="noopener noreferrer">GitHub</a><a href="#projects">목록으로</a></div>
-          </article>
-
-          <article class="project-detail" id="tokenmonitor" aria-labelledby="tokenmonitor-title">
-            <header class="detail-header">
-              <h2 id="tokenmonitor-title">TokenMonitor</h2>
-              <p class="muted">여러 AI 개발 도구의 플랜, 잔여 사용량과 초기화 시간을 한 화면에서 확인하는 개인용 대시보드입니다.</p>
-            </header>
-            <dl class="detail-meta">
-              <div>
-                <dt>담당 작업</dt>
-                <dd>개인 사용 흐름 정의, 도구별 상태를 비교할 수 있는 UI 구성</dd>
-              </div>
-              <div>
-                <dt>실행 환경</dt>
-                <dd>Windows 데스크톱</dd>
-              </div>
-              <div>
-                <dt>표시 대상</dt>
-                <dd>ChatGPT, Claude, Antigravity</dd>
-              </div>
-            </dl>
-            <div class="detail-row">
-              <h3>요구사항</h3>
-              <div>
-                <p>여러 도구의 사용량 확인 화면을 각각 방문하지 않고도 주요 상태를 비교할 수 있어야 합니다.</p>
-                <ul>
-                  <li>도구별 플랜과 잔여 사용량 표시</li>
-                  <li>초기화 시간과 상태 갱신</li>
-                  <li>사용량 확인 링크 연결과 Windows 실행</li>
-                </ul>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>방법 및 실행 환경</h3>
-              <div>
-                <p>개인적으로 필요한 사용량 확인 흐름에서 출발해 도구별 상태를 대시보드에 모았습니다. Windows 화면에서 플랜, 잔여 사용량과 초기화 시간을 비교하고 갱신하거나 관련 링크로
-                  이동하도록 구성했습니다.</p>
-                <p class="detail-flow">도구별 사용량 확인 → 상태 비교 → 갱신 및 외부 링크 이동</p>
-              </div>
-            </div>
-            <div class="detail-row">
-              <h3>트러블슈팅 및 문제 해결</h3>
-              <div>
-                <h4>흩어진 AI 도구 사용량 정보 통합</h4>
-                <dl class="resolution">
-                  <div>
-                    <dt>문제</dt>
-                    <dd>AI 도구마다 사용량 확인 위치가 달라 잔여 사용량과 초기화 시간을 한 번에 비교하기 어려웠습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>접근</dt>
-                    <dd>도구별 주요 상태를 같은 대시보드에서 확인할 수 있도록 UI를 구성했습니다.</dd>
-                  </div>
-                  <div>
-                    <dt>구현 내용</dt>
-                    <dd>사용량, 초기화 시간과 확인 링크를 한 화면에서 다루는 개인용 Windows 도구를 구현했습니다.</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-            <div class="detail-actions"><a href="https://github.com/hwandroid921/TokenMonitor" target="_blank"
-                rel="noopener noreferrer">GitHub</a><a href="#projects">목록으로</a></div>
-          </article>
-        </section>
 
         <section id="contact" aria-labelledby="contact-title">
           <h2 id="contact-title">연락처</h2>
